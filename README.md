@@ -6,7 +6,7 @@
 </h2>
 
 <p align="center">
-    <b>Desarrollado en lenguaje kotlin, aplicación móvil GYM CHECK.</b>
+    <b>Desarrollado en lenguaje kotlin, elaborado por Marcelo Rivera, Allan Silva y Roberto Amador.</b>
 </p>
 
 <p align="center">
