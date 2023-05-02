@@ -1,5 +1,5 @@
 # GymCheck
-Aqui se viene la mejor aplicación de móviles producida producida por Allan Silva, Marcelo Rivera y mis huesos.
+
 
 <h2 align="center">
     Proyecto final de Desarrollo de Aplicaciones Moviles 2👋
