@@ -2,7 +2,7 @@
 
 
 <h2 align="center">
-    Proyecto final de Desarrollo de Aplicaciones Moviles 2👋
+    Proyecto final de Desarrollo de Aplicaciones Moviles 2👋🤓☝🏻
 </h2>
 
 <p align="center">
@@ -27,6 +27,7 @@
         <img src="https://img.shields.io/badge/-Github-000?logo=github&style=for-the-badge&logoColor=white" alt="Bradge Github" />
   
 </p>
+
 🐍 A Snake Eating
 	
 <p align = "center">
