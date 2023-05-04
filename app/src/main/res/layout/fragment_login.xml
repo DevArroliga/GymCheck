@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LoginFragment"
+    android:orientation="vertical"
+    android:background="@color/bgGreen">
+
+    <LinearLayout
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:src="@drawable/loginpic" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gym Check"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="35sp"
+            android:textColor="@color/white"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfUsuario"
+            android:layout_marginTop="25dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese su usuario"
+            android:layout_gravity="center"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfPassword"
+            android:layout_marginTop="28dp"
+            android:layout_width="300dp"
+            app:endIconMode="password_toggle"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese su contraseña"
+            android:layout_gravity="center"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_marginTop="45dp"
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:text="Iniciar sesión"
+            android:backgroundTint="@color/btnPrimario"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/btnNuevaCuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿No tienes cuenta aún?"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        android:text="SE PARTE DE NUESTRO GIMNASIO"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

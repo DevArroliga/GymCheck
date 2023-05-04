@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-    Una aplicacón de administración de membresias, posibilidad de ver los productos que ofrece dicho GYM y gestión de su membresia.
+    Una aplicacón de administración de membresias, realizada en kotlin, con posibilidad de ver los productos que ofrece dicho GYM y gestión de su membresia.
 </p>
 
 <br />
