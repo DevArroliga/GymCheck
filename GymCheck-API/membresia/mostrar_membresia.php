@@ -6,9 +6,9 @@ if ($mysql->connect_error) {
 }
 
 // Función para mostrar los registros de una tabla
-function mostrar($usuario) {
+function mostrar($persona) {
     global $mysql;
-    $sql = "SELECT * FROM usuario WHERE activo = 1";
+    $sql = "SELECT * FROM membresia";
     $result = $mysql->query($sql);
     $rows = array();
     while($r = mysqli_fetch_assoc($result)) {
@@ -18,5 +18,5 @@ function mostrar($usuario) {
     return json_encode($rows);
 }
 
-echo mostrar('usuario');
+echo mostrar('persona');
 ?>
