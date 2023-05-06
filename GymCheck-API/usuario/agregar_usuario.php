@@ -1,6 +1,6 @@
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    require_once 'conexion.php';
+    require_once '../conexion.php';
     $usuario = $_POST["usuario"];
     $clave = $_POST["clave"];
     $activo= $_POST["activo"];
@@ -17,3 +17,5 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     echo"Error desconocido";
 }
 ?>
+
+
