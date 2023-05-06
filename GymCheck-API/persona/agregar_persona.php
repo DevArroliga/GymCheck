@@ -1,6 +1,6 @@
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    require_once 'conexion.php';
+    require_once '../conexion.php';
 
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $correo= $_POST["correo"];
     $fechaMem =$_POST["fechaMem"];
 
-    $my_query = "INSERT INTO persona (nombre, apellidos, fechaNac, correo, fechaMem) VALUES ('".$nombre."', '".$apellidos."','".$fechaNac."', '".$correo."', '".$fechaMem."')";
+    $my_query = "INSERT INTO persona (nombre, apellido, fechaNac, correo, fechaMem) VALUES ('".$nombre."', '".$apellido."','".$fechaNac."', '".$correo."', '".$fechaMem."')";
 
     $result = $mysql -> query($my_query);
     if($result == true){
