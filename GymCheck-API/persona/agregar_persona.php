@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $fechaNac= $_POST["fechaNac"];
     $correo= $_POST["correo"];
 
-    $my_query = "INSERT INTO persona (nombre, apellido, fechaNac, correo, fechaMem) VALUES ('".$nombre."', '".$apellido."','".$fechaNac."', '".$correo."')";
+    $my_query = "INSERT INTO persona (nombre, apellido, fechaNac, correo) VALUES ('".$nombre."', '".$apellido."','".$fechaNac."', '".$correo."')";
 
     $result = $mysql -> query($my_query);
     if($result == true){

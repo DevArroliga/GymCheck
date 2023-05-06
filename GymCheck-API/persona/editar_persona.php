@@ -5,7 +5,7 @@
         $idPersona = $_POST["idPersona"];      
         $correo = $_POST["correo"];
 
-        $my_query = "UPDATE persona SET correo= '".$correo."' WHERE idC=".$idC;
+        $my_query = "UPDATE persona SET correo= '".$correo."' WHERE idPersona=".$idPersona;
         $result = $mysql->query($my_query);
 
         if($result == true){
