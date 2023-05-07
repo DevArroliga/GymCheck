@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.FragmentHomeAdminBinding
 
@@ -36,7 +37,7 @@ class HomeAdminFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener {item ->
             when(item.itemId) {
                 R.id.item_1 -> {
-
+                 Toast.makeText(context,"Home", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.item_2 -> {
