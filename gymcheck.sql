@@ -63,7 +63,6 @@ CREATE TABLE `persona` (
   `apellido` varchar(50) NOT NULL,
   `fechaNac` date NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `fechaMem` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
