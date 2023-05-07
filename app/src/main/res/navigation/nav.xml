@@ -18,5 +18,18 @@
         android:id="@+id/homeAdminFragment"
         android:name="com.example.gymcheck.HomeAdminFragment"
         android:label="fragment_home_admin"
-        tools:layout="@layout/fragment_home_admin" />
+        tools:layout="@layout/fragment_home_admin" >
+        <action
+            android:id="@+id/action_homeAdminFragment_to_membresiaAdminFragment"
+            app:destination="@id/membresiaAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/membresiaAdminFragment"
+        android:name="com.example.gymcheck.MembresiaAdminFragment"
+        android:label="fragment_membresia_admin"
+        tools:layout="@layout/fragment_membresia_admin" >
+        <action
+            android:id="@+id/action_membresiaAdminFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
+    </fragment>
 </navigation>
