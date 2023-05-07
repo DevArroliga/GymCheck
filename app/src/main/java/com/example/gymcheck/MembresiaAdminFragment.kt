@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.FragmentMembresiaAdminBinding
 
 class MembresiaAdminFragment : Fragment() {
@@ -30,6 +32,23 @@ class MembresiaAdminFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.bottomNavigation.setOnItemSelectedListener {item ->
+            when(item.itemId) {
+                R.id.item_2 -> {
+                    Toast.makeText(context,"Membresia", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.item_1 -> {
+                    findNavController().navigate(R.id.action_membresiaAdminFragment_to_homeAdminFragment)
+                    true
+                }
+                else -> false
+            }
+
+        }
+
+
 
         val items = listOf("Semanal", "Quincenal", "Mensual")
         val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)

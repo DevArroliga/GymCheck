@@ -40,6 +40,7 @@
             android:id="@+id/tfUsuario"
             android:layout_marginTop="25dp"
             android:layout_width="300dp"
+            android:textColorHint="@color/white"
             android:layout_height="wrap_content"
             android:hint="Ingrese su usuario"
             android:layout_gravity="center"
@@ -47,6 +48,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsuario"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -57,6 +59,7 @@
             android:layout_marginTop="28dp"
             android:layout_width="300dp"
             app:endIconMode="password_toggle"
+            android:textColorHint="@color/white"
             android:layout_height="wrap_content"
             android:hint="Ingrese su contraseña"
             android:layout_gravity="center"
@@ -64,6 +67,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassWord"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
