@@ -1,0 +1,4 @@
+package Entidades
+
+class Usuario {
+}
