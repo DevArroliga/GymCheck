@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bgGreen">#163038</color>
     <color name="btnPrimario">#1E2424</color>
+    <color name="bgSearchBar">#09221F</color>
+    <color name="btnOscuro">#1E2424</color>
+    <color name="cirucloItem">#54543a</color>
+    <color name="statusbarprimary">#19302F</color>
 </resources>

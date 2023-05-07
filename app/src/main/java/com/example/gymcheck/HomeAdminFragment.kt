@@ -5,13 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.gymcheck.databinding.FragmentLoginBinding
+import com.example.gymcheck.databinding.FragmentHomeAdminBinding
 
 
-class LoginFragment : Fragment() {
-
-    lateinit var binding:FragmentLoginBinding
+class HomeAdminFragment : Fragment() {
+    lateinit var binding:FragmentHomeAdminBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,17 +21,17 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(layoutInflater)
+        binding = FragmentHomeAdminBinding.inflate(layoutInflater)
+
+        binding.bottomNavigation.selectedItemId = R.id.item_1
+
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_homeAdminFragment)
-        }
     }
 
 }
