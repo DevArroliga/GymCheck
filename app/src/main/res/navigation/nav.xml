@@ -29,6 +29,9 @@
 
             android:id="@+id/action_homeAdminFragment_to_productosAdminFragment"
             app:destination="@id/productosAdminFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_anunciosAdminFragment"
+            app:destination="@id/anunciosAdminFragment" />
     </fragment>
     <fragment
         android:id="@+id/membresiaAdminFragment"
@@ -41,6 +44,9 @@
         <action
             android:id="@+id/action_membresiaAdminFragment_to_productosAdminFragment"
             app:destination="@id/productosAdminFragment" />
+        <action
+            android:id="@+id/action_membresiaAdminFragment_to_anunciosAdminFragment"
+            app:destination="@id/anunciosAdminFragment" />
 
     </fragment>
     <fragment
@@ -64,12 +70,25 @@
         <action
             android:id="@+id/action_productosAdminFragment_to_membresiaAdminFragment"
             app:destination="@id/membresiaAdminFragment" />
+        <action
+            android:id="@+id/action_productosAdminFragment_to_anunciosAdminFragment"
+            app:destination="@id/anunciosAdminFragment" />
     </fragment>
     <fragment
         android:id="@+id/anunciosAdminFragment"
         android:name="com.example.gymcheck.AnunciosAdminFragment"
         android:label="fragment_anuncios_admin"
-        tools:layout="@layout/fragment_anuncios_admin" />
+        tools:layout="@layout/fragment_anuncios_admin" >
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_productosAdminFragment"
+            app:destination="@id/productosAdminFragment" />
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_membresiaAdminFragment"
+            app:destination="@id/membresiaAdminFragment" />
+    </fragment>
 
     android:id="@+id/productosFragment"
         android:name="com.example.gymcheck.ProductosFragment"

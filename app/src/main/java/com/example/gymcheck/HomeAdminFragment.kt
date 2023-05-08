@@ -54,6 +54,11 @@ class HomeAdminFragment : Fragment() {
                     findNavController().navigate(R.id.action_homeAdminFragment_to_productosAdminFragment)
                     true
                 }
+
+                R.id.item_4 ->{
+                    findNavController().navigate(R.id.action_homeAdminFragment_to_anunciosAdminFragment)
+                    true
+                }
                 else -> false
             }
 
