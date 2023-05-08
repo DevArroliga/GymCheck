@@ -8,7 +8,7 @@ class PersonaControlador {
     // IP Roberto: "192.168.0.15"
 
     fun agregarPersona(persona: Persona){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/agregar_persona.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/persona/agregar_persona.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("nombre", persona.nombre)
@@ -42,7 +42,7 @@ class PersonaControlador {
     }
 
     fun editarPersona(idPersona: Int, correo: String){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/editar_persona.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/persona/editar_persona.php"
 
         val formBody = FormBody.Builder()
             .add("idPersona", idPersona.toString())
@@ -72,7 +72,7 @@ class PersonaControlador {
     }
 
     fun mostrarPersona(listaPersona: List<Persona>){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/mostrar_persona.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/persona/mostrar_persona.php"
 
         val request = Request.Builder()
             .url(urlAPI)
