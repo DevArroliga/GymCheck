@@ -1,5 +1,6 @@
 package Controladores
 import Entidades.Persona
+import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 
@@ -61,6 +62,32 @@ class PersonaControlador {
                 }
                 else {
                     println("Error en la respuesta del servidor")
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Error en la petición HTTP: ${e.message}")
+            }
+        })
+    }
+
+    fun mostrarPersona(listaPersona: List<Persona>){
+        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/mostrar_persona.php"
+
+        val request = Request.Builder()
+            .url(urlAPI)
+            .build()
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val respuesta = response.body?.string()
+                response.close()
+                if (respuesta != null) {
+                    val gson = Gson()
+                    val listaPersonas = gson.fromJson(respuesta, Array<Persona>::class.java).toList()
+                } else {
+                println("Error en la respuesta del servidor")
                 }
             }
 
