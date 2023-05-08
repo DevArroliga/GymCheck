@@ -51,16 +51,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProductos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="530dp"
                 android:layout_gravity="center"
-                tools:listitem="@layout/producto_layout"/>
+                tools:listitem="@layout/producto_layout" />
         </LinearLayout>
     </LinearLayout>
-
-
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"

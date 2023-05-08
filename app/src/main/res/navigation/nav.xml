@@ -25,6 +25,13 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_clienteNuevo"
             app:destination="@id/clienteNuevo" />
+        <action
+
+            android:id="@+id/action_homeAdminFragment_to_productosAdminFragment"
+            app:destination="@id/productosAdminFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_anunciosAdminFragment"
+            app:destination="@id/anunciosAdminFragment" />
     </fragment>
     <fragment
         android:id="@+id/membresiaAdminFragment"
@@ -34,6 +41,13 @@
         <action
             android:id="@+id/action_membresiaAdminFragment_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_membresiaAdminFragment_to_productosAdminFragment"
+            app:destination="@id/productosAdminFragment" />
+        <action
+            android:id="@+id/action_membresiaAdminFragment_to_anunciosAdminFragment"
+            app:destination="@id/anunciosAdminFragment" />
+
     </fragment>
     <fragment
 
@@ -45,8 +59,54 @@
             android:id="@+id/action_clienteNuevo_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
     </fragment>
+    <fragment
 
-        android:id="@+id/productosFragment"
+        android:id="@+id/productosAdminFragment"
+        android:name="com.example.gymcheck.ProductosAdminFragment"
+        android:label="ProductosAdminFragment" >
+        <action
+            android:id="@+id/action_productosAdminFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_productosAdminFragment_to_membresiaAdminFragment"
+            app:destination="@id/membresiaAdminFragment" />
+        <action
+            android:id="@+id/action_productosAdminFragment_to_anunciosAdminFragment"
+            app:destination="@id/anunciosAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/anunciosAdminFragment"
+        android:name="com.example.gymcheck.AnunciosAdminFragment"
+        android:label="fragment_anuncios_admin"
+        tools:layout="@layout/fragment_anuncios_admin" >
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_productosAdminFragment"
+            app:destination="@id/productosAdminFragment" />
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_membresiaAdminFragment"
+            app:destination="@id/membresiaAdminFragment" />
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_agregarAnuncio"
+            app:destination="@id/agregarAnuncio" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarAnuncio"
+        android:name="com.example.gymcheck.AgregarAnuncio"
+        android:label="fragment_agregar_anuncio"
+        tools:layout="@layout/fragment_agregar_anuncio" >
+        <action
+            android:id="@+id/action_agregarAnuncio_to_anunciosAdminFragment"
+            app:destination="@id/anunciosAdminFragment" />
+    </fragment>
+
+    android:id="@+id/productosFragment"
+        android:name="com.example.gymcheck.ProductosFragment"
+        android:label="ProductosFragment" />
+
+    android:id="@+id/productosFragment"
         android:name="com.example.gymcheck.ProductosFragment"
         android:label="fragment_productos"
         tools:layout="@layout/fragment_productos" />

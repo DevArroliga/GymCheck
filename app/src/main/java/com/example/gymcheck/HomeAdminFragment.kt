@@ -44,8 +44,19 @@ class HomeAdminFragment : Fragment() {
                  Toast.makeText(context,"Home", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 R.id.item_2 -> {
                     findNavController().navigate(R.id.action_homeAdminFragment_to_membresiaAdminFragment)
+                    true
+                }
+
+                R.id.item_3 -> {
+                    findNavController().navigate(R.id.action_homeAdminFragment_to_productosAdminFragment)
+                    true
+                }
+
+                R.id.item_4 ->{
+                    findNavController().navigate(R.id.action_homeAdminFragment_to_anunciosAdminFragment)
                     true
                 }
                 else -> false
