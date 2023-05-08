@@ -1,5 +1,7 @@
 package com.example.gymcheck
 
+import Controladores.PersonaControlador
+import Entidades.Persona
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,6 +33,20 @@ class ClienteNuevo : Fragment() {
     ): View? {
 
         binding = FragmentClienteNuevoBinding.inflate(layoutInflater)
+        val controlador = PersonaControlador()
+
+        binding.btnAgregar.setOnClickListener {
+
+            val nuevaPersona = Persona(
+                binding.etNombre.text.toString(),
+                binding.etApellido.text.toString(),
+                binding.etFechaNac.text.toString(),
+                binding.etEmail.text.toString()
+            )
+            controlador.agregarPersona(nuevaPersona)
+        }
+
+
         return binding.root
 
 
@@ -44,11 +60,11 @@ class ClienteNuevo : Fragment() {
 
     }
 
-private fun init(){
-    binding.customToolbar.btnBack.setOnClickListener {
-        findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
+    private fun init(){
+        binding.customToolbar.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
+        }
     }
-}
     private fun showDatePicker(){
 
         binding.etFechaNac.setOnClickListener {
@@ -59,7 +75,7 @@ private fun init(){
             picker.show(childFragmentManager, picker.toString())
             picker.addOnPositiveButtonClickListener {
                 val selectedDate = Date(it)
-                val asf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val asf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                 binding.tfFechaNac.editText?.setText(asf.format(selectedDate))
             }
         }
