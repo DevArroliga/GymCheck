@@ -88,6 +88,18 @@
         <action
             android:id="@+id/action_anunciosAdminFragment_to_membresiaAdminFragment"
             app:destination="@id/membresiaAdminFragment" />
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_agregarAnuncio"
+            app:destination="@id/agregarAnuncio" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarAnuncio"
+        android:name="com.example.gymcheck.AgregarAnuncio"
+        android:label="fragment_agregar_anuncio"
+        tools:layout="@layout/fragment_agregar_anuncio" >
+        <action
+            android:id="@+id/action_agregarAnuncio_to_anunciosAdminFragment"
+            app:destination="@id/anunciosAdminFragment" />
     </fragment>
 
     android:id="@+id/productosFragment"

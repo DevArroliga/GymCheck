@@ -39,6 +39,11 @@ class AnunciosAdminFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnAgregar.setOnClickListener {
+            findNavController().navigate(R.id.action_anunciosAdminFragment_to_agregarAnuncio)
+        }
+
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.item_4 -> {
