@@ -12,10 +12,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $result = $mysql -> query($my_query);
     if($result == true){
-        echo "Registro guardado satisfactoriamente...";
+        echo "Producto guardado satisfactoriamente...";
     }
     else{
-        echo "Error al guardar registro...";
+        echo "Error al guardar producto...";
     }
 }
 else{

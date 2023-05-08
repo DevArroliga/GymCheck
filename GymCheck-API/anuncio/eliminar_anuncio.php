@@ -2,12 +2,12 @@
     
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         require_once '../conexion.php';
-        $idProducto = $_POST["id"];
-        $my_query = "UPDATE producto SET estado = 3 WHERE id =".$idProducto;
+        $idAnuncio = $_POST["id"];
+        $my_query = "UPDATE anuncio SET estado = 3 WHERE id=".$idAnuncio;
         $result = $mysql->query($my_query);
 
         if($result == true){
-            echo 'Producto eliminado exitosamente';
+            echo 'Anuncio eliminado exitosamente';
         } else { 
             echo 'Error';
         }
