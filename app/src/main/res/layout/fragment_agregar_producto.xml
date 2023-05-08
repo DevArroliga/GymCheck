@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".AgregarAnuncio"
+    tools:context=".AgregarProducto"
     android:background="@color/btnOscuro">
 
     <include
-        android:id="@+id/anuncioToolbar"
-       layout="@layout/anuncio_toolbar"
+        android:id="@+id/prodcutoToolbar"
+        layout="@layout/producto_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         >
 
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="8dp"
             android:backgroundTint="@color/bgGreen">
 
@@ -45,21 +45,22 @@
                     android:layout_height="wrap_content"
                     android:gravity="center">
                     <ImageView
+                        android:id="@+id/imgProducto"
                         android:layout_width="250dp"
                         android:layout_height="250dp"
-                        android:src="@drawable/anuncioo"/>
+                        android:src="@drawable/supplement"/>
                 </LinearLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_marginTop="30dp"
-                    android:id="@+id/tfNombreAnuncio"
+                    android:id="@+id/tfNombreProducto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etNombreAnuncio"
+                        android:id="@+id/etNombreProducto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -85,17 +86,34 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_marginTop="30dp"
-                    android:id="@+id/tfFechaVence"
+                    android:id="@+id/tfPrecio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Fecha vencimiento">
+                    android:hint="Precio">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etFechaVence"
+                        android:id="@+id/etPrecio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"
                         android:textColor="@color/white"
+                        android:inputType="numberDecimal"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/tfStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Stock">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etStock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:inputType="number"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -105,12 +123,12 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             style="@style/Widget.Material3.Button.Icon"
             android:id="@+id/btnAgregar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Agregar anuncio"
+            android:text="Agregar producto"
             android:layout_gravity="center"
             app:icon ="@drawable/baseline_add_24"
             android:textColor="@color/white"
