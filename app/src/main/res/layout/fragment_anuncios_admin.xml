@@ -3,12 +3,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnunciosAdminFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeAdminFragment"
+    android:background="@drawable/gradiant"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                app:titleCentered="true"
+                android:layout_height="?attr/actionBarSize"
+                app:title="GYM CHECK"
+                app:titleTextColor="@color/white"
+                app:menu="@menu/top_app_bar"
+                app:navigationIcon="@drawable/baseline_menu"
+                />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <LinearLayout
+            android:paddingVertical="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="Agregar anuncio"
+                android:layout_gravity="right"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAnuncio"
+                android:layout_width="match_parent"
+                android:layout_height="530dp"
+                android:layout_gravity="center"
+                tools:listitem="@layout/anuncio_layout" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        >
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:background="@color/btnOscuro"
+            android:id="@+id/bottom_navigation"
+            android:forceDarkAllowed="true"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:menu="@menu/bottom_nav" />
+    </LinearLayout>
 
 </FrameLayout>

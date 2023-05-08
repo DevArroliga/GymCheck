@@ -43,6 +43,11 @@ class ProductosAdminFragment : Fragment() {
                     true
                 }
 
+                R.id.item_4->{
+                    findNavController().navigate(R.id.action_productosAdminFragment_to_anunciosAdminFragment)
+                    true
+                }
+
                 else -> false
             }
 
