@@ -36,6 +36,7 @@
             app:destination="@id/homeAdminFragment" />
     </fragment>
     <fragment
+
         android:id="@+id/clienteNuevo"
         android:name="com.example.gymcheck.ClienteNuevo"
         android:label="fragment_cliente_nuevo"
@@ -44,4 +45,10 @@
             android:id="@+id/action_clienteNuevo_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
     </fragment>
+
+        android:id="@+id/productosFragment"
+        android:name="com.example.gymcheck.ProductosFragment"
+        android:label="fragment_productos"
+        tools:layout="@layout/fragment_productos" />
+
 </navigation>
