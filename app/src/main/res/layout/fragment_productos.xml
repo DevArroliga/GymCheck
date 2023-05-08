@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,49 +32,52 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:paddingVertical="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:text="Agregar producto"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProductos"
+        <LinearLayout
+            android:paddingVertical="10dp"
             android:layout_width="match_parent"
-            android:layout_height="480dp"
-            tools:listitem="@layout/producto_layout"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="Agregar producto"
+                android:layout_gravity="right"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProductos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:listitem="@layout/producto_layout"/>
+        </LinearLayout>
     </LinearLayout>
+
+
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        >
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:background="@color/btnOscuro"
             android:id="@+id/bottom_navigation"
             android:forceDarkAllowed="true"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="80dp"
             app:labelVisibilityMode="labeled"
-            android:paddingBottom="45dp"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
             app:menu="@menu/bottom_nav" />
     </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>
