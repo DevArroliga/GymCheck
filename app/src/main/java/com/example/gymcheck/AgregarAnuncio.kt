@@ -38,9 +38,9 @@ private lateinit var binding: FragmentAgregarAnuncioBinding
 
 
     private fun init(){
-        binding.customToolbar.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_agregarAnuncio_to_anunciosAdminFragment)
-        }
+      binding.anuncioToolbar.btnBack.setOnClickListener {
+          findNavController().navigate(R.id.action_agregarAnuncio_to_anunciosAdminFragment)
+      }
     }
 
     private fun showDatePicker(){

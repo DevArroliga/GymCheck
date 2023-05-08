@@ -44,6 +44,8 @@ class ClienteNuevo : Fragment() {
                 binding.etEmail.text.toString()
             )
             controlador.agregarPersona(nuevaPersona)
+
+            back()
         }
 
 
@@ -62,12 +64,16 @@ class ClienteNuevo : Fragment() {
 
     private fun init(){
         binding.customToolbar.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
+            back()
         }
+    }
+
+    fun back(){
+        findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
     }
     private fun showDatePicker(){
 
-        binding.etFechaNac.setOnClickListener {
+        binding.tfFechaNac.setEndIconOnClickListener {
             val picker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Seleccionar fecha")
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
