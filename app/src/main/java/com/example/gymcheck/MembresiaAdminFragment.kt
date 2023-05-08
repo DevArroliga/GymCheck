@@ -35,6 +35,10 @@ class MembresiaAdminFragment : Fragment() {
 
         binding.bottomNavigation.setOnItemSelectedListener {item ->
             when(item.itemId) {
+                R.id.item_3 -> {
+                    findNavController().navigate(R.id.action_membresiaAdminFragment_to_productosAdminFragment)
+                    true
+                }
                 R.id.item_2 -> {
                     Toast.makeText(context,"Membresia", Toast.LENGTH_SHORT).show()
                     true
@@ -43,6 +47,7 @@ class MembresiaAdminFragment : Fragment() {
                     findNavController().navigate(R.id.action_membresiaAdminFragment_to_homeAdminFragment)
                     true
                 }
+
                 else -> false
             }
 
