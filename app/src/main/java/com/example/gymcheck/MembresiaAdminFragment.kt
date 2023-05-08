@@ -43,6 +43,11 @@ class MembresiaAdminFragment : Fragment() {
                     findNavController().navigate(R.id.action_membresiaAdminFragment_to_homeAdminFragment)
                     true
                 }
+
+                R.id.item_3 ->{
+                    findNavController().navigate(R.id.action_membresiaAdminFragment_to_productosFragment)
+                    true
+                }
                 else -> false
             }
 

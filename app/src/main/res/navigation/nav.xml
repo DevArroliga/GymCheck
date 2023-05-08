@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_clienteNuevo"
             app:destination="@id/clienteNuevo" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_productosFragment"
+            app:destination="@id/productosFragment" />
     </fragment>
     <fragment
         android:id="@+id/membresiaAdminFragment"
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_membresiaAdminFragment_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_membresiaAdminFragment_to_productosFragment"
+            app:destination="@id/productosFragment" />
     </fragment>
     <fragment
 
@@ -45,8 +51,12 @@
             android:id="@+id/action_clienteNuevo_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
     </fragment>
-
+    <fragment
         android:id="@+id/productosFragment"
+        android:name="com.example.gymcheck.ProductosFragment"
+        android:label="ProductosFragment" />
+
+    android:id="@+id/productosFragment"
         android:name="com.example.gymcheck.ProductosFragment"
         android:label="fragment_productos"
         tools:layout="@layout/fragment_productos" />
