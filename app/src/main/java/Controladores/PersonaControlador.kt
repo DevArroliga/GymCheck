@@ -25,7 +25,7 @@ class PersonaControlador {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful){
                     val respuesta = response.body?.string()
-                    println(request)
+                    println(respuesta)
                 }
                 else {
                     println("Error en la respuesta del servidor")
