@@ -4,7 +4,7 @@ import okhttp3.*
 import java.io.IOException
 
 class PersonaControlador {
-    private val urlAPI = "http://192.168.73.130/GymCheck-API/persona/agregar_persona.php"
+    private val urlAPI = "http://192.168.0.15/GymCheck-API/persona/agregar_persona.php"
 
     fun agregarPersona(persona: Persona){
         val requestBody: RequestBody = FormBody.Builder()
