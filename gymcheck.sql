@@ -35,7 +35,8 @@ CREATE TABLE `anuncio` (
   `tituloAnuncio` varchar(50) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `fecha` date NOT NULL,
-  `img` blob NOT NULL
+  `img` blob NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -77,7 +78,8 @@ CREATE TABLE `producto` (
   `descripcion` varchar(100) NOT NULL,
   `precio` float NOT NULL,
   `stock` int(11) NOT NULL,
-  `img` blob NOT NULL
+  `img` blob NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
