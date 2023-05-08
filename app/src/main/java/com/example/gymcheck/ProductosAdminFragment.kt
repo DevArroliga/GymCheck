@@ -27,6 +27,10 @@ class ProductosAdminFragment : Fragment() {
     ): View? {
         binding = FragmentProductosAdminBinding.inflate(layoutInflater)
         binding.bottomNavigation.selectedItemId = R.id.item_3
+        binding.btnAgregar.setOnClickListener {
+            findNavController().navigate(R.id.action_productosAdminFragment_to_agregarProducto)
+        }
+
 
         binding.bottomNavigation.setOnItemSelectedListener {item ->
             when(item.itemId) {
