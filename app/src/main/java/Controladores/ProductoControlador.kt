@@ -15,10 +15,9 @@ class ProductoControlador {
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("nombre", producto.nombre)
-            .add("apellido", producto.descripcion)
+            .add("descripcion", producto.descripcion)
             .add("precio", producto.precio.toString())
             .add("stock", producto.stock.toString())
-            .add("img", producto.img)
             .build()
 
         val request: Request = Request.Builder()

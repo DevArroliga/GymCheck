@@ -1,5 +1,7 @@
 package com.example.gymcheck
 
+import Controladores.ProductoControlador
+import Entidades.Producto
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -29,9 +31,6 @@ class AgregarProducto : Fragment() {
     private lateinit var binding: FragmentAgregarProductoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
     }
 
     override fun onCreateView(
@@ -40,6 +39,20 @@ class AgregarProducto : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentAgregarProductoBinding.inflate(layoutInflater)
+        val controlador = ProductoControlador();
+        binding.btnAgregar.setOnClickListener {
+            val nuevoProducto = Producto(
+                null,
+                binding.etNombreProducto.text.toString(),
+                binding.etDescripcion.text.toString(),
+                binding.etPrecio.text.toString().toFloat(),
+                binding.etStock.text.toString().toInt(),
+                null
+            )
+
+            controlador.agregarProducto(nuevoProducto)
+        }
+
         return binding.root
 
     }
