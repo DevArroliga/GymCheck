@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `anuncio` (
-  `id` int(11) NOT NULL,
+  `idAnuncio` int(11) NOT NULL,
   `tituloAnuncio` varchar(50) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `fecha` date NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE `persona` (
 --
 
 CREATE TABLE `producto` (
-  `id` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `precio` float NOT NULL,

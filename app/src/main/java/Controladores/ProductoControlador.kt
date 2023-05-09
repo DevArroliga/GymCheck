@@ -1,23 +1,24 @@
 package Controladores
 import Entidades.Persona
+import Entidades.Producto
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 
-class PersonaControlador {
+class ProductoControlador {
     // IP Roberto: 192.168.0.15
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11
 
-    fun agregarPersona(persona: Persona){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/persona/agregar_persona.php"
+    fun agregarProducto(producto: Producto){
+        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/agregar_producto.php"
 
         val requestBody: RequestBody = FormBody.Builder()
-            .add("nombre", persona.nombre)
-            .add("apellido", persona.apellido)
-            .add("fechaNac", persona.fechaNac)
-            .add("correo", persona.correo)
-            .add("cedula", persona.cedula)
+            .add("nombre", producto.nombre)
+            .add("apellido", producto.descripcion)
+            .add("precio", producto.precio.toString())
+            .add("stock", producto.stock.toString())
+            .add("img", producto.img)
             .build()
 
         val request: Request = Request.Builder()
@@ -44,12 +45,16 @@ class PersonaControlador {
         })
     }
 
-    fun editarPersona(idPersona: Int, correo: String){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/editar_persona.php"
+    fun editarProducto(producto: Producto){
+        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/editar_producto.php"
 
         val formBody = FormBody.Builder()
-            .add("idPersona", idPersona.toString())
-            .add("correo", correo)
+            .add("idProducto", producto.idProducto.toString())
+            .add("nombre", producto.nombre)
+            .add("descripcion", producto.descripcion)
+            .add("precio", producto.precio.toString())
+            .add("stock", producto.stock.toString())
+            .add("img", producto.stock.toString())
             .build()
         val request = Request.Builder()
             .url(urlAPI)
@@ -74,8 +79,37 @@ class PersonaControlador {
         })
     }
 
-    fun mostrarPersona(listaPersona: List<Persona>){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/mostrar_persona.php"
+    fun eliminarProducto(producto: Producto){
+        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/eliminar_producto.php"
+
+        val formBody = FormBody.Builder()
+            .add("idProducto", producto.idProducto.toString())
+            .build()
+        val request = Request.Builder()
+            .url(urlAPI)
+            .post(formBody)
+            .build()
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object: Callback{
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful){
+                    val respuesta = response.body?.string()
+                    println(respuesta)
+                }
+                else {
+                    println("Error en la respuesta del servidor")
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Error en la petición HTTP: ${e.message}")
+            }
+        })
+    }
+
+    fun mostrarProducto(listaProducto: List<Producto>){
+        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/mostrar_producto.php"
 
         val request = Request.Builder()
             .url(urlAPI)
@@ -88,9 +122,9 @@ class PersonaControlador {
                 response.close()
                 if (respuesta != null) {
                     val gson = Gson()
-                    val listaPersonas = gson.fromJson(respuesta, Array<Persona>::class.java).toList()
+                    val listaProductos = gson.fromJson(respuesta, Array<Producto>::class.java).toList()
                 } else {
-                println("Error en la respuesta del servidor")
+                    println("Error en la respuesta del servidor")
                 }
             }
 

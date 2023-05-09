@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ClienteNuevo"
-    android:background="@color/btnOscuro">
+    android:background="@color/btnOscuro"
+    tools:context=".ClienteNuevo">
 
  <include
      android:id="@+id/customToolbar"
@@ -16,95 +16,93 @@
 
      />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_gravity="center"
-    android:layout_marginTop="16dp"
- >
-
-
- <androidx.cardview.widget.CardView
+ <LinearLayout
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:layout_margin="16dp"
      android:layout_gravity="center"
      android:layout_marginTop="16dp"
-     app:cardCornerRadius="8dp"
-     android:backgroundTint="@color/bgGreen">
+     android:orientation="vertical">
 
-  <LinearLayout
+
+  <androidx.cardview.widget.CardView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:padding="16dp">
+      android:layout_gravity="center"
+      android:layout_margin="16dp"
+      android:layout_marginTop="16dp"
+      android:backgroundTint="@color/bgGreen"
+      app:cardCornerRadius="8dp">
 
-   <com.google.android.material.textfield.TextInputLayout
-       android:layout_marginTop="30dp"
-       android:id="@+id/tfNombre"
+   <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:hint="Nombres">
+       android:orientation="vertical"
+       android:padding="16dp">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etNombre"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"/>
+        android:layout_marginTop="30dp"
+        android:hint="Nombres">
 
-   </com.google.android.material.textfield.TextInputLayout>
+     <com.google.android.material.textfield.TextInputEditText
+         android:id="@+id/etNombre"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textColor="@color/white" />
 
-   <com.google.android.material.textfield.TextInputLayout
-       android:layout_marginTop="30dp"
-       android:id="@+id/tfApellido"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:hint="Apellidos">
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etApellido"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"/>
+        android:layout_marginTop="30dp"
+        android:hint="Apellidos">
 
-   </com.google.android.material.textfield.TextInputLayout>
+     <com.google.android.material.textfield.TextInputEditText
+         android:id="@+id/etApellido"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textColor="@color/white" />
 
-   <com.google.android.material.textfield.TextInputLayout
-       android:layout_marginTop="30dp"
-       android:id="@+id/tfFechaNac"
-       app:endIconMode="custom"
-       app:endIconDrawable="@drawable/baseline_calendar_today_24"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:hint="Fecha Nacimiento">
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etFechaNac"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfFechaNac"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:focusable="false"
-        />
+        android:layout_marginTop="30dp"
+        android:hint="Fecha Nacimiento"
+        app:endIconDrawable="@drawable/baseline_calendar_today_24"
+        app:endIconMode="custom">
 
-   </com.google.android.material.textfield.TextInputLayout>
+     <com.google.android.material.textfield.TextInputEditText
+         android:id="@+id/etFechaNac"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:focusable="false"
+         android:textColor="@color/white" />
 
-   <com.google.android.material.textfield.TextInputLayout
-       android:layout_marginTop="30dp"
-       android:id="@+id/tfEmail"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:hint="Email">
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etEmail"
-
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:inputType="textEmailAddress"/>
+        android:layout_marginTop="30dp"
+        android:hint="Email">
 
-   </com.google.android.material.textfield.TextInputLayout>
+     <com.google.android.material.textfield.TextInputEditText
+         android:id="@+id/etEmail"
+
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:inputType="textEmailAddress"
+         android:textColor="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
    <com.google.android.material.textfield.TextInputLayout
        android:layout_marginTop="30dp"
@@ -124,23 +122,23 @@
    </com.google.android.material.textfield.TextInputLayout>
 
 
-  </LinearLayout>
+   </LinearLayout>
 
 
- </androidx.cardview.widget.CardView>
- <Button
-     android:layout_marginTop="10dp"
-     style="@style/Widget.Material3.Button.Icon"
-     android:id="@+id/btnAgregar"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:text="Agregar cliente"
-     android:layout_gravity="center"
-     app:icon ="@drawable/baseline_add_24"
-     android:textColor="@color/white"
-     android:backgroundTint="@color/bgGreen"
-     />
+  </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+  <Button
+      android:id="@+id/btnAgregar"
+      style="@style/Widget.Material3.Button.Icon"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="10dp"
+      android:backgroundTint="@color/bgGreen"
+      android:text="Agregar cliente"
+      android:textColor="@color/white"
+      app:icon="@drawable/baseline_add_24" />
+
+ </LinearLayout>
 
 </FrameLayout>
