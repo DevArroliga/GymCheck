@@ -38,10 +38,12 @@ class ClienteNuevo : Fragment() {
         binding.btnAgregar.setOnClickListener {
 
             val nuevaPersona = Persona(
+                null,
                 binding.etNombre.text.toString(),
                 binding.etApellido.text.toString(),
                 binding.etFechaNac.text.toString(),
-                binding.etEmail.text.toString()
+                binding.etEmail.text.toString(),
+                binding.etCedula.text.toString().lowercase().trim()
             )
             controlador.agregarPersona(nuevaPersona)
 
@@ -81,7 +83,7 @@ class ClienteNuevo : Fragment() {
             picker.show(childFragmentManager, picker.toString())
             picker.addOnPositiveButtonClickListener {
                 val selectedDate = Date(it)
-                val asf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val asf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
                 binding.tfFechaNac.editText?.setText(asf.format(selectedDate))
             }
         }
