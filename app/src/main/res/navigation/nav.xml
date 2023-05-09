@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_clienteNuevo_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_clienteNuevo_to_asignarUsuarioMembresiaFragment"
+            app:destination="@id/asignarUsuarioMembresiaFragment" />
     </fragment>
     <fragment
 
@@ -111,6 +114,15 @@
         <action
             android:id="@+id/action_agregarProducto_to_productosAdminFragment"
             app:destination="@id/productosAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/asignarUsuarioMembresiaFragment"
+        android:name="com.example.gymcheck.AsignarUsuarioMembresiaFragment"
+        android:label="fragment_asignar_usuario_membresia"
+        tools:layout="@layout/fragment_asignar_usuario_membresia" >
+        <action
+            android:id="@+id/action_asignarUsuarioMembresiaFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
     </fragment>
 
     android:id="@+id/productosFragment"

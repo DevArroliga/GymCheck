@@ -45,7 +45,7 @@ class ClienteNuevo : Fragment() {
             )
             controlador.agregarPersona(nuevaPersona)
 
-            back()
+            next()
         }
 
 
@@ -64,12 +64,12 @@ class ClienteNuevo : Fragment() {
 
     private fun init(){
         binding.customToolbar.btnBack.setOnClickListener {
-            back()
+            findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
         }
     }
 
-    fun back(){
-        findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
+    fun next(){
+        findNavController().navigate(R.id.action_clienteNuevo_to_asignarUsuarioMembresiaFragment)
     }
     private fun showDatePicker(){
 
