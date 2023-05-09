@@ -6,6 +6,7 @@ import java.io.IOException
 
 class PersonaControlador {
     // IP Roberto: "192.168.0.15"
+    // IP Allan: "192.168.0.22"
 
     fun agregarPersona(persona: Persona){
         val urlAPI = "http://192.168.1.11/GymCheck-API/persona/agregar_persona.php"
@@ -15,6 +16,7 @@ class PersonaControlador {
             .add("apellido", persona.apellido)
             .add("fechaNac", persona.fechaNac)
             .add("correo", persona.correo)
+            .add("cedula", persona.cedula)
             .build()
 
         val request: Request = Request.Builder()
