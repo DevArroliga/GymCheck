@@ -14,7 +14,11 @@ import com.example.gymcheck.databinding.CustomToolbarBinding
 import com.example.gymcheck.databinding.FragmentClienteNuevoBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
+
 
 class ClienteNuevo : Fragment() {
 
@@ -73,8 +77,7 @@ class ClienteNuevo : Fragment() {
     fun next(){
         findNavController().navigate(R.id.action_clienteNuevo_to_asignarUsuarioMembresiaFragment)
     }
-    private fun showDatePicker(){
-
+    private fun showDatePicker() {
         binding.tfFechaNac.setEndIconOnClickListener {
             val picker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Seleccionar fecha")
@@ -82,12 +85,13 @@ class ClienteNuevo : Fragment() {
                 .build()
             picker.show(childFragmentManager, picker.toString())
             picker.addOnPositiveButtonClickListener {
-                val selectedDate = Date(it)
-                val asf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-                binding.tfFechaNac.editText?.setText(asf.format(selectedDate))
+                val selectedDate = Instant.ofEpochMilli(it)
+                    .atZone(ZoneId.of("UTC"))
+                    .toLocalDate()
+                val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd", Locale.getDefault())
+                binding.tfFechaNac.editText?.setText(formatter.format(selectedDate))
             }
         }
-
     }
 
 }
