@@ -7,32 +7,27 @@
     tools:context=".AgregarProducto"
     android:background="@color/btnOscuro">
 
-    <include
-        android:id="@+id/prodcutoToolbar"
-        layout="@layout/producto_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/prodcutoToolbar"
+            layout="@layout/producto_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="8dp"
-            android:backgroundTint="@color/bgGreen">
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/bgGreen"
+            app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,78 +38,77 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center">
+                    android:gravity="center"
+                    >
+
                     <ImageView
                         android:id="@+id/imgProducto"
-                        android:layout_width="250dp"
-                        android:layout_height="250dp"
-                        android:src="@drawable/supplement"/>
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/supplement"
+                        android:contentDescription="TODO" />
                 </LinearLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="30dp"
                     android:id="@+id/tfNombreProducto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:hint="Nombre">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNombreProducto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        />
+                        android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="30dp"
                     android:id="@+id/tfDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:hint="Descripcion">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etDescripcion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        />
+                        android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="30dp"
                     android:id="@+id/tfPrecio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:hint="Precio">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPrecio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
                         android:inputType="numberDecimal"
-                        />
+                        android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="30dp"
                     android:id="@+id/tfStock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:hint="Stock">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etStock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
                         android:inputType="number"
-                        />
+                        android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,17 +117,16 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:layout_marginTop="5dp"
-            style="@style/Widget.Material3.Button.Icon"
             android:id="@+id/btnAgregar"
+            style="@style/Widget.Material3.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Agregar producto"
             android:layout_gravity="center"
-            app:icon ="@drawable/baseline_add_24"
-            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
             android:backgroundTint="@color/btnOscuro"
-            />
+            android:text="Agregar producto"
+            android:textColor="@color/white"
+            app:icon="@drawable/baseline_add_24" />
 
     </LinearLayout>
 
