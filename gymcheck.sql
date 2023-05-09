@@ -118,7 +118,7 @@ CREATE TABLE `usuariomembresia` (
 -- Indices de la tabla `anuncio`
 --
 ALTER TABLE `anuncio`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idAnuncio`);
 
 --
 -- Indices de la tabla `membresia`
@@ -136,7 +136,7 @@ ALTER TABLE `persona`
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idProducto`);
 
 --
 -- Indices de la tabla `usuario`
@@ -161,7 +161,7 @@ ALTER TABLE `usuariomembresia`
 -- AUTO_INCREMENT de la tabla `anuncio`
 --
 ALTER TABLE `anuncio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAnuncio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `membresia`
@@ -179,7 +179,7 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
