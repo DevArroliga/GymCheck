@@ -6,5 +6,5 @@ data class Producto (
     val descripcion: String,
     val precio: Float,
     val stock: Int,
-    val img: String? // Por ver este tipo de dato.
+    val img: ByteArray? // Por ver este tipo de dato.
 )

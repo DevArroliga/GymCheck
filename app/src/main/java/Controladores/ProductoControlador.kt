@@ -1,6 +1,7 @@
 package Controladores
 import Entidades.Persona
 import Entidades.Producto
+import android.util.Base64
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
@@ -11,13 +12,16 @@ class ProductoControlador {
     // IP Marcelo: 192.168.1.11
 
     fun agregarProducto(producto: Producto){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/agregar_producto.php"
+        val urlAPI = "http://192.168.1.21/GymCheck-API/producto/agregar_producto.php"
+        val imgBase64 = Base64.encodeToString(producto.img, Base64.DEFAULT)
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("nombre", producto.nombre)
             .add("descripcion", producto.descripcion)
             .add("precio", producto.precio.toString())
             .add("stock", producto.stock.toString())
+            .add("img" ,imgBase64 )
+
             .build()
 
         val request: Request = Request.Builder()

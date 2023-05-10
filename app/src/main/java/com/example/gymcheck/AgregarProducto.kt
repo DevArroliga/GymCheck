@@ -5,6 +5,7 @@ import Entidades.Producto
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,12 +19,24 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.FragmentAgregarProductoBinding
 import androidx.activity.result.PickVisualMediaRequest.*
+import java.io.ByteArrayOutputStream
 
 
 class AgregarProducto : Fragment() {
+private var rutaimagen: String?= null
 
     val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
+            rutaimagen = uri.toString()
+            val inputStream = requireContext().contentResolver.openInputStream(uri)
+            val buffer = ByteArray(8192)
+            val output = ByteArrayOutputStream()
+            var bytesRead = inputStream!!.read(buffer)
+            while (bytesRead != -1) {
+                output.write(buffer, 0, bytesRead)
+                bytesRead = inputStream.read(buffer)
+            }
+            val bytes = output.toByteArray()
             binding.imgProducto.setImageURI(uri)
         }
 
@@ -41,14 +54,19 @@ class AgregarProducto : Fragment() {
         binding = FragmentAgregarProductoBinding.inflate(layoutInflater)
         val controlador = ProductoControlador();
         binding.btnAgregar.setOnClickListener {
-            val nuevoProducto = Producto(
-                null,
-                binding.etNombreProducto.text.toString(),
-                binding.etDescripcion.text.toString(),
-                binding.etPrecio.text.toString().toFloat(),
-                binding.etStock.text.toString().toInt(),
-                null
-            )
+            val nuevoProducto = rutaimagen?.let { uri ->
+                Producto(
+                    null,
+                    binding.etNombreProducto.text.toString(),
+                    binding.etDescripcion.text.toString(),
+                    binding.etPrecio.text.toString().toFloat(),
+                    binding.etStock.text.toString().toInt(),
+                    obtenerBytesDesdeUri(Uri.parse(uri))
+                )
+            } ?: run {
+                Toast.makeText(context, "Debe seleccionar una imagen", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             controlador.agregarProducto(nuevoProducto)
         }
@@ -102,6 +120,18 @@ class AgregarProducto : Fragment() {
 
     private fun lanzarFoto() {
         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+
+    private fun obtenerBytesDesdeUri(uri: Uri): ByteArray? {
+        val inputStream = requireContext().contentResolver.openInputStream(uri)
+        val buffer = ByteArray(8192)
+        val output = ByteArrayOutputStream()
+        var bytesRead = inputStream?.read(buffer)
+        while (bytesRead != null && bytesRead != -1) {
+            output.write(buffer, 0, bytesRead)
+            bytesRead = inputStream?.read(buffer)
+        }
+        return output.toByteArray()
     }
 
 }

@@ -64,8 +64,8 @@ class ProductosAdminFragment : Fragment() {
 
         val productos = mutableListOf<Producto>()
 
-        productos.add(Producto(1,"creatina", "Suplemento para aumentar masa",200f,20, " "))
-        productos.add(Producto(1,"Perico", "Suplemento para quitar bajona",300f,15, " "))
+        productos.add(Producto(1,"creatina", "Suplemento para aumentar masa",200f,20,null))
+        productos.add(Producto(1,"Perico", "Suplemento para quitar bajona",300f,15, null))
 
         binding.rvProductos.adapter = ProductoAdapter(productos)
         binding.rvProductos.layoutManager = LinearLayoutManager(context)
