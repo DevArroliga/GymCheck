@@ -6,8 +6,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $apellido = $_POST["apellido"];
     $fechaNac= $_POST["fechaNac"];
     $correo= $_POST["correo"];
+    $cedula = $_POST["cedula"];
 
-    $my_query = "INSERT INTO persona (nombre, apellido, fechaNac, correo) VALUES ('".$nombre."', '".$apellido."','".$fechaNac."', '".$correo."')";
+    $my_query = "INSERT INTO persona (nombre, apellido, fechaNac, correo, cedula) VALUES ('".$nombre."', '".$apellido."','".$fechaNac."', '".$correo."', '".$cedula."')";
 
     $result = $mysql -> query($my_query);
     if($result == true){
