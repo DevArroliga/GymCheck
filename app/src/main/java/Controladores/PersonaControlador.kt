@@ -1,19 +1,28 @@
 package Controladores
 import Entidades.Persona
 import Entidades.Usuario
+import android.annotation.SuppressLint
+import android.util.Log
+import android.widget.Toast
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Date
+import kotlin.random.Random
 
 class PersonaControlador {
     // IP Roberto: 192.168.0.15
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11
+    // IP Marcelo 2: 192.168.0.7
 
     fun agregarPersona(persona: Persona){
         val controlador = UsuarioControlador()
 
-        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/agregar_persona.php"
+        val urlAPI = "http://192.168.0.7/GymCheck-API/persona/agregar_persona.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("nombre", persona.nombre)
@@ -31,15 +40,20 @@ class PersonaControlador {
         val client = OkHttpClient()
 
         client.newCall(request).enqueue(object: Callback{
+            @SuppressLint("SimpleDateFormat")
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful){
                     val respuesta = response.body?.string()
                     println(respuesta)
+                    val fechaHoy = Date()
+                    val formato = SimpleDateFormat("yyyy-MM-dd")
+                    val fechaFormateada = formato.format(fechaHoy)
+                    Log.d("fecha", fechaFormateada.toString())
                     val usuario = Usuario(
                         null,
-                        persona.nombre + "2123",
-                        "123",
-                        null,
+                        persona.nombre + Random.nextInt(1000,10000).toString(),
+                        "Usuario123.",
+                        fechaFormateada.toString(),
                         persona.cedula,
                         null
                     )

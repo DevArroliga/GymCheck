@@ -2,6 +2,7 @@ package com.example.gymcheck
 
 import Controladores.PersonaControlador
 import Entidades.Persona
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,12 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.CustomToolbarBinding
 import com.example.gymcheck.databinding.FragmentClienteNuevoBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.time.Instant
+import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -26,9 +29,13 @@ class ClienteNuevo : Fragment() {
 
 
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val fechaHoy = Date()
+        val formato = SimpleDateFormat("yyyy/MM/dd")
+        val fechaFormateada = formato.format(fechaHoy)
+        Toast.makeText(context, fechaFormateada.toString() , Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateView(
