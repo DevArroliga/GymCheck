@@ -64,7 +64,9 @@ CREATE TABLE `persona` (
   `apellido` varchar(50) NOT NULL,
   `fechaNac` date NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `cedula` varchar(20) NOT NULL
+  `cedula` varchar(20) NOT NULL,
+  CONSTRAINT FK_PERSONA_USUARIO UNIQUE (cedula)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -94,21 +96,18 @@ CREATE TABLE `usuario` (
   `usuario` varchar(50) NOT NULL,
   `clave` varchar(50) NOT NULL,
   `activo` tinyint(1) NOT NULL,
-  `idPersona` int(11) NOT NULL
+  `fechaMembresia` date NULL,
+  `cedula` varchar(20) NOT NULL,
+  `idMembresia` int(11) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `usuariomembresia`
---
 
-CREATE TABLE `usuariomembresia` (
-  `idPersonaMembresia` int(11) NOT NULL,
-  `uId` int(11) NOT NULL,
-  `idMembresia` int(11) NOT NULL,
-  `fechaMembresia` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- CREATE VIEW vista_persona_usuario AS
+-- SELECT u.idUsuario, p.nombre, p.cedula
+-- FROM usuario u
+-- INNER JOIN persona p ON u.idPersona = p.idPersona;
 
 --
 -- Índices para tablas volcadas
@@ -143,15 +142,8 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`),
-  ADD KEY `FK_PERSONA_USUARIO` (`idPersona`);
-
---
--- Indices de la tabla `usuariomembresia`
---
-ALTER TABLE `usuariomembresia`
-  ADD PRIMARY KEY (`idPersonaMembresia`),
-  ADD KEY `FK_USUARIO_MEMBRESIAUSUARIO` (`uId`),
-  ADD KEY `idMembresia` (`idMembresia`);
+  ADD KEY `FK_PERSONA_USUARIO` (`cedula`),
+  ADD KEY `FK_MEMBRESIA_USUARIO` (`idMembresia`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -187,29 +179,21 @@ ALTER TABLE `producto`
 ALTER TABLE `usuario`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT de la tabla `usuariomembresia`
---
-ALTER TABLE `usuariomembresia`
-  MODIFY `idPersonaMembresia` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
 
 --
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `FK_PERSONA_USUARIO` FOREIGN KEY (`idPersona`) REFERENCES `persona` (`idPersona`) ON UPDATE CASCADE;
+ADD CONSTRAINT `FK_PERSONA_USUARIO` 
+FOREIGN KEY (`cedula`) 
+REFERENCES `persona` (`cedula`) 
+ON UPDATE CASCADE;
 
---
--- Filtros para la tabla `usuariomembresia`
---
-ALTER TABLE `usuariomembresia`
-  ADD CONSTRAINT `FK_USUARIO_MEMBRESIAUSUARIO` FOREIGN KEY (`uId`) REFERENCES `usuario` (`idUsuario`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuariomembresia_ibfk_1` FOREIGN KEY (`idMembresia`) REFERENCES `membresia` (`idMembresia`) ON UPDATE CASCADE;
-COMMIT;
+ALTER TABLE `usuario`
+ADD CONSTRAINT `FK_MEMBRESIA_USUARIO` 
+FOREIGN KEY (`idMembresia`) 
+REFERENCES `membresia` (`idMembresia`) 
+ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

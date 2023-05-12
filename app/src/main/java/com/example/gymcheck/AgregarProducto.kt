@@ -24,9 +24,20 @@ import java.io.ByteArrayOutputStream
 
 
 class AgregarProducto : Fragment() {
+private var rutaimagen: String?= null
 
     val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
+            rutaimagen = uri.toString()
+            val inputStream = requireContext().contentResolver.openInputStream(uri)
+            val buffer = ByteArray(8192)
+            val output = ByteArrayOutputStream()
+            var bytesRead = inputStream!!.read(buffer)
+            while (bytesRead != -1) {
+                output.write(buffer, 0, bytesRead)
+                bytesRead = inputStream.read(buffer)
+            }
+            val bytes = output.toByteArray()
             binding.imgProducto.setImageURI(uri)
         }
 
@@ -44,6 +55,7 @@ class AgregarProducto : Fragment() {
         binding = FragmentAgregarProductoBinding.inflate(layoutInflater)
         val controlador = ProductoControlador();
         binding.btnAgregar.setOnClickListener {
+
             val nuevoProducto = Producto(
                 null,
                 binding.etNombreProducto.text.toString(),
@@ -106,6 +118,7 @@ class AgregarProducto : Fragment() {
     private fun lanzarFoto() {
         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
+
     private fun getImageBytes(): ByteArray? {
         val drawable = binding.imgProducto.drawable ?: return null
         val bitmap = (drawable as BitmapDrawable).bitmap
