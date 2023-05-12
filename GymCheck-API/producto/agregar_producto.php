@@ -6,17 +6,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $descripcion = $_POST["descripcion"];
     $precio = $_POST["precio"];
     $stock = $_POST["stock"];
-<<<<<<< HEAD
 
-    // Leer la imagen desde la solicitud POST
-    $imagen = $_FILES['img']['tmp_name'];
-    $tipo_imagen = $_FILES['img']['type'];
-
-    // Convertir la imagen a bytes para almacenarla en la base de datos
-    $imagen_binaria = addslashes(file_get_contents($imagen));
-
-    $my_query = "INSERT INTO producto (nombre, descripcion, precio, stock, img, estado) VALUES ('".$nombre."','".$descripcion."','".$precio."','".$stock."','".$imagen_binaria."', 1)";
-=======
     
     // Obtiene la ruta temporal del archivo de imagen
     $imagen_temporal = $_FILES["img"]["tmp_name"];
@@ -34,7 +24,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $base_datos= "data:image/jpeg;base64," . base64_encode(file_get_contents($img));
 
     $my_query = "INSERT INTO producto (nombre, descripcion, precio, stock, img, estado) VALUES ('".$nombre."','".$descripcion."','".$precio."','".$stock."','".$base_datos."', 1)";
->>>>>>> 878051de7e56c90658176ab7f7599c53fb42bfb3
 
     $result = $mysql -> query($my_query);
     if($result == true){
