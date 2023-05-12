@@ -53,6 +53,7 @@ class PersonaControlador {
                         null,
                         persona.nombre + Random.nextInt(1000,10000).toString(),
                         "Usuario123.",
+                        1,
                         fechaFormateada.toString(),
                         persona.cedula,
                         null
@@ -100,9 +101,9 @@ class PersonaControlador {
         })
     }
 
-    fun mostrarPersona(listaPersona: List<Persona>){
+    fun mostrarPersona(): List<Persona>{
         val urlAPI = "http://192.168.0.15/GymCheck-API/persona/mostrar_persona.php"
-
+        var listaAux = mutableListOf<Persona>()
         val request = Request.Builder()
             .url(urlAPI)
             .build()
@@ -114,7 +115,8 @@ class PersonaControlador {
                 response.close()
                 if (respuesta != null) {
                     val gson = Gson()
-                    val listaPersonas = gson.fromJson(respuesta, Array<Persona>::class.java).toList()
+                    val listaPersonas = gson.fromJson(respuesta, Array<Persona>::class.java).toMutableList()
+                    listaAux = listaPersonas
                 } else {
                 println("Error en la respuesta del servidor")
                 }
@@ -124,5 +126,6 @@ class PersonaControlador {
                 println("Error en la petición HTTP: ${e.message}")
             }
         })
+        return listaAux
     }
 }
