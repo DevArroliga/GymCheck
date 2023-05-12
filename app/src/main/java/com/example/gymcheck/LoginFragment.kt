@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
     }
 
     fun validar(usuario:String, clave:String){
-        if (usuario == "Admin" || clave == "Admin2023"){
+        if (usuario == "Admin" && clave == "Admin2023"){
             findNavController().navigate(R.id.action_loginFragment_to_homeAdminFragment)
         }
     }
