@@ -94,6 +94,7 @@ CREATE TABLE `usuario` (
   `usuario` varchar(50) NOT NULL,
   `clave` varchar(50) NOT NULL,
   `activo` tinyint(1) NOT NULL,
+  `fechaMembresia` date NULL,
   `idPersona` int(11) NOT NULL,
   `idMembresia` int(11) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
