@@ -11,12 +11,13 @@ class UsuarioControlador {
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://192.168.0.15/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/agregar_usuario.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("usuario", usuario.usuario)
             .add("clave", usuario.clave)
             .add("cedula", usuario.cedula)
+            .add("fechaMembresia", usuario.fechaMembresia.toString())
             .build()
 
         val request: Request = Request.Builder()
