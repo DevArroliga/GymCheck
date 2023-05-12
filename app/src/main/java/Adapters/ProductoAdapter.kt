@@ -1,6 +1,7 @@
 package Adapters
 
 import Entidades.Producto
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Log
@@ -41,16 +42,26 @@ class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapte
             binding.tvStock.text = producto.stock.toString()
             binding.tvPrecio.text = producto.precio.toString()
 
+            val imagen = convertirBytesAImagen(producto.imagen)
 
-            Glide.with(binding.root.context)
-                .load(producto.imagen)
-                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(binding.imgView)
+            if (imagen != null) {
+                Glide.with(itemView.context)
+                    .load(imagen)
+                    .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(16)))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(binding.imgView)
+            }
 
 
 
         }
+    }
+
+    fun convertirBytesAImagen(bytes: ByteArray?): Bitmap? {
+        if (bytes == null) {
+            return null
+        }
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
     }
 
 }
