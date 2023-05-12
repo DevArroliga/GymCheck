@@ -39,6 +39,7 @@
         android:layout_marginTop="180dp"
         android:orientation="vertical">
         <com.google.android.material.search.SearchBar
+            android:id="@+id/searchBar"
             style="@style/Widget.Material3.SearchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
