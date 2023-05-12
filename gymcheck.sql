@@ -110,6 +110,12 @@ CREATE TABLE `usuariomembresia` (
   `fechaMembresia` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE VIEW vista_persona_usuario AS
+SELECT u.idUsuario, p.nombre, p.cedula
+FROM usuario u
+INNER JOIN persona p ON u.idPersona = p.idPersona;
+
 --
 -- Índices para tablas volcadas
 --
