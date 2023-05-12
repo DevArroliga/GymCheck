@@ -64,7 +64,9 @@ CREATE TABLE `persona` (
   `apellido` varchar(50) NOT NULL,
   `fechaNac` date NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `cedula` varchar(20) NOT NULL
+  `cedula` varchar(20) NOT NULL,
+  CONSTRAINT FK_PERSONA_USUARIO UNIQUE (cedula)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -95,17 +97,17 @@ CREATE TABLE `usuario` (
   `clave` varchar(50) NOT NULL,
   `activo` tinyint(1) NOT NULL,
   `fechaMembresia` date NULL,
-  `idPersona` int(11) NOT NULL,
+  `cedula` varchar(20) NOT NULL,
   `idMembresia` int(11) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 
-CREATE VIEW vista_persona_usuario AS
-SELECT u.idUsuario, p.nombre, p.cedula
-FROM usuario u
-INNER JOIN persona p ON u.idPersona = p.idPersona;
+-- CREATE VIEW vista_persona_usuario AS
+-- SELECT u.idUsuario, p.nombre, p.cedula
+-- FROM usuario u
+-- INNER JOIN persona p ON u.idPersona = p.idPersona;
 
 --
 -- Índices para tablas volcadas
@@ -140,7 +142,7 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`),
-  ADD KEY `FK_PERSONA_USUARIO` (`idPersona`),
+  ADD KEY `FK_PERSONA_USUARIO` (`cedula`),
   ADD KEY `FK_MEMBRESIA_USUARIO` (`idMembresia`);
 
 --
@@ -182,10 +184,16 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `FK_PERSONA_USUARIO` FOREIGN KEY (`idPersona`) REFERENCES `persona` (`idPersona`) ON UPDATE CASCADE;
+ADD CONSTRAINT `FK_PERSONA_USUARIO` 
+FOREIGN KEY (`cedula`) 
+REFERENCES `persona` (`cedula`) 
+ON UPDATE CASCADE;
 
 ALTER TABLE `usuario`
-ADD CONSTRAINT `FK_MEMBRESIA_USUARIO` FOREIGN KEY (`idMembresia`) REFERENCES `membresia` (`idMembresia`) ON UPDATE CASCADE;
+ADD CONSTRAINT `FK_MEMBRESIA_USUARIO` 
+FOREIGN KEY (`idMembresia`) 
+REFERENCES `membresia` (`idMembresia`) 
+ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

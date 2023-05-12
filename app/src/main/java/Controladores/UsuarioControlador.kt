@@ -6,13 +6,17 @@ import java.io.IOException
 
 class UsuarioControlador {
     fun agregarUsuario(usuario:Usuario){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/agregar_persona.php"
+
+        // IP Roberto: 192.168.0.15
+        // IP Allan: 192.168.0.22
+        // IP Marcelo: 192.168.1.11
+
+        val urlAPI = "http://192.168.0.15/GymCheck-API/usuario/agregar_usuario.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("usuario", usuario.usuario)
             .add("clave", usuario.clave)
-            .add("activo", usuario.activo.toString())
-            .add("idPersona", usuario.idPersona.toString())
+            .add("cedula", usuario.cedula)
             .build()
 
         val request: Request = Request.Builder()
