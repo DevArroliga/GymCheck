@@ -1,7 +1,11 @@
 package com.example.gymcheck
 
+import Controladores.AnuncioControlador
+import Entidades.Anuncio
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,6 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.FragmentAgregarAnuncioBinding
 import com.google.android.material.datepicker.MaterialDatePicker
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -41,7 +46,24 @@ private lateinit var binding: FragmentAgregarAnuncioBinding
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentAgregarAnuncioBinding.inflate(layoutInflater)
+
+        val controlador = AnuncioControlador()
+        binding.btnAgregar.setOnClickListener {
+            val nuevoAnuncio = Anuncio(
+                null,
+                binding.etNombreAnuncio.text.toString(),
+                binding.etDescripcion.text.toString(),
+                binding.etFechaVence.text.toString(),
+                null
+            )
+            val imgeBytes = getImageBytes()
+            controlador.agregarAnuncio(nuevoAnuncio, imgeBytes)
+        }
+
         return binding.root
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -106,6 +128,14 @@ private lateinit var binding: FragmentAgregarAnuncioBinding
 
     private fun lanzarFoto() {
         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+
+    private fun getImageBytes(): ByteArray? {
+        val drawable = binding.imgAnuncio.drawable ?: return null
+        val bitmap = (drawable as BitmapDrawable).bitmap
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        return outputStream.toByteArray()
     }
 
 

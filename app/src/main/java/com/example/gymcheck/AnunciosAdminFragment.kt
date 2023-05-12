@@ -2,6 +2,7 @@ package com.example.gymcheck
 
 import Adapters.AnuncioAdapter
 import Adapters.ProductoAdapter
+import Controladores.AnuncioControlador
 import Entidades.Anuncio
 import Entidades.Producto
 import android.os.Bundle
@@ -15,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gymcheck.databinding.FragmentAnunciosAdminBinding
 
 class AnunciosAdminFragment : Fragment() {
-
+    var controlador: AnuncioControlador = AnuncioControlador()
     private lateinit var binding: FragmentAnunciosAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,8 @@ class AnunciosAdminFragment : Fragment() {
 
         binding.bottomNavigation.selectedItemId = R.id.item_4
         return binding.root
+
+
 
 
     }
@@ -70,10 +73,8 @@ class AnunciosAdminFragment : Fragment() {
             }
 
         }
-        val anuncios = mutableListOf<Anuncio>()
 
-        anuncios.add(Anuncio(1, "2x1", "Promoción por el dia lunes", "2023-06-07", " "))
-        anuncios.add(Anuncio(1, "Dia gratis", "Dia gratis para los maricones", "2023-08-02", " "))
+        val anuncios = controlador.mostrarAnuncio()
 
         binding.rvAnuncio.adapter = AnuncioAdapter(anuncios)
         binding.rvAnuncio.layoutManager = LinearLayoutManager(context)
