@@ -1,8 +1,15 @@
 package Controladores
 import Entidades.Persona
 import Entidades.Producto
+import android.util.Base64
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONArray
 import java.io.IOException
 
 class ProductoControlador {
@@ -10,15 +17,20 @@ class ProductoControlador {
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11
 
-    fun agregarProducto(producto: Producto){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/agregar_producto.php"
+    fun agregarProducto(producto: Producto, imgBytes: ByteArray?) {
+        val urlAPI = "http://192.168.1.21/GymCheck-API/producto/agregar_producto.php"
 
-        val requestBody: RequestBody = FormBody.Builder()
-            .add("nombre", producto.nombre)
-            .add("descripcion", producto.descripcion)
-            .add("precio", producto.precio.toString())
-            .add("stock", producto.stock.toString())
-            .build()
+        val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
+        builder.addFormDataPart("nombre", producto.nombre)
+        builder.addFormDataPart("descripcion", producto.descripcion)
+        builder.addFormDataPart("precio", producto.precio.toString())
+        builder.addFormDataPart("stock", producto.stock.toString())
+
+        if (imgBytes != null) {
+            builder.addFormDataPart("img", "product_image", RequestBody.create("image/jpeg".toMediaTypeOrNull(), imgBytes))
+        }
+
+        val requestBody = builder.build()
 
         val request: Request = Request.Builder()
             .url(urlAPI)
@@ -43,6 +55,7 @@ class ProductoControlador {
             }
         })
     }
+
 
     fun editarProducto(producto: Producto){
         val urlAPI = "http://192.168.0.15/GymCheck-API/producto/editar_producto.php"
@@ -107,29 +120,42 @@ class ProductoControlador {
         })
     }
 
-    fun mostrarProducto(listaProducto: List<Producto>){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/mostrar_producto.php"
+    fun mostrarProducto(): List<Producto> = runBlocking {
+        val productos = mutableListOf<Producto>()
+        val urlAPI = "http://192.168.1.21/GymCheck-API/producto/mostrar_producto.php"
 
-        val request = Request.Builder()
-            .url(urlAPI)
-            .build()
-        val client = OkHttpClient()
+        launch(Dispatchers.IO) {
+            val request = Request.Builder()
+                .url(urlAPI)
+                .build()
 
-        client.newCall(request).enqueue(object : Callback {
-            override fun onResponse(call: Call, response: Response) {
-                val respuesta = response.body?.string()
-                response.close()
-                if (respuesta != null) {
-                    val gson = Gson()
-                    val listaProductos = gson.fromJson(respuesta, Array<Producto>::class.java).toList()
-                } else {
-                    println("Error en la respuesta del servidor")
+            val client = OkHttpClient()
+
+            client.newCall(request).execute().use { response ->
+                if (!response.isSuccessful) {
+                    throw IOException("Unexpected code $response")
+                }
+
+                val json = response.body!!.string()
+                val jsonArray = JSONArray(json)
+
+                for (i in 0 until jsonArray.length()) {
+                    val jsonObject = jsonArray.getJSONObject(i)
+
+                    val idProducto = jsonObject.getInt("idProducto")
+                    val nombre = jsonObject.getString("nombre")
+                    val descripcion = jsonObject.getString("descripcion")
+                    val precio = jsonObject.getDouble("precio")
+                    val stock = jsonObject.getInt("stock")
+                    val imagenBytes = Base64.decode(jsonObject.getString("img"), Base64.DEFAULT)
+
+                    productos.add(Producto(idProducto, nombre, descripcion, precio.toFloat(), stock, imagenBytes))
                 }
             }
+        }.join()
 
-            override fun onFailure(call: Call, e: IOException) {
-                println("Error en la petición HTTP: ${e.message}")
-            }
-        })
+        productos
     }
+
+
 }

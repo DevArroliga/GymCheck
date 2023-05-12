@@ -5,6 +5,8 @@ import Entidades.Producto
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.FragmentAgregarProductoBinding
 import androidx.activity.result.PickVisualMediaRequest.*
+import java.io.ByteArrayOutputStream
 
 
 class AgregarProducto : Fragment() {
@@ -49,8 +52,8 @@ class AgregarProducto : Fragment() {
                 binding.etStock.text.toString().toInt(),
                 null
             )
-
-            controlador.agregarProducto(nuevoProducto)
+            val imgBytes = getImageBytes()
+            controlador.agregarProducto(nuevoProducto, imgBytes)
         }
 
         return binding.root
@@ -103,5 +106,11 @@ class AgregarProducto : Fragment() {
     private fun lanzarFoto() {
         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
-
+    private fun getImageBytes(): ByteArray? {
+        val drawable = binding.imgProducto.drawable ?: return null
+        val bitmap = (drawable as BitmapDrawable).bitmap
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        return outputStream.toByteArray()
+    }
 }
