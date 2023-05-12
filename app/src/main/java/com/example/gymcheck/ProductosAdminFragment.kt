@@ -71,7 +71,6 @@ class ProductosAdminFragment : Fragment() {
 
         val productos = controlador.mostrarProducto()
 
-
         binding.rvProductos.adapter = ProductoAdapter(productos)
         binding.rvProductos.layoutManager = LinearLayoutManager(context)
     }

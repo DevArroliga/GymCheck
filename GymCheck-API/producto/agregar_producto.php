@@ -6,6 +6,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $descripcion = $_POST["descripcion"];
     $precio = $_POST["precio"];
     $stock = $_POST["stock"];
+
     
     // Obtiene la ruta temporal del archivo de imagen
     $imagen_temporal = $_FILES["img"]["tmp_name"];
@@ -35,6 +36,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 else{
     echo"Error desconocido";
 }
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 878051de7e56c90658176ab7f7599c53fb42bfb3
 ?>
