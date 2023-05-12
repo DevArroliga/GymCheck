@@ -5,7 +5,8 @@ import Entidades.Producto
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.net.Uri
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -54,21 +55,17 @@ private var rutaimagen: String?= null
         binding = FragmentAgregarProductoBinding.inflate(layoutInflater)
         val controlador = ProductoControlador();
         binding.btnAgregar.setOnClickListener {
-            val nuevoProducto = rutaimagen?.let { uri ->
-                Producto(
-                    null,
-                    binding.etNombreProducto.text.toString(),
-                    binding.etDescripcion.text.toString(),
-                    binding.etPrecio.text.toString().toFloat(),
-                    binding.etStock.text.toString().toInt(),
-                    obtenerBytesDesdeUri(Uri.parse(uri))
-                )
-            } ?: run {
-                Toast.makeText(context, "Debe seleccionar una imagen", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
 
-            controlador.agregarProducto(nuevoProducto)
+            val nuevoProducto = Producto(
+                null,
+                binding.etNombreProducto.text.toString(),
+                binding.etDescripcion.text.toString(),
+                binding.etPrecio.text.toString().toFloat(),
+                binding.etStock.text.toString().toInt(),
+                null
+            )
+            val imgBytes = getImageBytes()
+            controlador.agregarProducto(nuevoProducto, imgBytes)
         }
 
         return binding.root
@@ -122,16 +119,11 @@ private var rutaimagen: String?= null
         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
-    private fun obtenerBytesDesdeUri(uri: Uri): ByteArray? {
-        val inputStream = requireContext().contentResolver.openInputStream(uri)
-        val buffer = ByteArray(8192)
-        val output = ByteArrayOutputStream()
-        var bytesRead = inputStream?.read(buffer)
-        while (bytesRead != null && bytesRead != -1) {
-            output.write(buffer, 0, bytesRead)
-            bytesRead = inputStream?.read(buffer)
-        }
-        return output.toByteArray()
+    private fun getImageBytes(): ByteArray? {
+        val drawable = binding.imgProducto.drawable ?: return null
+        val bitmap = (drawable as BitmapDrawable).bitmap
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        return outputStream.toByteArray()
     }
-
 }

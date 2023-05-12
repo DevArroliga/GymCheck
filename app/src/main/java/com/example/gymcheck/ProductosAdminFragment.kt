@@ -1,6 +1,7 @@
 package com.example.gymcheck
 
 import Adapters.ProductoAdapter
+import Controladores.ProductoControlador
 import Entidades.Producto
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +15,7 @@ import com.example.gymcheck.databinding.FragmentProductosAdminBinding
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 
 class ProductosAdminFragment : Fragment() {
-
+    var controlador: ProductoControlador = ProductoControlador()
     lateinit var binding: FragmentProductosAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,9 @@ class ProductosAdminFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+
         binding = FragmentProductosAdminBinding.inflate(layoutInflater)
         binding.bottomNavigation.selectedItemId = R.id.item_3
         binding.btnAgregar.setOnClickListener {
@@ -62,10 +66,10 @@ class ProductosAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val productos = mutableListOf<Producto>()
 
-        productos.add(Producto(1,"creatina", "Suplemento para aumentar masa",200f,20,null))
-        productos.add(Producto(1,"Perico", "Suplemento para quitar bajona",300f,15, null))
+
+
+        val productos = controlador.mostrarProducto()
 
         binding.rvProductos.adapter = ProductoAdapter(productos)
         binding.rvProductos.layoutManager = LinearLayoutManager(context)
