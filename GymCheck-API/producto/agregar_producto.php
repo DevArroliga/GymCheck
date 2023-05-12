@@ -1,5 +1,4 @@
 <?php
-<?php
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     require_once '../conexion.php';
 
@@ -36,4 +35,3 @@ else{
 ?>
 
 
-?>
