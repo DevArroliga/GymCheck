@@ -1,5 +1,6 @@
 package Controladores
 import Entidades.Persona
+import Entidades.Usuario
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
@@ -10,7 +11,9 @@ class PersonaControlador {
     // IP Marcelo: 192.168.1.11
 
     fun agregarPersona(persona: Persona){
-        val urlAPI = "http://192.168.1.21/GymCheck-API/persona/agregar_persona.php"
+        val controlador = UsuarioControlador()
+
+        val urlAPI = "http://192.168.0.15/GymCheck-API/persona/agregar_persona.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("nombre", persona.nombre)
@@ -32,6 +35,15 @@ class PersonaControlador {
                 if (response.isSuccessful){
                     val respuesta = response.body?.string()
                     println(respuesta)
+                    val usuario = Usuario(
+                        null,
+                        persona.nombre + "2123",
+                        "123",
+                        null,
+                        persona.cedula,
+                        null
+                    )
+                    controlador.agregarUsuario(usuario)
                 }
                 else {
                     println("Error en la respuesta del servidor")
