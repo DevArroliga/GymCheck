@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="185dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/btnPrimario"
+    android:layout_margin="8dp"
+    android:padding="8dp"
+    app:cardCornerRadius="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="Usuario:"
+                android:textStyle="bold"
+                style="@style/Widget.Material3.Button.Icon"
+                android:background="@android:color/transparent"
+                android:layout_marginEnd="170dp"
+                />
+
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.Button.Icon"
+                app:icon="@drawable/baseline_more_vert_24"
+                android:background="@android:color/transparent"
+                android:layout_gravity="end"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="Nombre del usuario:"
+                style="@style/Widget.Material3.Button.Icon"
+                android:background="@android:color/transparent"
+                />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[Nombre]"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:text="Membresia:"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[Membresia]"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:text="Caducidad:"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[Caducidad]"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:text="Activo:"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[Activo]"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
