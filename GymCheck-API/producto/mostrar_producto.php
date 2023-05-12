@@ -5,18 +5,25 @@ if ($mysql->connect_error) {
     die("Conexion fallida: " . $mysql->connect_error);
 }
 
-// Función para mostrar los registros de una tabla
-function mostrar($producto) {
-    global $mysql;
-    $sql = "SELECT * FROM producto WHERE estado<>3";
-    $result = $mysql->query($sql);
-    $rows = array();
-    while($r = mysqli_fetch_assoc($result)) {
-        $rows[] = $r;
-    }
-    
-    return json_encode($rows);
-}
+$sql = "SELECT idProducto, nombre, descripcion, precio, stock, img FROM producto";
+$result = $mysql->query($sql);
 
-echo mostrar('producto');
+if ($result->num_rows >= 0) {
+    $productos = array();
+    while ($row = $result->fetch_assoc()) {
+        $producto = array();
+        $producto['idProducto'] = $row['idProducto'];
+        $producto['nombre'] = $row['nombre'];
+        $producto['descripcion'] = $row['descripcion'];
+        $producto['precio'] = $row['precio'];
+        $producto['stock'] = $row['stock'];
+        $producto['img'] = base64_encode($row['img']);
+        array_push($productos, $producto);
+    }
+    header('Content-Type: application/json');
+    echo json_encode($productos);
+} else {
+    echo "No se encontraron productos";
+}
+$mysql->close();
 ?>
