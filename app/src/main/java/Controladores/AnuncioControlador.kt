@@ -18,7 +18,7 @@ class AnuncioControlador {
     // IP Marcelo: 192.168.1.11
 
     fun agregarAnuncio(anuncio: Anuncio, imgBytes: ByteArray?) {
-        val urlAPI = "http://192.168.1.21/GymCheck-API/anuncio/agregar_anuncio.php"
+        val urlAPI = "http://192.168.1.18/GymCheck-API/anuncio/agregar_anuncio.php"
 
         val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
         builder.addFormDataPart("tituloAnuncio", anuncio.tituloAnuncio)
@@ -90,8 +90,10 @@ class AnuncioControlador {
         })
     }
 
-    fun eliminarProducto(anuncio: Anuncio){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/eliminar_producto.php"
+    fun eliminarAnuncio(anuncio: Anuncio){
+
+
+        val urlAPI = "http://192.168.1.18/GymCheck-API/anuncio/eliminar_anuncio.php"
 
         val formBody = FormBody.Builder()
             .add("idAnuncio", anuncio.idAnuncio.toString())
@@ -101,6 +103,7 @@ class AnuncioControlador {
             .post(formBody)
             .build()
         val client = OkHttpClient()
+
 
         client.newCall(request).enqueue(object: Callback {
             override fun onResponse(call: Call, response: Response) {
@@ -121,7 +124,7 @@ class AnuncioControlador {
 
     fun mostrarAnuncio(): List<Anuncio> = runBlocking {
         val anuncios = mutableListOf<Anuncio>()
-        val urlAPI = "http://192.168.1.21/GymCheck-API/anuncio/mostrar_anuncio.php"
+        val urlAPI = "http://192.168.1.18/GymCheck-API/anuncio/mostrar_anuncio.php"
 
         launch(Dispatchers.IO) {
             val request = Request.Builder()
