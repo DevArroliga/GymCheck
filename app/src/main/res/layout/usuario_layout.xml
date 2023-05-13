@@ -36,6 +36,7 @@
                 app:icon="@drawable/baseline_more_vert_24"
                 android:background="@android:color/transparent"
                 android:layout_gravity="end"
+                android:layout_marginRight="10dp"
                 />
 
 
@@ -61,9 +62,33 @@
                 />
 
                 <TextView
+                    android:id="@+id/tvNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="[Nombre]"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cedula del usuario:"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:background="@android:color/transparent"
+                    />
+
+                <TextView
+                    android:id="@+id/tvCedula"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[Cedula]"
                     style="@style/Widget.Material3.Button.Icon"
                     android:background="@android:color/transparent"
                     />
@@ -88,6 +113,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tvMembresia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="[Membresia]"
@@ -112,6 +138,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tvCaducidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="[Caducidad]"
@@ -136,6 +163,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tvActivo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="[Activo]"

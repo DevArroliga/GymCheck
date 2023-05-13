@@ -11,6 +11,13 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import java.util.*
+import javax.mail.*
+import javax.mail.internet.InternetAddress
+import javax.mail.internet.MimeMessage
 
 class UsuarioControlador {
     fun agregarUsuario(usuario:Usuario){
@@ -19,7 +26,7 @@ class UsuarioControlador {
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/agregar_usuario.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("usuario", usuario.usuario)
@@ -52,7 +59,7 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/editar_usuario.php"
 
         val formBody = FormBody.Builder()
             .add("cedula", cedula)
@@ -82,7 +89,7 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/mostrar_usuario.php"
 
         launch(Dispatchers.IO) {
             val request = Request.Builder()
@@ -108,7 +115,7 @@ class UsuarioControlador {
                     val activo = jsonObject.getInt("activo")
                     val fechaMembresia = jsonObject.getString("fechaMembresia")
                     val cedula = jsonObject.getString("cedula")
-                    val idMembresia = jsonObject.get("idMembresia") as? Int ?: null
+                    val idMembresia = if (jsonObject.has("idMembresia")) jsonObject.optInt("idMembresia") else null
 
                     usuarios.add(Usuario(idUsuario, usuario, clave, activo, fechaMembresia, cedula, idMembresia))
                 }
@@ -116,5 +123,38 @@ class UsuarioControlador {
         }.join()
 
         usuarios
+    }
+    fun calcularDiasTranscurridos(fecha: String): Int {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val fechaDada = LocalDate.parse(fecha, formatter)
+        val fechaHoy = LocalDate.now()
+        return ChronoUnit.DAYS.between(fechaDada, fechaHoy).toInt()
+    }
+    fun enviarCorreo(destinatario: String, asunto: String, mensaje: String) {
+        val usuario = "riverasoto.marcelo@gmail.com"
+        val password = "yabmyzdfnpvwotrs"
+        val properties = Properties().apply {
+            put("mail.smtp.auth", "true")
+            put("mail.smtp.starttls.enable", "true")
+            put("mail.smtp.host", "smtp.gmail.com")
+            put("mail.smtp.port", "587")
+        }
+
+        val session = Session.getInstance(properties, object : javax.mail.Authenticator() {
+            override fun getPasswordAuthentication() = PasswordAuthentication(usuario, password)
+        })
+
+        try {
+            val message = MimeMessage(session).apply {
+                setFrom(InternetAddress(usuario))
+                addRecipient(Message.RecipientType.TO, InternetAddress(destinatario))
+                setSubject(asunto)
+                setText(mensaje)
+            }
+
+            Transport.send(message)
+        } catch (e: MessagingException) {
+            e.printStackTrace()
+        }
     }
 }
