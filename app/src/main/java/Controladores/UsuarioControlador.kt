@@ -15,9 +15,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.*
-import javax.mail.*
-import javax.mail.internet.InternetAddress
-import javax.mail.internet.MimeMessage
+import kotlinx.coroutines.runBlocking
 
 class UsuarioControlador {
     fun agregarUsuario(usuario:Usuario){
@@ -26,7 +24,7 @@ class UsuarioControlador {
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/agregar_usuario.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("usuario", usuario.usuario)
@@ -59,7 +57,7 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/editar_usuario.php"
 
         val formBody = FormBody.Builder()
             .add("cedula", cedula)
@@ -89,7 +87,7 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/mostrar_usuario.php"
 
         launch(Dispatchers.IO) {
             val request = Request.Builder()
@@ -130,31 +128,35 @@ class UsuarioControlador {
         val fechaHoy = LocalDate.now()
         return ChronoUnit.DAYS.between(fechaDada, fechaHoy).toInt()
     }
-    fun enviarCorreo(destinatario: String, asunto: String, mensaje: String) {
-        val usuario = "riverasoto.marcelo@gmail.com"
-        val password = "yabmyzdfnpvwotrs"
-        val properties = Properties().apply {
-            put("mail.smtp.auth", "true")
-            put("mail.smtp.starttls.enable", "true")
-            put("mail.smtp.host", "smtp.gmail.com")
-            put("mail.smtp.port", "587")
-        }
+    fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
+        val urlAPI = "http://192.168.0.7/GymCheck-API/emailSender/emailSender.php"
 
-        val session = Session.getInstance(properties, object : javax.mail.Authenticator() {
-            override fun getPasswordAuthentication() = PasswordAuthentication(usuario, password)
-        })
+        val formBody = FormBody.Builder()
+            .add("usuario", usuario)
+            .add("clave", clave)
+            .add("email", email)
+            .build()
+        val request = Request.Builder()
+            .url(urlAPI)
+            .post(formBody)
+            .build()
+        val client = OkHttpClient()
 
-        try {
-            val message = MimeMessage(session).apply {
-                setFrom(InternetAddress(usuario))
-                addRecipient(Message.RecipientType.TO, InternetAddress(destinatario))
-                setSubject(asunto)
-                setText(mensaje)
+        client.newCall(request).enqueue(object: Callback{
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful){
+                    val respuesta = response.body?.string()
+                    println(respuesta)
+                }
+                else {
+                    println("Error en la respuesta del servidor")
+                }
             }
 
-            Transport.send(message)
-        } catch (e: MessagingException) {
-            e.printStackTrace()
-        }
+            override fun onFailure(call: Call, e: IOException) {
+                println("Error en la petición HTTP: ${e.message}")
+            }
+        })
     }
+
 }
