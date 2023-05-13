@@ -11,12 +11,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gymcheck.databinding.FragmentAnunciosAdminBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AnunciosAdminFragment : Fragment() {
     var controlador: AnuncioControlador = AnuncioControlador()
+
     private lateinit var binding: FragmentAnunciosAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +47,11 @@ class AnunciosAdminFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnRefrescar.setOnClickListener {
+            findNavController().navigate(R.id.anunciosAdminFragment)
+        }
+
 
         binding.btnAgregar.setOnClickListener {
             findNavController().navigate(R.id.action_anunciosAdminFragment_to_agregarAnuncio)
@@ -74,13 +84,22 @@ class AnunciosAdminFragment : Fragment() {
 
         }
 
+
+
+
         val anuncios = controlador.mostrarAnuncio()
+
 
         binding.rvAnuncio.adapter = AnuncioAdapter(anuncios)
         binding.rvAnuncio.layoutManager = LinearLayoutManager(context)
 
 
+
+
     }
+
+
+
 
 
 }

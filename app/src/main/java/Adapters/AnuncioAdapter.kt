@@ -1,22 +1,48 @@
 package Adapters
 
+import Controladores.AnuncioControlador
 import Entidades.Anuncio
 import Entidades.Producto
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.gymcheck.R
 import com.example.gymcheck.databinding.AnuncioLayoutBinding
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 
+class AnuncioAdapter(private var anuncio: List<Anuncio>) :
+    RecyclerView.Adapter<AnuncioAdapter.AnuncioViewHolder>() {
 
-class AnuncioAdapter(private val anuncio: List<Anuncio>): RecyclerView.Adapter<AnuncioAdapter.AnuncioViewHolder>() {
+    private var listener: OnItemClickListener? = null
+    private var removedListener: OnItemRemovedListener? = null
+
+    interface OnItemClickListener {
+        fun onItemClick(anuncio: Anuncio)
+    }
+
+    interface OnItemRemovedListener {
+        fun onItemRemoved(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener?) {
+        this.listener = listener
+    }
+
+    fun setOnItemRemovedListener(listener: OnItemRemovedListener?) {
+        this.removedListener = listener
+    }
+
+
+    private val anuncioControlador = AnuncioControlador()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnuncioViewHolder {
         val binding = AnuncioLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AnuncioViewHolder(binding)
@@ -28,16 +54,20 @@ class AnuncioAdapter(private val anuncio: List<Anuncio>): RecyclerView.Adapter<A
 
     override fun onBindViewHolder(holder: AnuncioAdapter.AnuncioViewHolder, position: Int) {
         holder.bind(anuncio[position])
+
+
     }
 
-    inner class AnuncioViewHolder(private val binding: AnuncioLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class AnuncioViewHolder(private val binding: AnuncioLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        private var currentAnuncio: Anuncio? = null
 
         fun bind(anuncio: Anuncio) {
+            currentAnuncio = anuncio
+
             binding.tvNombreAnun.text = anuncio.tituloAnuncio
             binding.tvDescriptionAnun.text = anuncio.descripcion
             binding.tvFecha.text = anuncio.fecha
-
 
             val imagen = convertirBytesAImagen(anuncio.img)
 
@@ -49,16 +79,47 @@ class AnuncioAdapter(private val anuncio: List<Anuncio>): RecyclerView.Adapter<A
                     .into(binding.imgView)
             }
 
+            val btnMenu = binding.btnMenu
+
+            btnMenu.setOnClickListener {
+                val popupMenu = PopupMenu(itemView.context, btnMenu)
+                popupMenu.menuInflater.inflate(R.menu.menu_anuncio, popupMenu.menu)
+                popupMenu.setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.menu_editar -> {
+                            // TODO: Implementar la edición del anuncio.
+                            true
+                        }
 
 
+                        R.id.menu_eliminar -> {
+                            currentAnuncio?.idAnuncio?.let { id ->
+                                anuncioControlador.eliminarAnuncio(anuncio)
+                                // Notifica al RecyclerView que un elemento ha sido eliminado.
+                                notifyItemRemoved(adapterPosition)
+
+
+                            }
+
+
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+                popupMenu.show()
+            }
         }
-    }
 
-    fun convertirBytesAImagen(bytes: ByteArray?): Bitmap? {
-        if (bytes == null) {
-            return null
+        fun convertirBytesAImagen(bytes: ByteArray?): Bitmap? {
+            if (bytes == null) {
+                return null
+            }
+            return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
         }
-        return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-    }
 
+
+
+    }
 }
