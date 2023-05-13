@@ -5,6 +5,7 @@ if ($mysql->connect_error) {
     die("Conexion fallida: " . $mysql->connect_error);
 }
 
+
 $sql = "SELECT idAnuncio, tituloAnuncio, descripcion, fecha, img FROM anuncio WHERE estado = 1";
 $result = $mysql->query($sql);
 

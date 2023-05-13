@@ -11,6 +11,11 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import java.util.*
+import kotlinx.coroutines.runBlocking
 
 class UsuarioControlador {
     fun agregarUsuario(usuario:Usuario){
@@ -108,7 +113,7 @@ class UsuarioControlador {
                     val activo = jsonObject.getInt("activo")
                     val fechaMembresia = jsonObject.getString("fechaMembresia")
                     val cedula = jsonObject.getString("cedula")
-                    val idMembresia = jsonObject.get("idMembresia") as? Int ?: null
+                    val idMembresia = if (jsonObject.has("idMembresia")) jsonObject.optInt("idMembresia") else null
 
                     usuarios.add(Usuario(idUsuario, usuario, clave, activo, fechaMembresia, cedula, idMembresia))
                 }
@@ -117,4 +122,41 @@ class UsuarioControlador {
 
         usuarios
     }
+    fun calcularDiasTranscurridos(fecha: String): Int {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val fechaDada = LocalDate.parse(fecha, formatter)
+        val fechaHoy = LocalDate.now()
+        return ChronoUnit.DAYS.between(fechaDada, fechaHoy).toInt()
+    }
+    fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
+        val urlAPI = "http://192.168.0.7/GymCheck-API/emailSender/emailSender.php"
+
+        val formBody = FormBody.Builder()
+            .add("usuario", usuario)
+            .add("clave", clave)
+            .add("email", email)
+            .build()
+        val request = Request.Builder()
+            .url(urlAPI)
+            .post(formBody)
+            .build()
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object: Callback{
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful){
+                    val respuesta = response.body?.string()
+                    println(respuesta)
+                }
+                else {
+                    println("Error en la respuesta del servidor")
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Error en la petición HTTP: ${e.message}")
+            }
+        })
+    }
+
 }

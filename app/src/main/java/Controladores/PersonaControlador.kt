@@ -59,6 +59,7 @@ class PersonaControlador {
                         null
                     )
                     controlador.agregarUsuario(usuario)
+                    controlador.enviarEmailBienvenida(usuario.usuario, usuario.clave, persona.correo)
                 }
                 else {
                     println("Error en la respuesta del servidor")

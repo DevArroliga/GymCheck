@@ -43,7 +43,7 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
 
         binding.btnAgregar.setOnClickListener {
             val controlador = UsuarioControlador()
-            val cedula = binding.tfcedula.editText?.text.toString().lowercase().trim()
+            val cedula = binding.etCedula.text.toString().lowercase().trim()
 
             val listaPersonas = controlador.mostrarUsuario()
             var usuario= Usuario(null, "negrachatel", "", 3, "", "", null)
@@ -56,7 +56,7 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
 
 
             controlador.editarUsuario(usuario.cedula, putIdMem(nMembresia))
-            Toast.makeText(context, usuario.usuario, Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_asignarUsuarioMembresiaFragment_to_homeAdminFragment)
 
         }
 

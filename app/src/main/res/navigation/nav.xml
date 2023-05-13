@@ -131,7 +131,11 @@
         android:id="@+id/buscarFragment"
         android:name="com.example.gymcheck.BuscarFragment"
         android:label="fragment_buscar"
-        tools:layout="@layout/fragment_buscar" />
+        tools:layout="@layout/fragment_buscar" >
+        <action
+            android:id="@+id/action_buscarFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
+    </fragment>
 
     android:id="@+id/productosFragment"
         android:name="com.example.gymcheck.ProductosFragment"
