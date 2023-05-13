@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_anunciosAdminFragment"
             app:destination="@id/anunciosAdminFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_buscarFragment"
+            app:destination="@id/buscarFragment" />
     </fragment>
     <fragment
         android:id="@+id/membresiaAdminFragment"
@@ -124,6 +127,11 @@
             android:id="@+id/action_asignarUsuarioMembresiaFragment_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/buscarFragment"
+        android:name="com.example.gymcheck.BuscarFragment"
+        android:label="fragment_buscar"
+        tools:layout="@layout/fragment_buscar" />
 
     android:id="@+id/productosFragment"
         android:name="com.example.gymcheck.ProductosFragment"

@@ -38,6 +38,10 @@ class HomeAdminFragment : Fragment() {
             findNavController().navigate(R.id.action_homeAdminFragment_to_clienteNuevo)
         }
 
+        binding.searchBar.setOnClickListener{
+            findNavController().navigate(R.id.action_homeAdminFragment_to_buscarFragment)
+        }
+
         binding.bottomNavigation.setOnItemSelectedListener {item ->
             when(item.itemId) {
                 R.id.item_1 -> {
