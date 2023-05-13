@@ -18,7 +18,7 @@ class ProductoControlador {
     // IP Marcelo: 192.168.1.11
 
     fun agregarProducto(producto: Producto, imgBytes: ByteArray?) {
-        val urlAPI = "http://192.168.0.7/GymCheck-API/producto/agregar_producto.php"
+        val urlAPI = "http://192.168.1.18/GymCheck-API/producto/agregar_producto.php"
 
         val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
         builder.addFormDataPart("nombre", producto.nombre)
@@ -58,7 +58,7 @@ class ProductoControlador {
 
 
     fun editarProducto(producto: Producto){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/editar_producto.php"
+        val urlAPI = "http://192.168.1.21/GymCheck-API/producto/editar_producto.php"
 
         val formBody = FormBody.Builder()
             .add("idProducto", producto.idProducto.toString())
@@ -92,7 +92,7 @@ class ProductoControlador {
     }
 
     fun eliminarProducto(producto: Producto){
-        val urlAPI = "http://192.168.0.15/GymCheck-API/producto/eliminar_producto.php"
+        val urlAPI = "http://192.168.1.21/GymCheck-API/producto/eliminar_producto.php"
 
         val formBody = FormBody.Builder()
             .add("idProducto", producto.idProducto.toString())
@@ -122,7 +122,7 @@ class ProductoControlador {
 
     fun mostrarProducto(): List<Producto> = runBlocking {
         val productos = mutableListOf<Producto>()
-        val urlAPI = "http://192.168.0.7/GymCheck-API/producto/mostrar_producto.php"
+        val urlAPI = "http://192.168.1.18/GymCheck-API/producto/mostrar_producto.php"
 
         launch(Dispatchers.IO) {
             val request = Request.Builder()

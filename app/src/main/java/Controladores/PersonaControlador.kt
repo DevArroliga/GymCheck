@@ -22,7 +22,7 @@ class PersonaControlador {
     fun agregarPersona(persona: Persona){
         val controlador = UsuarioControlador()
 
-        val urlAPI = "http://192.168.0.7/GymCheck-API/persona/agregar_persona.php"
+        val urlAPI = "http://192.168.1.21/GymCheck-API/persona/agregar_persona.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("nombre", persona.nombre)

@@ -7,6 +7,7 @@ import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
@@ -50,6 +51,24 @@ class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapte
                     .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(16)))
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(binding.imgView)
+            }
+
+            val btnMenu = binding.btnMenu
+            btnMenu.setOnClickListener {
+                val popupMenu = PopupMenu(itemView.context, btnMenu)
+                popupMenu.menuInflater.inflate(R.menu.menu_producto, popupMenu.menu)
+                popupMenu.setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.menu_editar -> {
+                            true
+                        }
+                        R.id.menu_eliminar -> {
+                            true
+                        }
+                        else -> false
+                    }
+                }
+                popupMenu.show()
             }
 
 
