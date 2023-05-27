@@ -1,5 +1,7 @@
 package Adapters
 
+import Controladores.ProductoControlador
+import Entidades.Anuncio
 import Entidades.Producto
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -16,11 +18,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.gymcheck.ProductosAdminFragment
 import com.example.gymcheck.R
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 import java.io.File
 
 class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
+
+   private val controlerProducto = ProductoControlador()
+    private val productoAdmin = ProductosAdminFragment()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         val binding = ProductoLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductoViewHolder(binding)
@@ -37,7 +43,11 @@ class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapte
     inner class ProductoViewHolder(private val binding: ProductoLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        private var currentProducto: Producto? = null
         fun bind(producto: Producto) {
+
+            currentProducto = producto
+
             binding.tvNombreSup.text = producto.nombre
             binding.tvDescriptionSup.text = producto.descripcion
             binding.tvStock.text = producto.stock.toString()
@@ -63,6 +73,13 @@ class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapte
                             true
                         }
                         R.id.menu_eliminar -> {
+
+                            currentProducto?.idProducto.let { id->
+                                controlerProducto.eliminarProducto(producto)
+
+
+
+                            }
                             true
                         }
                         else -> false
@@ -82,5 +99,7 @@ class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapte
         }
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
     }
+
+
 
 }

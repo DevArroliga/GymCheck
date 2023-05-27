@@ -48,6 +48,13 @@
                 android:text="Agregar producto"
                 android:layout_gravity="right"
                 />
+            <Button
+                android:id="@+id/btnRefrescar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Refrescar"
+                android:layout_gravity="right"
+                />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProductos"

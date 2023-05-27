@@ -54,18 +54,37 @@ private var rutaimagen: String?= null
         // Inflate the layout for this fragment
         binding = FragmentAgregarProductoBinding.inflate(layoutInflater)
         val controlador = ProductoControlador();
+
         binding.btnAgregar.setOnClickListener {
+            val nombre = binding.etNombreProducto.text.toString()
+            val descripcion = binding.etDescripcion.text.toString()
+            val precioText = binding.etPrecio.text.toString()
+            val stockText = binding.etStock.text.toString()
+
+            if (nombre.isEmpty() || descripcion.isEmpty() || precioText.isEmpty() || stockText.isEmpty()) {
+                Toast.makeText(requireContext(), "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val precio = precioText.toFloatOrNull()
+            val stock = stockText.toIntOrNull()
+
+            if (precio == null || stock == null || precio <= 0 || stock <= 0) {
+                Toast.makeText(requireContext(), "Ingrese valores válidos para Precio y Stock", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             val nuevoProducto = Producto(
                 null,
-                binding.etNombreProducto.text.toString(),
-                binding.etDescripcion.text.toString(),
-                binding.etPrecio.text.toString().toFloat(),
-                binding.etStock.text.toString().toInt(),
+                nombre,
+                descripcion,
+                precio,
+                stock,
                 null
             )
             val imgBytes = getImageBytes()
             controlador.agregarProducto(nuevoProducto, imgBytes)
+
         }
 
         return binding.root

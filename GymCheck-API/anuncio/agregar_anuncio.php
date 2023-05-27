@@ -2,22 +2,32 @@
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     require_once '../conexion.php';
 
-    $tituloAnuncio = $_POST["tituloAnuncio "];
+    $nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
-    $fecha = $_POST["fecha"];
-    $img = $_POST["img"];
+    $precio = $_POST["precio"];
+    $stock = $_POST["stock"];
+    
+    // Obtiene la ruta temporal del archivo de imagen
+    $imagen_temporal = $_FILES["img"]["tmp_name"];
+    
+    // Lee el archivo de imagen como un string binario
+    $imagen_binaria = file_get_contents($imagen_temporal);
 
-    $my_query = "INSERT INTO anuncio (tituloAnuncio, descripcion, fecha, img, estado) VALUES ('".$tituloAnuncio."','".$descripcion."','".$fecha."', '".$img."', 1)";
+    // Escapa caracteres especiales y convierte el string binario a un string hexadecimal
+    $imagen_hexadecimal = $mysql->real_escape_string(bin2hex($imagen_binaria));
+
+    $my_query = "INSERT INTO producto (nombre, descripcion, precio, stock, img, estado) VALUES ('".$nombre."','".$descripcion."','".$precio."','".$stock."',UNHEX('".$imagen_hexadecimal."'), 1)";
 
     $result = $mysql -> query($my_query);
     if($result == true){
-        echo "Anuncio guardado satisfactoriamente...";
+        echo "Producto guardado satisfactoriamente...";
     }
     else{
-        echo "Error al guardar anuncio...";
+        echo "Error al guardar producto...";
     }
 }
 else{
     echo"Error desconocido";
 }
+
 ?>

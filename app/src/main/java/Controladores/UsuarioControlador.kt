@@ -24,7 +24,7 @@ class UsuarioControlador {
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://192.168.1.18/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/agregar_usuario.php"
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("usuario", usuario.usuario)
@@ -57,7 +57,7 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://192.168.1.18/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/editar_usuario.php"
 
         val formBody = FormBody.Builder()
             .add("cedula", cedula)
@@ -87,7 +87,7 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://192.168.1.18/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/mostrar_usuario.php"
 
         launch(Dispatchers.IO) {
             val request = Request.Builder()
@@ -129,7 +129,7 @@ class UsuarioControlador {
         return ChronoUnit.DAYS.between(fechaDada, fechaHoy).toInt()
     }
     fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
-        val urlAPI = "http://192.168.0.7/GymCheck-API/emailSender/emailSender.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/emailSender/emailSender.php"
 
         val formBody = FormBody.Builder()
             .add("usuario", usuario)

@@ -21,24 +21,17 @@ import com.example.gymcheck.databinding.ProductoLayoutBinding
 class AnuncioAdapter(private var anuncio: List<Anuncio>) :
     RecyclerView.Adapter<AnuncioAdapter.AnuncioViewHolder>() {
 
-    private var listener: OnItemClickListener? = null
-    private var removedListener: OnItemRemovedListener? = null
+    private var editItemClickListener: OnEditItemClickListener? = null
 
-    interface OnItemClickListener {
-        fun onItemClick(anuncio: Anuncio)
-    }
+  interface OnEditItemClickListener{
+      fun onEditItemClick(anuncio: Anuncio)
+  }
 
-    interface OnItemRemovedListener {
-        fun onItemRemoved(position: Int)
-    }
+fun setOnEditItemClickListener(Listener: OnEditItemClickListener?){
+this.editItemClickListener = Listener
+}
 
-    fun setOnItemClickListener(listener: OnItemClickListener?) {
-        this.listener = listener
-    }
 
-    fun setOnItemRemovedListener(listener: OnItemRemovedListener?) {
-        this.removedListener = listener
-    }
 
 
     private val anuncioControlador = AnuncioControlador()
@@ -87,7 +80,9 @@ class AnuncioAdapter(private var anuncio: List<Anuncio>) :
                 popupMenu.setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.menu_editar -> {
-                            // TODO: Implementar la edición del anuncio.
+                            currentAnuncio?.let { anuncio ->
+                                editItemClickListener?.onEditItemClick(anuncio)
+                            }
                             true
                         }
 

@@ -23,7 +23,7 @@ if ($result->num_rows >= 0) {
     header('Content-Type: application/json');
     echo json_encode($anuncios);
 } else {
-    echo "No se encontraron productos";
+    echo "No se encontraron anuncios";
 }
 $mysql->close();
 ?>
