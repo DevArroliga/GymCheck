@@ -2,6 +2,7 @@ package com.example.gymcheck
 
 import Adapters.ProductoAdapter
 import Controladores.ProductoControlador
+import Entidades.Anuncio
 import Entidades.Producto
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gymcheck.databinding.FragmentProductosAdminBinding
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 
-class ProductosAdminFragment : Fragment() {
+class ProductosAdminFragment : Fragment(), ProductoAdapter.OnEditItemClickListener {
+
     var controlador: ProductoControlador = ProductoControlador()
     lateinit var binding: FragmentProductosAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,10 +77,19 @@ class ProductosAdminFragment : Fragment() {
 
         val productos = controlador.mostrarProducto()
 
-        binding.rvProductos.adapter = ProductoAdapter(productos)
+
+        val productoAdapte = ProductoAdapter(productos)
+        productoAdapte.setOnEditItemClickListener(this)
+
+        binding.rvProductos.adapter = productoAdapte
         binding.rvProductos.layoutManager = LinearLayoutManager(context)
     }
 
+
+
+    override fun onEditItemClick(producto: Producto) {
+        findNavController().navigate(R.id.action_productosAdminFragment_to_actualizarProducto)
+    }
 
 
 }

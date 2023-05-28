@@ -23,12 +23,25 @@ import com.example.gymcheck.R
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 import java.io.File
 
-class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
+class ProductoAdapter(private val productos: List<Producto>) :
+    RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
-   private val controlerProducto = ProductoControlador()
-    private val productoAdmin = ProductosAdminFragment()
+    private val controlerProducto = ProductoControlador()
+    private var editItemClickListener: OnEditItemClickListener?= null
+    interface OnEditItemClickListener {
+        fun onEditItemClick(producto: Producto)
+
+
+    }
+
+    fun setOnEditItemClickListener(Listener: OnEditItemClickListener?){
+        this.editItemClickListener = Listener
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
-        val binding = ProductoLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ProductoLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductoViewHolder(binding)
     }
 
@@ -70,13 +83,16 @@ class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapte
                 popupMenu.setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.menu_editar -> {
+
+                            currentProducto?.let { producto ->
+                                editItemClickListener?.onEditItemClick(producto)
+                            }
                             true
                         }
                         R.id.menu_eliminar -> {
 
-                            currentProducto?.idProducto.let { id->
+                            currentProducto?.idProducto.let { id ->
                                 controlerProducto.eliminarProducto(producto)
-
 
 
                             }
@@ -89,7 +105,6 @@ class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapte
             }
 
 
-
         }
     }
 
@@ -99,7 +114,6 @@ class ProductoAdapter(private val productos: List<Producto>):RecyclerView.Adapte
         }
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
     }
-
 
 
 }

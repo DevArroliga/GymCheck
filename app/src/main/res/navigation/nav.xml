@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_productosAdminFragment_to_agregarProducto"
             app:destination="@id/agregarProducto" />
+        <action
+            android:id="@+id/action_productosAdminFragment_to_actualizarProducto"
+            app:destination="@id/actualizarProducto" />
     </fragment>
     <fragment
         android:id="@+id/anunciosAdminFragment"
@@ -146,6 +149,14 @@
         <action
             android:id="@+id/action_actualizarAnuncioFragment_to_anunciosAdminFragment"
             app:destination="@id/anunciosAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/actualizarProducto"
+        android:name="com.example.gymcheck.ActualizarProducto"
+        android:label="ActualizarProducto" >
+        <action
+            android:id="@+id/action_actualizarProducto_to_productosAdminFragment"
+            app:destination="@id/productosAdminFragment" />
     </fragment>
 
     android:id="@+id/productosFragment"

@@ -25,9 +25,7 @@ class AnunciosAdminFragment : Fragment(), AnuncioAdapter.OnEditItemClickListener
     private lateinit var binding: FragmentAnunciosAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
     }
 
     override fun onCreateView(
