@@ -61,6 +61,9 @@ class ClienteNuevo : Fragment() {
             next()
         }
 
+        binding.btnAtras.setOnClickListener {
+            back()
+        }
 
         return binding.root
 
@@ -83,6 +86,9 @@ class ClienteNuevo : Fragment() {
 
     fun next(){
         findNavController().navigate(R.id.action_clienteNuevo_to_asignarUsuarioMembresiaFragment)
+    }
+    fun back(){
+        findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
     }
     private fun showDatePicker() {
         binding.tfFechaNac.setEndIconOnClickListener {
