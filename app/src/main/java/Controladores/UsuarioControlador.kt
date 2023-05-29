@@ -1,5 +1,6 @@
 package Controladores
 
+import Entidades.Anuncio
 import Entidades.Persona
 import Entidades.Producto
 import Entidades.Usuario
@@ -24,7 +25,8 @@ class UsuarioControlador {
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://192.168.0.11/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/agregar_usuario.php"
+
 
         val requestBody: RequestBody = FormBody.Builder()
             .add("usuario", usuario.usuario)
@@ -57,7 +59,8 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://192.168.0.11/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/editar_usuario.php"
+
 
         val formBody = FormBody.Builder()
             .add("cedula", cedula)
@@ -87,7 +90,8 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://192.168.0.11/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/mostrar_usuario.php"
+
 
         launch(Dispatchers.IO) {
             val request = Request.Builder()
@@ -128,8 +132,40 @@ class UsuarioControlador {
         val fechaHoy = LocalDate.now()
         return ChronoUnit.DAYS.between(fechaDada, fechaHoy).toInt()
     }
+    fun eliminarUsuario(usuario:Usuario){
+
+
+        val urlAPI = "http://192.168.1.11/GymCheck-API/anuncio/eliminar_usuario.php"
+
+        val formBody = FormBody.Builder()
+            .add("idUsuario", usuario.idUsuario.toString())
+            .build()
+        val request = Request.Builder()
+            .url(urlAPI)
+            .post(formBody)
+            .build()
+        val client = OkHttpClient()
+
+
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful){
+                    val respuesta = response.body?.string()
+                    println(respuesta)
+                }
+                else {
+                    println("Error en la respuesta del servidor")
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Error en la petición HTTP: ${e.message}")
+            }
+        })
+    }
     fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
-        val urlAPI = "http://192.168.0.11/GymCheck-API/emailSender/emailSender.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/emailSender/emailSender.php"
+
 
         val formBody = FormBody.Builder()
             .add("usuario", usuario)

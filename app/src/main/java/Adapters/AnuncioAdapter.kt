@@ -3,6 +3,8 @@ package Adapters
 import Controladores.AnuncioControlador
 import Entidades.Anuncio
 import Entidades.Producto
+import Entidades.Usuario
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
@@ -57,11 +59,15 @@ class AnuncioAdapter(private var anuncio: List<Anuncio>) :
 
 
     }
+    fun actualizarLista(nuevaLista: List<Anuncio>) {
+        anuncio = nuevaLista
+    }
 
     inner class AnuncioViewHolder(private val binding: AnuncioLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
         private var currentAnuncio: Anuncio? = null
 
+        @SuppressLint("NotifyDataSetChanged")
         fun bind(anuncio: Anuncio) {
             currentAnuncio = anuncio
 
@@ -97,8 +103,8 @@ class AnuncioAdapter(private var anuncio: List<Anuncio>) :
                                 anuncioControlador.eliminarAnuncio(anuncio)
                                 // Notifica al RecyclerView que un elemento ha sido eliminado.
                                 notifyItemRemoved(adapterPosition)
-
-
+                                actualizarLista(AnuncioControlador().mostrarAnuncio())
+                                notifyDataSetChanged()
                             }
 
 
