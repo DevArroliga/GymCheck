@@ -34,13 +34,29 @@ class HomeAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnAgregar.setOnClickListener {
+        binding.agregarPersona.setOnClickListener {
             findNavController().navigate(R.id.action_homeAdminFragment_to_clienteNuevo)
         }
 
-        binding.searchBar.setOnClickListener{
+        binding.buscarUsuario.setOnClickListener{
             findNavController().navigate(R.id.action_homeAdminFragment_to_buscarFragment)
         }
+
+        binding.gestionarProductos.setOnClickListener{
+            findNavController().navigate(R.id.action_homeAdminFragment_to_productosAdminFragment)
+        }
+
+        binding.gestionarAnuncios.setOnClickListener{
+            findNavController().navigate(R.id.action_homeAdminFragment_to_anunciosAdminFragment)
+        }
+
+        binding.gestionarMembresias.setOnClickListener{
+            findNavController().navigate(R.id.action_homeAdminFragment_to_membresiaAdminFragment)
+        }
+
+        /*binding.perfilUsuario.setOnClickListener {
+            findNavController().navigate(R.id.action_homeAdminFragment_to_membresiaAdminFragment)
+        }*/
 
         binding.bottomNavigation.setOnItemSelectedListener {item ->
             when(item.itemId) {

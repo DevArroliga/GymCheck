@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiant"
-    tools:context=".HomeAdminFragment">
+    tools:context=".HomeAdminFragment"
+    android:background="@color/teal_700">
 
 
     <LinearLayout
@@ -80,12 +80,13 @@
                         android:layout_marginRight="7.5dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/agregarPersona">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/btnOscuro"
+                            android:backgroundTint="#FFF"
                             android:elevation="0dp"
                             app:cardCornerRadius="10dp">
 
@@ -110,7 +111,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="2dp"
                                         android:text="Agregar persona"
-                                        android:textColor="#FFFFFF"
+                                        android:textColor="@color/teal_700"
                                         android:textSize="12sp" />
 
                                 </LinearLayout>
@@ -128,12 +129,13 @@
                         android:layout_marginRight="15dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/buscarUsuario">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/btnOscuro"
+                            android:backgroundTint="#FFF"
                             android:elevation="0dp"
                             app:cardCornerRadius="10dp">
 
@@ -158,7 +160,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="2dp"
                                         android:text="Buscar usuario"
-                                        android:textColor="#FFFFFF"
+                                        android:textColor="@color/teal_700"
                                         android:textSize="12sp" />
 
                                 </LinearLayout>
@@ -181,12 +183,13 @@
                         android:layout_marginRight="7.5dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/gestionarProductos">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/btnOscuro"
+                            android:backgroundTint="#FFF"
                             android:elevation="0dp"
                             app:cardCornerRadius="10dp">
 
@@ -211,7 +214,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="2dp"
                                         android:text="Gestionar productos"
-                                        android:textColor="#FFFFFF"
+                                        android:textColor="@color/teal_700"
                                         android:textSize="12sp" />
 
                                 </LinearLayout>
@@ -229,12 +232,13 @@
                         android:layout_marginRight="15dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/gestionarAnuncios">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/btnOscuro"
+                            android:backgroundTint="#FFF"
                             android:elevation="0dp"
                             app:cardCornerRadius="10dp">
 
@@ -259,7 +263,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="2dp"
                                         android:text="Gestionar anuncios"
-                                        android:textColor="#FFFFFF"
+                                        android:textColor="@color/teal_700"
                                         android:textSize="12sp" />
 
                                 </LinearLayout>
@@ -282,12 +286,13 @@
                         android:layout_marginRight="7.5dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/gestionarMembresias">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/btnOscuro"
+                            android:backgroundTint="#FFF"
                             android:elevation="0dp"
                             app:cardCornerRadius="10dp">
 
@@ -312,7 +317,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="2dp"
                                         android:text="Gestionar membresias"
-                                        android:textColor="#FFFFFF"
+                                        android:textColor="@color/teal_700"
                                         android:textSize="12sp" />
 
                                 </LinearLayout>
@@ -330,12 +335,13 @@
                         android:layout_marginRight="15dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:id="@+id/perfilUsuario">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/btnOscuro"
+                            android:backgroundTint="#FFF"
                             android:elevation="0dp"
                             app:cardCornerRadius="10dp">
 
@@ -360,7 +366,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="2dp"
                                         android:text="Perfil del usuario"
-                                        android:textColor="#FFFFFF"
+                                        android:textColor="@color/teal_700"
                                         android:textSize="12sp" />
 
                                 </LinearLayout>
@@ -382,7 +388,7 @@
         android:layout_gravity="bottom"
         >
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:background="@color/btnOscuro"
+            android:background="@color/bgGreen"
             android:id="@+id/bottom_navigation"
             android:forceDarkAllowed="true"
             android:layout_width="match_parent"
