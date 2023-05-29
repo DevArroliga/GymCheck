@@ -102,7 +102,7 @@ private var rutaimagen: String?= null
 
 
     private fun init() {
-        binding.prodcutoToolbar.btnBack.setOnClickListener {
+        binding.productoToolbar.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_agregarProducto_to_productosAdminFragment)
         }
     }

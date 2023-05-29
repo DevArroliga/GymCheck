@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ClienteNuevo"
-    android:background="@color/teal_700">
+    android:background="@color/btnOscuro">
 
  <LinearLayout
      android:layout_width="match_parent"

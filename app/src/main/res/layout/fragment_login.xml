@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".LoginFragment"
     android:orientation="vertical"
-    android:background="@color/bgGreen">
+    android:background="@color/teal_700">
 
     <LinearLayout
         android:layout_marginTop="14dp"
@@ -78,10 +78,10 @@
         <Button
             android:layout_marginTop="45dp"
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="55dp"
             android:text="Iniciar sesión"
-            android:backgroundTint="@color/btnPrimario"
+            android:backgroundTint="@color/bgGreen"
             android:layout_gravity="center"
             />
     </LinearLayout>
