@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeClientFragment"
+            app:destination="@id/homeClientFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeAdminFragment"
@@ -157,6 +160,15 @@
         <action
             android:id="@+id/action_actualizarProducto_to_productosAdminFragment"
             app:destination="@id/productosAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeClientFragment"
+        android:name="com.example.gymcheck.HomeClientFragment"
+        android:label="fragment_home_client"
+        tools:layout="@layout/fragment_home_client" >
+        <action
+            android:id="@+id/action_homeClientFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     android:id="@+id/productosFragment"
