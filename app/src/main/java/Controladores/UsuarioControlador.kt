@@ -5,6 +5,8 @@ import Entidades.Persona
 import Entidades.Producto
 import Entidades.Usuario
 import android.util.Base64
+import android.util.Log
+import android.widget.Toast
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,7 +27,7 @@ class UsuarioControlador {
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/agregar_usuario.php"
 
 
         val requestBody: RequestBody = FormBody.Builder()
@@ -59,7 +61,7 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/editar_usuario.php"
 
 
         val formBody = FormBody.Builder()
@@ -90,7 +92,7 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/mostrar_usuario.php"
 
 
         launch(Dispatchers.IO) {
@@ -164,7 +166,7 @@ class UsuarioControlador {
         })
     }
     fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
-        val urlAPI = "http://192.168.1.22/GymCheck-API/emailSender/emailSender.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/emailSender/emailSender.php"
 
 
         val formBody = FormBody.Builder()
@@ -193,6 +195,20 @@ class UsuarioControlador {
                 println("Error en la petición HTTP: ${e.message}")
             }
         })
+    }
+    fun validarUsuario(usuario: String, clave: String):Usuario?{
+        val lista = mostrarUsuario()
+        var usuarioAux = Usuario(null, "", " ", 1, null, "", null)
+        lista.forEach {
+            if(it.usuario.trim() == usuario.trim() && it.clave.trim() == clave.trim()){
+                usuarioAux = it
+                return usuarioAux
+            }else{
+                Log.d("sesion", "sesion fallida")
+                return null
+            }
+        }
+        return usuarioAux
     }
 
 }
