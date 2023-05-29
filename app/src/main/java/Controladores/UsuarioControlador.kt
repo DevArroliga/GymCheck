@@ -21,13 +21,14 @@ import java.util.*
 import kotlinx.coroutines.runBlocking
 
 class UsuarioControlador {
+    val ipMarcelo2 = "192.168.0.7"
     fun agregarUsuario(usuario:Usuario){
 
         // IP Roberto: 192.168.0.15
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/agregar_usuario.php"
 
 
         val requestBody: RequestBody = FormBody.Builder()
@@ -61,7 +62,7 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/editar_usuario.php"
 
 
         val formBody = FormBody.Builder()
@@ -92,7 +93,7 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/mostrar_usuario.php"
 
 
         launch(Dispatchers.IO) {
@@ -137,7 +138,7 @@ class UsuarioControlador {
     fun eliminarUsuario(usuario:Usuario){
 
 
-        val urlAPI = "http://192.168.1.11/GymCheck-API/anuncio/eliminar_usuario.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/anuncio/eliminar_usuario.php"
 
         val formBody = FormBody.Builder()
             .add("idUsuario", usuario.idUsuario.toString())
@@ -166,7 +167,7 @@ class UsuarioControlador {
         })
     }
     fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/emailSender/emailSender.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/emailSender/emailSender.php"
 
 
         val formBody = FormBody.Builder()
@@ -202,11 +203,10 @@ class UsuarioControlador {
         lista.forEach {
             if(it.usuario.trim() == usuario.trim() && it.clave.trim() == clave.trim()){
                 usuarioAux = it
-                return usuarioAux
-            }else{
-                Log.d("sesion", "sesion fallida")
-                return null
             }
+        }
+        if(usuarioAux.idUsuario == null){
+            Log.d("Sesion", "sesion fallida")
         }
         return usuarioAux
     }
