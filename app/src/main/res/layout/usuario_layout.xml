@@ -30,6 +30,7 @@
 
 
             <Button
+                android:id="@+id/btnMenu"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Material3.Button.Icon"

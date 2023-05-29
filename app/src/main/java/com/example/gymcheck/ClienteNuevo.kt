@@ -61,6 +61,9 @@ class ClienteNuevo : Fragment() {
             next()
         }
 
+        binding.btnAtras.setOnClickListener {
+            back()
+        }
 
         return binding.root
 
@@ -69,20 +72,23 @@ class ClienteNuevo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        init()
+        //init()
 
         showDatePicker()
 
     }
 
-    private fun init(){
+    /*private fun init(){
         binding.customToolbar.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
         }
-    }
+    }*/
 
     fun next(){
         findNavController().navigate(R.id.action_clienteNuevo_to_asignarUsuarioMembresiaFragment)
+    }
+    fun back(){
+        findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
     }
     private fun showDatePicker() {
         binding.tfFechaNac.setEndIconOnClickListener {
