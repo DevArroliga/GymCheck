@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/btnOscuro"
-            android:text="Agregar producto"
+            android:text="Actualizar producto"
             android:textColor="@color/white"
             app:icon="@drawable/baseline_add_24" />
 
