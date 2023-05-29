@@ -6,7 +6,7 @@ if ($mysql->connect_error) {
 }
 
 
-$sql = "SELECT idAnuncio, tituloAnuncio, descripcion, fecha, img FROM anuncio WHERE estado = 1";
+$sql = "SELECT idAnuncio, tituloAnuncio, descripcion, fecha, img FROM anuncio WHERE estado = 1 OR estado = 2";
 $result = $mysql->query($sql);
 
 if ($result->num_rows >= 0) {
