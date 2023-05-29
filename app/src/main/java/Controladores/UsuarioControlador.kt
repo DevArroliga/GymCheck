@@ -135,7 +135,7 @@ class UsuarioControlador {
     fun eliminarUsuario(usuario:Usuario){
 
 
-        val urlAPI = "http://192.168.1.11/GymCheck-API/anuncio/eliminar_usuario.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/eliminar_usuario.php"
 
         val formBody = FormBody.Builder()
             .add("idUsuario", usuario.idUsuario.toString())

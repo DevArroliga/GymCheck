@@ -14,6 +14,19 @@ import com.example.gymcheck.databinding.ProductoLayoutBinding
 import com.example.gymcheck.databinding.UsuarioLayoutBinding
 
 class UsuarioAdapter(private var usuarios:List<Usuario>):RecyclerView.Adapter<UsuarioAdapter.UsuarioViewHolder>() {
+
+
+    private var editItemClickListener: OnEditItemClickListener? = null
+
+
+
+    interface OnEditItemClickListener{
+        fun onEditItemClick(usuario: Usuario)
+    }
+
+    fun setOnEditClickListener(listener: OnEditItemClickListener?){
+        this.editItemClickListener = listener
+    }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -46,11 +59,16 @@ class UsuarioAdapter(private var usuarios:List<Usuario>):RecyclerView.Adapter<Us
             binding.btnMenu.setOnClickListener {
                 val popupMenu = PopupMenu(itemView.context, it)
 
-                popupMenu.menuInflater.inflate(R.menu.menu_anuncio, popupMenu.menu)
+                popupMenu.menuInflater.inflate(R.menu.menu_usuario, popupMenu.menu)
                 popupMenu.setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
-                        R.id.menu_editar -> {
-                            // TODO: Implementar la edición del anuncio.
+                        R.id.menu_renovar -> {
+
+                            currentUsuario?.let {usuario ->
+                            editItemClickListener?.onEditItemClick(usuario)
+
+                            }
+
                             true
                         }
 
