@@ -3,7 +3,6 @@ package com.example.gymcheck
 import Controladores.ProductoControlador
 import Entidades.Producto
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -18,13 +17,15 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import com.example.gymcheck.databinding.FragmentActualizarProductoBinding
 import com.example.gymcheck.databinding.FragmentAgregarProductoBinding
-import androidx.activity.result.PickVisualMediaRequest.*
 import java.io.ByteArrayOutputStream
 
+class ActualizarProducto : Fragment() {
 
-class AgregarProducto : Fragment() {
-private var rutaimagen: String?= null
+    private lateinit var binding: FragmentActualizarProductoBinding
+
+    private var rutaimagen: String? = null
 
     val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
@@ -42,9 +43,16 @@ private var rutaimagen: String?= null
         }
 
     }
-    private lateinit var binding: FragmentAgregarProductoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        arguments?.let {
+
+        }
+
+
+
     }
 
     override fun onCreateView(
@@ -52,78 +60,57 @@ private var rutaimagen: String?= null
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAgregarProductoBinding.inflate(layoutInflater)
-        val controlador = ProductoControlador();
-
-        binding.btnAgregar.setOnClickListener {
-            val nombre = binding.etNombreProducto.text.toString()
-            val descripcion = binding.etDescripcion.text.toString()
-            val precioText = binding.etPrecio.text.toString()
-            val stockText = binding.etStock.text.toString()
-
-            if (nombre.isEmpty() || descripcion.isEmpty() || precioText.isEmpty() || stockText.isEmpty()) {
-                Toast.makeText(requireContext(), "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val precio = precioText.toFloatOrNull()
-            val stock = stockText.toIntOrNull()
-
-            if (precio == null || stock == null || precio <= 0 || stock <= 0) {
-                Toast.makeText(requireContext(), "Ingrese valores válidos para Precio y Stock", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val nuevoProducto = Producto(
-                null,
-                nombre,
-                descripcion,
-                precio,
-                stock,
+        binding = FragmentActualizarProductoBinding.inflate(layoutInflater)
+        val controlador = ProductoControlador()
+        binding.btnActualizar.setOnClickListener {
+            val actualizarProducto = Producto(
+                binding.etIdProducto.text.toString().toInt(),
+                binding.etNombreProducto.text.toString(),
+                binding.etDescripcion.text.toString(),
+                binding.etPrecio.text.toString().toFloat(),
+                binding.etStock.text.toString().toInt(),
                 null
             )
-            val imgBytes = getImageBytes()
-            controlador.agregarProducto(nuevoProducto, imgBytes)
-
+            val imgeBytes = getImageBytes()
+            controlador.editarProducto(actualizarProducto,imgeBytes)
         }
-
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
-
         binding.imgProducto.setOnClickListener {
             inicioFoto()
         }
+
     }
 
 
     private fun init() {
         binding.prodcutoToolbar.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_agregarProducto_to_productosAdminFragment)
+            findNavController().navigate(R.id.action_actualizarProducto_to_productosAdminFragment)
         }
     }
 
-    private fun inicioFoto(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            when{
+    private fun inicioFoto() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            when {
                 ContextCompat.checkSelfPermission(
                     binding.imgProducto.context, Manifest.permission.READ_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_GRANTED->{
+                ) == PackageManager.PERMISSION_GRANTED -> {
                     lanzarFoto()
                 }
                 else -> requestPermissionLaucher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
             }
-        }else{
+        } else {
             lanzarFoto()
 
         }
 
 
     }
+
     private val requestPermissionLaucher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
@@ -145,4 +132,6 @@ private var rutaimagen: String?= null
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
         return outputStream.toByteArray()
     }
+
+
 }

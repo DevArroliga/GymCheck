@@ -18,8 +18,13 @@ class ProductoControlador {
     // IP Marcelo: 192.168.1.11
 
     fun agregarProducto(producto: Producto, imgBytes: ByteArray?) {
-        val urlAPI = "http://192.168.1.11/GymCheck-API/producto/agregar_producto.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/producto/agregar_producto.php"
 
+
+        if (producto.nombre.isNullOrEmpty() || producto.descripcion.isNullOrEmpty() || producto.precio <= 0 || producto.stock <= 0) {
+            println("Ingrese valores válidos para todos los campos del producto")
+            return
+        }
         val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
         builder.addFormDataPart("nombre", producto.nombre)
         builder.addFormDataPart("descripcion", producto.descripcion)
@@ -57,21 +62,33 @@ class ProductoControlador {
     }
 
 
-    fun editarProducto(producto: Producto){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/producto/editar_producto.php"
+    fun editarProducto(producto: Producto, imgBytes: ByteArray?) {
+        val urlAPI = "http://192.168.1.22/GymCheck-API/producto/editar_producto.php"
 
-        val formBody = FormBody.Builder()
-            .add("idProducto", producto.idProducto.toString())
-            .add("nombre", producto.nombre)
-            .add("descripcion", producto.descripcion)
-            .add("precio", producto.precio.toString())
-            .add("stock", producto.stock.toString())
-            .add("img", producto.stock.toString())
-            .build()
-        val request = Request.Builder()
+
+        if (producto.nombre.isNullOrEmpty() || producto.descripcion.isNullOrEmpty() || producto.precio <= 0 || producto.stock <= 0) {
+            println("Ingrese valores válidos para todos los campos del producto")
+            return
+        }
+
+        val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
+        builder.addFormDataPart("idProducto", producto.idProducto.toString())
+        builder.addFormDataPart("nombre", producto.nombre)
+        builder.addFormDataPart("descripcion", producto.descripcion)
+        builder.addFormDataPart("precio", producto.precio.toString())
+        builder.addFormDataPart("stock", producto.stock.toString())
+
+        if (imgBytes != null) {
+            builder.addFormDataPart("img", "product_image", RequestBody.create("image/jpeg".toMediaTypeOrNull(), imgBytes))
+        }
+
+        val requestBody = builder.build()
+
+        val request: Request = Request.Builder()
             .url(urlAPI)
-            .post(formBody)
+            .post(requestBody)
             .build()
+
         val client = OkHttpClient()
 
         client.newCall(request).enqueue(object: Callback{
@@ -92,7 +109,8 @@ class ProductoControlador {
     }
 
     fun eliminarProducto(producto: Producto){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/producto/eliminar_producto.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/producto/eliminar_producto.php"
+
 
         val formBody = FormBody.Builder()
             .add("idProducto", producto.idProducto.toString())
@@ -122,7 +140,8 @@ class ProductoControlador {
 
     fun mostrarProducto(): List<Producto> = runBlocking {
         val productos = mutableListOf<Producto>()
-        val urlAPI = "http://192.168.1.11/GymCheck-API/producto/mostrar_producto.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/producto/mostrar_producto.php"
+
 
         launch(Dispatchers.IO) {
             val request = Request.Builder()

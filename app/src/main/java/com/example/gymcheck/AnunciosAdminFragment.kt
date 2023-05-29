@@ -19,15 +19,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class AnunciosAdminFragment : Fragment() {
+class AnunciosAdminFragment : Fragment(), AnuncioAdapter.OnEditItemClickListener {
     var controlador: AnuncioControlador = AnuncioControlador()
 
     private lateinit var binding: FragmentAnunciosAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
     }
 
     override fun onCreateView(
@@ -39,8 +37,6 @@ class AnunciosAdminFragment : Fragment() {
 
         binding.bottomNavigation.selectedItemId = R.id.item_4
         return binding.root
-
-
 
 
     }
@@ -85,12 +81,13 @@ class AnunciosAdminFragment : Fragment() {
         }
 
 
-
-
         val anuncios = controlador.mostrarAnuncio()
 
+        val anuncioAdapter = AnuncioAdapter(anuncios)
+        anuncioAdapter.setOnEditItemClickListener(this)
 
-        binding.rvAnuncio.adapter = AnuncioAdapter(anuncios)
+        binding.rvAnuncio.adapter = anuncioAdapter
+
         binding.rvAnuncio.layoutManager = LinearLayoutManager(context)
 
 
@@ -98,8 +95,9 @@ class AnunciosAdminFragment : Fragment() {
 
     }
 
-
-
+    override fun onEditItemClick(anuncio: Anuncio) {
+        findNavController().navigate(R.id.action_anunciosAdminFragment_to_actualizarAnuncioFragment)
+    }
 
 
 }

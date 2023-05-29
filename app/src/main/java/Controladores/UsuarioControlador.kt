@@ -25,7 +25,7 @@ class UsuarioControlador {
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/agregar_usuario.php"
 
 
         val requestBody: RequestBody = FormBody.Builder()
@@ -59,7 +59,7 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/editar_usuario.php"
 
 
         val formBody = FormBody.Builder()
@@ -90,7 +90,7 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://192.168.1.11/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/mostrar_usuario.php"
 
 
         launch(Dispatchers.IO) {
@@ -164,7 +164,7 @@ class UsuarioControlador {
         })
     }
     fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/emailSender/emailSender.php"
+        val urlAPI = "http://192.168.1.22/GymCheck-API/emailSender/emailSender.php"
 
 
         val formBody = FormBody.Builder()
