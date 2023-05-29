@@ -4,53 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/btnOscuro"
-    tools:context=".ClienteNuevo">
-
- <include
-     android:id="@+id/customToolbar"
-     layout="@layout/custom_toolbar"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:layout_marginBottom="16dp"
-
-     />
+    tools:context=".ClienteNuevo"
+    android:background="@color/teal_700">
 
  <LinearLayout
      android:layout_width="match_parent"
-     android:layout_height="wrap_content"
+     android:layout_height="match_parent"
      android:layout_gravity="center"
-     android:layout_marginTop="16dp"
+
      android:orientation="vertical">
 
 
-  <androidx.cardview.widget.CardView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:layout_margin="16dp"
-      android:layout_marginTop="16dp"
-      android:backgroundTint="@color/bgGreen"
-      app:cardCornerRadius="8dp">
-
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical"
-       android:padding="16dp">
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:hint="Nombres">
-
-     <com.google.android.material.textfield.TextInputEditText
-         android:id="@+id/etNombre"
+     <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:textColor="@color/white" />
+         android:padding="16dp">
+
+         <TextView
+             android:layout_width="180dp"
+             android:layout_height="wrap_content"
+             android:text="El primer paso para mejorar tu vida"
+             android:textSize="40dp"
+             android:textColor="@color/white"
+             android:textStyle="bold"/>
+
+         <ImageView
+             android:layout_width="200dp"
+             android:layout_height="200dp"
+             android:src="@drawable/nuevo_cliente"/>
+
+
+     </LinearLayout>
+
+
+      <androidx.cardview.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_margin="16dp"
+          android:backgroundTint="@color/white"
+          app:cardCornerRadius="12dp">
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:paddingHorizontal="32dp"
+               android:paddingVertical="32dp">
+
+           <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombres">
+
+         <com.google.android.material.textfield.TextInputEditText
+             android:id="@+id/etNombre"
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,13 +70,13 @@
         android:id="@+id/tfApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:hint="Apellidos">
 
      <com.google.android.material.textfield.TextInputEditText
          android:id="@+id/etApellido"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+         android:layout_height="50dp"
          android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -73,7 +85,7 @@
         android:id="@+id/tfFechaNac"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:hint="Fecha Nacimiento"
         app:endIconDrawable="@drawable/baseline_calendar_today_24"
         app:endIconMode="custom">
@@ -81,7 +93,7 @@
      <com.google.android.material.textfield.TextInputEditText
          android:id="@+id/etFechaNac"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+         android:layout_height="50dp"
          android:focusable="false"
          android:textColor="@color/white" />
 
@@ -91,21 +103,21 @@
         android:id="@+id/tfEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:hint="Email">
 
      <com.google.android.material.textfield.TextInputEditText
          android:id="@+id/etEmail"
 
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+         android:layout_height="50dp"
          android:inputType="textEmailAddress"
          android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
    <com.google.android.material.textfield.TextInputLayout
-       android:layout_marginTop="30dp"
+       android:layout_marginTop="15dp"
        android:id="@+id/tfCedula"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -115,29 +127,46 @@
         android:id="@+id/etCedula"
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:textColor="@color/white"
         />
 
    </com.google.android.material.textfield.TextInputLayout>
 
-
    </LinearLayout>
 
 
-  </androidx.cardview.widget.CardView>
 
-  <Button
-      android:id="@+id/btnAgregar"
-      style="@style/Widget.Material3.Button.Icon"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:layout_marginTop="10dp"
-      android:backgroundTint="@color/bgGreen"
-      android:text="Agregar cliente"
-      android:textColor="@color/white"
-      app:icon="@drawable/baseline_add_24" />
+    </androidx.cardview.widget.CardView>
+
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+
+         <ImageButton
+             android:id="@+id/btnAtras"
+             style="@style/Widget.Material3.Button.Icon"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/baseline_arrow_back_ios_24"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent" />
+
+
+         <ImageButton
+             android:id="@+id/btnAgregar"
+             style="@style/Widget.Material3.Button.Icon"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/baseline_arrow_forward_ios_24"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintTop_toTopOf="parent" />
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
  </LinearLayout>
 

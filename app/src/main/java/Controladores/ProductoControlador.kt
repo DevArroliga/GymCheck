@@ -20,6 +20,7 @@ class ProductoControlador {
     fun agregarProducto(producto: Producto, imgBytes: ByteArray?) {
         val urlAPI = "http://192.168.1.22/GymCheck-API/producto/agregar_producto.php"
 
+
         if (producto.nombre.isNullOrEmpty() || producto.descripcion.isNullOrEmpty() || producto.precio <= 0 || producto.stock <= 0) {
             println("Ingrese valores válidos para todos los campos del producto")
             return
@@ -63,6 +64,7 @@ class ProductoControlador {
 
     fun editarProducto(producto: Producto, imgBytes: ByteArray?) {
         val urlAPI = "http://192.168.1.22/GymCheck-API/producto/editar_producto.php"
+
 
         if (producto.nombre.isNullOrEmpty() || producto.descripcion.isNullOrEmpty() || producto.precio <= 0 || producto.stock <= 0) {
             println("Ingrese valores válidos para todos los campos del producto")
@@ -109,6 +111,7 @@ class ProductoControlador {
     fun eliminarProducto(producto: Producto){
         val urlAPI = "http://192.168.1.22/GymCheck-API/producto/eliminar_producto.php"
 
+
         val formBody = FormBody.Builder()
             .add("idProducto", producto.idProducto.toString())
             .build()
@@ -138,6 +141,7 @@ class ProductoControlador {
     fun mostrarProducto(): List<Producto> = runBlocking {
         val productos = mutableListOf<Producto>()
         val urlAPI = "http://192.168.1.22/GymCheck-API/producto/mostrar_producto.php"
+
 
         launch(Dispatchers.IO) {
             val request = Request.Builder()

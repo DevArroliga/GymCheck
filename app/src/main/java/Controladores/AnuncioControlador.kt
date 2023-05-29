@@ -111,6 +111,7 @@ class AnuncioControlador {
     fun editarAnucio(anuncio: Anuncio) {
         val urlAPI = "http://192.168.1.22/GymCheck-API/anuncio/editar_anuncio.php"
 
+
         val formBody = FormBody.Builder()
             .add("idAnuncio", anuncio.idAnuncio.toString())
             .add("tituloAnuncio", anuncio.tituloAnuncio)
@@ -141,9 +142,8 @@ class AnuncioControlador {
     }
 
     fun eliminarAnuncio(anuncio: Anuncio) {
-
-
         val urlAPI = "http://192.168.1.22/GymCheck-API/anuncio/eliminar_anuncio.php"
+
 
         val formBody = FormBody.Builder()
             .add("idAnuncio", anuncio.idAnuncio.toString())
