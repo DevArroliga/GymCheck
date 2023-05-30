@@ -97,9 +97,10 @@ this.editItemClickListener = Listener
                             currentAnuncio?.idAnuncio?.let { id ->
                                 anuncioControlador.eliminarAnuncio(anuncio)
                                 // Notifica al RecyclerView que un elemento ha sido eliminado.
-                                notifyItemRemoved(adapterPosition)
                                 actualizarLista(AnuncioControlador().mostrarAnuncio())
+                                notifyItemRemoved(adapterPosition)
                                 notifyDataSetChanged()
+
                             }
 
 

@@ -3,6 +3,7 @@ package Adapters
 import Controladores.ProductoControlador
 import Entidades.Anuncio
 import Entidades.Producto
+import Entidades.Usuario
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -23,7 +24,7 @@ import com.example.gymcheck.R
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 import java.io.File
 
-class ProductoAdapter(private val productos: List<Producto>) :
+class ProductoAdapter(private var productos: List<Producto>) :
     RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
     private val controlerProducto = ProductoControlador()
@@ -36,6 +37,10 @@ class ProductoAdapter(private val productos: List<Producto>) :
 
     fun setOnEditItemClickListener(Listener: OnEditItemClickListener?){
         this.editItemClickListener = Listener
+    }
+
+    fun actualizarLista(nuevaLista: List<Producto>) {
+        productos = nuevaLista
     }
 
 
@@ -93,6 +98,9 @@ class ProductoAdapter(private val productos: List<Producto>) :
 
                             currentProducto?.idProducto.let { id ->
                                 controlerProducto.eliminarProducto(producto)
+                                notifyItemRemoved(adapterPosition)
+                                actualizarLista(controlerProducto.mostrarProducto())
+                                notifyDataSetChanged()
 
 
                             }

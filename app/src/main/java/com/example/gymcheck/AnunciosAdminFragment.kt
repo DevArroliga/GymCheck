@@ -44,9 +44,6 @@ class AnunciosAdminFragment : Fragment(), AnuncioAdapter.OnEditItemClickListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnRefrescar.setOnClickListener {
-            findNavController().navigate(R.id.anunciosAdminFragment)
-        }
 
 
         binding.btnAgregar.setOnClickListener {

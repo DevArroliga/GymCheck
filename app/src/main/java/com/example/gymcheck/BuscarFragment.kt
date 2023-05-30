@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gymcheck.databinding.FragmentBuscarBinding
 
-class BuscarFragment : Fragment() {
+class BuscarFragment : Fragment(), UsuarioAdapter.OnEditItemClickListener {
 
     lateinit var binding:FragmentBuscarBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +38,11 @@ class BuscarFragment : Fragment() {
         val listaAux = mutableListOf<Usuario>()
 
         val usuarioAdapter = UsuarioAdapter(lista)
+        usuarioAdapter.setOnEditClickListener(this)
+
         binding.rvUsuarios.adapter = usuarioAdapter
         binding.rvUsuarios.layoutManager = LinearLayoutManager(context)
+
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_buscarFragment_to_homeAdminFragment)
         }
@@ -63,6 +66,10 @@ class BuscarFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onEditItemClick(usuario: Usuario) {
+        findNavController().navigate(R.id.action_buscarFragment_to_asignarUsuarioMembresiaFragment)
     }
 
 

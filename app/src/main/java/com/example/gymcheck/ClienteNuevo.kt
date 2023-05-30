@@ -1,7 +1,9 @@
 package com.example.gymcheck
 
+import Adapters.UsuarioAdapter
 import Controladores.PersonaControlador
 import Entidades.Persona
+import Entidades.Usuario
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -23,7 +25,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-class ClienteNuevo : Fragment() {
+class ClienteNuevo : Fragment(), UsuarioAdapter.OnEditItemClickListener {
 
     private lateinit var binding: FragmentClienteNuevoBinding
 
@@ -105,6 +107,11 @@ class ClienteNuevo : Fragment() {
                 binding.tfFechaNac.editText?.setText(formatter.format(selectedDate))
             }
         }
+    }
+
+    override fun onEditItemClick(usuario: Usuario){
+        findNavController().navigate(R.id.action_buscarFragment_to_asignarUsuarioMembresiaFragment)
+
     }
 
 }
