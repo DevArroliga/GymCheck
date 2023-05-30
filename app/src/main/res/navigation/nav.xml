@@ -144,6 +144,9 @@
         <action
             android:id="@+id/action_buscarFragment_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_buscarFragment_to_asignarUsuarioMembresiaFragment"
+            app:destination="@id/asignarUsuarioMembresiaFragment" />
     </fragment>
     <fragment
         android:id="@+id/actualizarAnuncioFragment"

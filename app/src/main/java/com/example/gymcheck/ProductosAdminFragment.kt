@@ -34,9 +34,7 @@ class ProductosAdminFragment : Fragment(), ProductoAdapter.OnEditItemClickListen
         binding = FragmentProductosAdminBinding.inflate(layoutInflater)
         binding.bottomNavigation.selectedItemId = R.id.item_3
 
-        binding.btnRefrescar.setOnClickListener {
-            findNavController().navigate(R.id.productosAdminFragment)
-        }
+
         binding.btnAgregar.setOnClickListener {
             findNavController().navigate(R.id.action_productosAdminFragment_to_agregarProducto)
         }
