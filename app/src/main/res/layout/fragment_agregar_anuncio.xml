@@ -117,7 +117,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/circuloItem"
-                    android:text="Agregar producto"
+                    android:text="Agregar anuncio"
                     android:textColor="@color/white"
                     app:icon="@drawable/baseline_add_24" />
 
