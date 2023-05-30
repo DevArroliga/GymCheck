@@ -14,6 +14,7 @@ import java.util.Date
 import kotlin.random.Random
 
 class PersonaControlador {
+    val ipMarcelo2 = "192.168.0.7"
     // IP Roberto: 192.168.0.15
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11
@@ -22,7 +23,7 @@ class PersonaControlador {
     fun agregarPersona(persona: Persona){
         val controlador = UsuarioControlador()
 
-        val urlAPI = "http://192.168.1.22/GymCheck-API/persona/agregar_persona.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/persona/agregar_persona.php"
 
 
         val requestBody: RequestBody = FormBody.Builder()
@@ -74,7 +75,7 @@ class PersonaControlador {
     }
 
     fun editarPersona(idPersona: Int, correo: String){
-        val urlAPI = "http://192.168.1.22/GymCheck-API/persona/editar_persona.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/persona/editar_persona.php"
 
 
         val formBody = FormBody.Builder()
@@ -105,7 +106,7 @@ class PersonaControlador {
     }
 
     fun mostrarPersona(): List<Persona>{
-        val urlAPI = "http://192.168.1.22/GymCheck-API/persona/mostrar_persona.php"
+        val urlAPI = "http://192.168.1.11/GymCheck-API/persona/mostrar_persona.php"
 
         var listaAux = mutableListOf<Persona>()
         val request = Request.Builder()

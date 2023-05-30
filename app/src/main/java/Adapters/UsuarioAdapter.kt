@@ -91,7 +91,7 @@ class UsuarioAdapter(private var usuarios:List<Usuario>):RecyclerView.Adapter<Us
                 }
                 popupMenu.show()
             }
-
+            var dias = 0
             binding.tvNombre.text = usuario.usuario
             if(usuario.idMembresia == 1){
                 mNombre = "Semanal"
@@ -103,10 +103,16 @@ class UsuarioAdapter(private var usuarios:List<Usuario>):RecyclerView.Adapter<Us
                 mNombre = "Mensual"
                 dTotal = 30
             }
+            if(dTotal - dtranscureed <= 0){
+                dTotal = 0
+            }else {
+                dias = dTotal - dtranscureed
+            }
             binding.tvMembresia.text = mNombre
             binding.tvCedula.text = usuario.cedula
-            binding.tvCaducidad.text = "Quedan ${dTotal - dtranscureed}"
+            binding.tvCaducidad.text = "Quedan $dias dias"
             binding.tvActivo.text = usuario.activo.toString()
+
         }
     }
 }
