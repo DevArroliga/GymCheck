@@ -57,13 +57,10 @@
                         android:background="@color/circuloItem"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/carrito"
+                        android:src="@drawable/Carrito"
                         android:contentDescription="TODO"
                         android:layout_gravity="center_horizontal"/>
                 </androidx.cardview.widget.CardView>
-
-
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tfNombreProducto"
