@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.FragmentHomeClientBinding
 
@@ -62,6 +63,27 @@ class HomeClientFragment : Fragment() {
         binding.btnCerrarSesion.setOnClickListener {
             sessionController?.clearSession()
             findNavController().navigate(R.id.action_homeClientFragment_to_loginFragment)
+        }
+        binding.bottomNavigation.setOnItemSelectedListener {item ->
+            when(item.itemId) {
+                R.id.item_1 -> {
+                    Toast.makeText(context,"Home", Toast.LENGTH_SHORT).show()
+                    true
+                }
+
+                R.id.item_2 -> {
+                    findNavController().navigate(R.id.action_homeClientFragment_to_productosClienteFragment)
+                    true
+                }
+
+                R.id.item_3 -> {
+                    findNavController().navigate(R.id.action_homeClientFragment_to_anunciosClienteFragment)
+                    true
+                }
+
+                else -> false
+            }
+
         }
 
     }

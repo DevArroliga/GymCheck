@@ -169,6 +169,36 @@
         <action
             android:id="@+id/action_homeClientFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeClientFragment_to_productosClienteFragment"
+            app:destination="@id/productosClienteFragment" />
+        <action
+            android:id="@+id/action_homeClientFragment_to_anunciosClienteFragment"
+            app:destination="@id/anunciosClienteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productosClienteFragment"
+        android:name="com.example.gymcheck.ProductosClienteFragment"
+        android:label="fragment_productos_cliente"
+        tools:layout="@layout/fragment_productos_cliente" >
+        <action
+            android:id="@+id/action_productosClienteFragment_to_anunciosClienteFragment"
+            app:destination="@id/anunciosClienteFragment" />
+        <action
+            android:id="@+id/action_productosClienteFragment_to_homeClientFragment"
+            app:destination="@id/homeClientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/anunciosClienteFragment"
+        android:name="com.example.gymcheck.AnunciosClienteFragment"
+        android:label="fragment_anuncios_cliente"
+        tools:layout="@layout/fragment_anuncios_cliente" >
+        <action
+            android:id="@+id/action_anunciosClienteFragment_to_productosClienteFragment"
+            app:destination="@id/productosClienteFragment" />
+        <action
+            android:id="@+id/action_anunciosClienteFragment_to_homeClientFragment"
+            app:destination="@id/homeClientFragment" />
     </fragment>
 
     android:id="@+id/productosFragment"
