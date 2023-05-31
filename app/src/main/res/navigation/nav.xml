@@ -138,6 +138,9 @@
         <action
             android:id="@+id/action_asignarUsuarioMembresiaFragment_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_asignarUsuarioMembresiaFragment_to_buscarFragment"
+            app:destination="@id/buscarFragment" />
     </fragment>
     <fragment
         android:id="@+id/buscarFragment"
@@ -177,13 +180,6 @@
             app:destination="@id/loginFragment" />
     </fragment>
 
-    android:id="@+id/productosFragment"
-        android:name="com.example.gymcheck.ProductosFragment"
-        android:label="ProductosFragment" />
 
-    android:id="@+id/productosFragment"
-        android:name="com.example.gymcheck.ProductosFragment"
-        android:label="fragment_productos"
-        tools:layout="@layout/fragment_productos" />
 
 </navigation>

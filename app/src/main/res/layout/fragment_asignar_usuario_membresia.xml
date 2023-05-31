@@ -8,8 +8,8 @@
     tools:context=".AsignarUsuarioMembresiaFragment">
 
         <include
-            android:id="@+id/customToolbar"
-            layout="@layout/custom_toolbar"
+            android:id="@+id/asignarMembresia"
+            layout="@layout/toolbar_asignar_membresia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
