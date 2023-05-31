@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_membresiaAdminFragment_to_anunciosAdminFragment"
             app:destination="@id/anunciosAdminFragment" />
+        <action
+            android:id="@+id/action_membresiaAdminFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
 
     </fragment>
     <fragment
@@ -91,6 +94,9 @@
         <action
             android:id="@+id/action_productosAdminFragment_to_actualizarProducto"
             app:destination="@id/actualizarProducto" />
+        <action
+            android:id="@+id/action_productosAdminFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/anunciosAdminFragment"
@@ -112,6 +118,9 @@
         <action
             android:id="@+id/action_anunciosAdminFragment_to_actualizarAnuncioFragment"
             app:destination="@id/actualizarAnuncioFragment" />
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/agregarAnuncio"
