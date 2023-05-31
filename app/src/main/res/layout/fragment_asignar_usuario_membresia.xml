@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/btnPrimario"
+    android:background="@color/teal_700"
     tools:context=".AsignarUsuarioMembresiaFragment">
 
         <include
@@ -30,7 +30,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/bgGreen"
+                android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -39,12 +39,43 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Asigne una membresia"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_gravity="center"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/membership"/>
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/pinwino"/>
+
+
+                    </LinearLayout>
+
+
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tfMembresia"
-                        android:layout_width="250dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:hint="Tipo Membresia"
+                        android:layout_marginTop="30dp"
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                         <AutoCompleteTextView
@@ -60,7 +91,7 @@
                         android:id="@+id/tfcedula"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:hint="Cedula">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -73,22 +104,28 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
 
+
+                    <Button
+                        android:id="@+id/btnAgregar"
+                        style="@style/Widget.Material3.Button.Icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/circuloItem"
+                        android:text="Añadir membresia"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/baseline_add_24" />
+
+
                 </LinearLayout>
+
+
 
 
             </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/btnAgregar"
-                style="@style/Widget.Material3.Button.Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/bgGreen"
-                android:text="Agregar cliente"
-                android:textColor="@color/white"
-                app:icon="@drawable/baseline_add_24" />
+
 
         </LinearLayout>
 
