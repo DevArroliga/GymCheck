@@ -7,7 +7,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/btnOscuro">
+        android:background="@color/bgGreen">
         <ImageView
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
             android:id="@+id/tv_title_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Añadir Cliente"
+            android:text="Añadir cliente"
             android:layout_marginLeft="80dp"
             android:textSize="20sp"
             android:textStyle="bold"

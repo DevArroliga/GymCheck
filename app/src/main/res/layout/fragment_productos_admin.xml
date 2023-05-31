@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeAdminFragment"
-    android:background="@drawable/gradiant"
+    android:background="@color/teal_700"
     android:orientation="vertical">
 
 
@@ -42,11 +42,10 @@
 
             <Button
                 android:id="@+id/btnAgregar"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Agregar producto"
-                android:layout_gravity="right"
+                android:text="Agregar anuncio"
+                android:layout_gravity="center"
                 />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -65,7 +64,7 @@
         android:layout_gravity="bottom"
         >
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:background="@color/btnOscuro"
+            android:background="@color/bgGreen"
             android:id="@+id/bottom_navigation"
             android:forceDarkAllowed="true"
             android:layout_width="match_parent"
