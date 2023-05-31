@@ -4,61 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/btnOscuro"
+    android:background="@color/teal_700"
     tools:context=".AgregarAnuncio">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
         <include
-            android:id="@+id/actualizarToolbar"
+            android:id="@+id/anuncioToolbar"
             layout="@layout/actualizar_anuncio_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="16dp"
-            android:backgroundTint="@color/bgGreen"
-            app:cardCornerRadius="8dp">
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:paddingHorizontal="32dp"
+                android:paddingVertical="32dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center">
+                    android:layout_gravity="center_horizontal"
+                    android:text="Inserte una imagen para su anuncio"
+                    android:textColor="@color/circuloItem"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:backgroundTint="@color/white"
+                    app:cardCornerRadius="12dp">
                     <ImageView
                         android:id="@+id/imgAnuncio"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/anuncioo" />
-                </LinearLayout>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/anuncioo"
+                        android:contentDescription="TODO"/>
+                </androidx.cardview.widget.CardView>
+
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tfIdAnuncio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:hint="ID">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etIdAnuncio"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:layout_height="50dp"
                         android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -67,13 +82,13 @@
                     android:id="@+id/tfNombreAnuncio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:hint="Nombre">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNombreAnuncio"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -82,13 +97,13 @@
                     android:id="@+id/tfDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:hint="Descripcion">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etDescripcion"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -97,33 +112,34 @@
                     android:id="@+id/tfFechaVence"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:hint="Fecha vencimiento">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etFechaVence"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:focusable="false"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnAgregar"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/circuloItem"
+                    android:text="Agregar anuncio"
+                    android:textColor="@color/white"
+                    app:icon="@drawable/baseline_add_24" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/btnActualizar"
-            style="@style/Widget.Material3.Button.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/btnOscuro"
-            android:text="Actualizar anuncio"
-            android:textColor="@color/white"
-            app:icon="@drawable/baseline_add_24" />
 
     </LinearLayout>
 
