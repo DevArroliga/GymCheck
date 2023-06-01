@@ -7,6 +7,7 @@ import Entidades.Usuario
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
@@ -24,20 +25,20 @@ import com.example.gymcheck.R
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 import java.io.File
 
-class ProductoAdapter(private var productos: List<Producto>, private var context: Context) :
+class ProductoAdapter(private var productos: List<Producto>, private var context: Context, private var controller:NavController) :
     RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
     private val controlerProducto = ProductoControlador()
-    private var editItemClickListener: OnEditItemClickListener?= null
+//    private var editItemClickListener: OnEditItemClickListener?= null
 
-    interface OnEditItemClickListener {
-        fun onEditItemClick(producto: Producto)
-
-    }
-
-   fun setOnEditItemClickListener(Listener: ProductosAdminFragment){
-       this.editItemClickListener = Listener
- }
+//    interface OnEditItemClickListener {
+//        fun onEditItemClick(producto: Producto)
+//
+//    }
+//
+//   fun setOnEditItemClickListener(Listener: ProductosAdminFragment){
+//       this.editItemClickListener = Listener
+// }
 
     fun actualizarLista(nuevaLista: List<Producto>) {
         productos = nuevaLista
@@ -65,7 +66,6 @@ class ProductoAdapter(private var productos: List<Producto>, private var context
         fun bind(producto: Producto) {
 
             currentProducto = producto
-
             binding.tvNombreSup.text = producto.nombre
             binding.tvDescriptionSup.text = producto.descripcion
             binding.tvStock.text = producto.stock.toString()
@@ -86,6 +86,10 @@ class ProductoAdapter(private var productos: List<Producto>, private var context
             if(session.isLoggedIn()){
                 btnMenu.isInvisible = true
             }
+            var prdto = producto.idProducto.toString()
+            var bundle:Bundle? = Bundle()
+            bundle!!.putString("pid", prdto)
+
             btnMenu.setOnClickListener {
                 val popupMenu = PopupMenu(itemView.context, btnMenu)
                 popupMenu.menuInflater.inflate(R.menu.menu_producto, popupMenu.menu)
@@ -93,10 +97,7 @@ class ProductoAdapter(private var productos: List<Producto>, private var context
                 popupMenu.setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.menu_editar -> {
-
-                            currentProducto?.let { producto ->
-                                editItemClickListener?.onEditItemClick(producto)
-                            }
+                            controller.navigate(R.id.action_productosAdminFragment_to_actualizarProducto, bundle)
                             true
                         }
                         R.id.menu_eliminar -> {

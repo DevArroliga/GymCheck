@@ -68,8 +68,8 @@ class ProductosClienteFragment : Fragment() {
 
         val productos = controlador.mostrarProducto()
 
-
-        val productoAdapte = context?.let { ProductoAdapter(productos, it) }
+        var ex = findNavController()
+        val productoAdapte = context?.let { ProductoAdapter(productos, it, ex) }
         //productoAdapte.setOnEditItemClickListener(this)
 
         binding.rvProductos.adapter = productoAdapte

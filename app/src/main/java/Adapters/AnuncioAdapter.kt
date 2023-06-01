@@ -9,10 +9,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.core.view.isInvisible
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -23,18 +25,18 @@ import com.example.gymcheck.R
 import com.example.gymcheck.databinding.AnuncioLayoutBinding
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 
-class AnuncioAdapter(private var anuncio: List<Anuncio>, private var context: Context) :
+class AnuncioAdapter(private var anuncio: List<Anuncio>, private var context: Context, private var controller: NavController) :
     RecyclerView.Adapter<AnuncioAdapter.AnuncioViewHolder>() {
 
-    private var editItemClickListener: OnEditItemClickListener? = null
+//    private var editItemClickListener: OnEditItemClickListener? = null
 
   interface OnEditItemClickListener{
       fun onEditItemClick(anuncio: Anuncio)
   }
 
-fun setOnEditItemClickListener(Listener: OnEditItemClickListener?){
-this.editItemClickListener = Listener
-}
+//fun setOnEditItemClickListener(Listener: OnEditItemClickListener?){
+//this.editItemClickListener = Listener
+//}
 
 
 
@@ -87,16 +89,20 @@ this.editItemClickListener = Listener
             if (session.isLoggedIn()){
                 btnMenu.isInvisible = true  
             }
-
+            var an = anuncio.idAnuncio
+            var bundle:Bundle? = Bundle()
+            bundle!!.putString("aid", an.toString())
             btnMenu.setOnClickListener {
                 val popupMenu = PopupMenu(itemView.context, btnMenu)
                 popupMenu.menuInflater.inflate(R.menu.menu_anuncio, popupMenu.menu)
                 popupMenu.setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.menu_editar -> {
-                            currentAnuncio?.let { anuncio ->
-                                editItemClickListener?.onEditItemClick(anuncio)
-                            }
+//                            currentAnuncio?.let { anuncio ->
+//                                editItemClickListener?.onEditItemClick(anuncio)
+//                            }
+
+                            controller.navigate(R.id.action_anunciosAdminFragment_to_actualizarAnuncioFragment, bundle)
                             true
                         }
 

@@ -66,8 +66,9 @@ class AnunciosClienteFragment : Fragment() {
         setUpDrawerNavigation()
 
         val anuncios = controlador.mostrarAnuncio()
+        var ex = findNavController()
 
-        val anuncioAdapter = context?.let { AnuncioAdapter(anuncios, it) }
+        val anuncioAdapter = context?.let { AnuncioAdapter(anuncios, it,ex)  }
         //anuncioAdapter.setOnEditItemClickListener(this)
 
         binding.rvAnuncio.adapter = anuncioAdapter

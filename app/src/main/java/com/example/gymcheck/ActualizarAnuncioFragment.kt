@@ -2,6 +2,7 @@ package com.example.gymcheck
 
 import Controladores.AnuncioControlador
 import Entidades.Anuncio
+import Entidades.Producto
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,9 +21,11 @@ class ActualizarAnuncioFragment : Fragment() {
 private lateinit var anuncio: Anuncio
 
     private lateinit var binding: FragmentActualizarAnuncioBinding
+    var id = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        id = requireArguments().getString("aid").toString()
     }
 
     @SuppressLint("SuspiciousIndentation")
@@ -33,8 +36,19 @@ private lateinit var anuncio: Anuncio
         // Inflate the layout for this fragment
         binding = FragmentActualizarAnuncioBinding.inflate(layoutInflater)
 
-
         val controlador = AnuncioControlador()
+        val lista = controlador.mostrarAnuncio()
+        var anuncioAux = Anuncio(null,"","","", null)
+        lista.forEach {
+            if (it.idAnuncio.toString() == id){
+                anuncioAux = it
+            }
+        }
+        binding.etIdAnuncio.setText(anuncioAux.idAnuncio.toString())
+        binding.etDescripcion.setText(anuncioAux.descripcion)
+        binding.etNombreAnuncio.setText(anuncioAux.tituloAnuncio)
+        binding.etFechaVence.setText(anuncioAux.fecha)
+
         binding.btnAgregar.setOnClickListener {
             val actualizarAnuncio = Anuncio(
                 binding.etIdAnuncio.text.toString().toInt(),

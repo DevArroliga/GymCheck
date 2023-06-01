@@ -16,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gymcheck.databinding.FragmentProductosAdminBinding
 
-class ProductosAdminFragment : Fragment(), ProductoAdapter.OnEditItemClickListener {
+class ProductosAdminFragment : Fragment(){
 
     var controlador: ProductoControlador = ProductoControlador()
     lateinit var binding: FragmentProductosAdminBinding
@@ -83,12 +83,12 @@ class ProductosAdminFragment : Fragment(), ProductoAdapter.OnEditItemClickListen
 
         val productos = controlador.mostrarProducto()
 
+        var ex = findNavController()
+        val productoAdapte = context?.let { ProductoAdapter(productos, it, ex) }
 
-        val productoAdapte = context?.let { ProductoAdapter(productos, it) }
-
-        if (productoAdapte != null) {
-            productoAdapte.setOnEditItemClickListener(this)
-        }
+//        if (productoAdapte != null) {
+//            productoAdapte.setOnEditItemClickListener(this)
+//        }
 
         binding.rvProductos.adapter = productoAdapte
         binding.rvProductos.layoutManager = LinearLayoutManager(context)
@@ -126,10 +126,6 @@ class ProductosAdminFragment : Fragment(), ProductoAdapter.OnEditItemClickListen
         }
     }
 
-
-    override fun onEditItemClick(producto: Producto) {
-        findNavController().navigate(R.id.action_productosAdminFragment_to_actualizarProducto)
-    }
 
 
 }
