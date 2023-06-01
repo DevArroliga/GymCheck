@@ -136,7 +136,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etContraActual"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:textColor="@color/bgGreen" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -151,7 +151,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etContraNueva"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:textColor="@color/bgGreen" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -166,7 +166,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etContraNuevaRpt"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:textColor="@color/bgGreen" />
 
             </com.google.android.material.textfield.TextInputLayout>
