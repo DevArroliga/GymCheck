@@ -38,6 +38,29 @@
 La aplicación tendrá una pantalla de inicio de sesión donde el usuario deberá ingresar sus credenciales, incluyendo nombre de usuario y contraseña. La vista del administrador será diferente a la del usuario. Además, el administrador será responsable de crear una cuenta de usuario para cada cliente, ingresando sus datos personales y privados, y luego proporcionando al usuario un nombre de usuario y contraseña para que pueda acceder a la aplicación.
 	
 La aplicación cumplirá dos funciones, una para los propietarios del gimnasio y otra para los clientes. Para los propietarios del gimnasio, la aplicación permitirá llevar un registro digital y contabilizar las suscripciones de manera más sencilla y organizada, lo que ayudará a evitar errores y fallos a la hora de cobrar las membresías. Por otro lado, la función para los usuarios les mostrará la disponibilidad de suplementos, precios, promociones y detalles sobre su suscripción.
+	
+	
+	
+### Directorios dentro del código
+
+<table width="100%">
+    <tr>
+        <th>Elemento</th>
+        <td>Descripción</td>
+    </tr>
+    <tr>
+	<td><strong>Entidades</strong></th>
+       <td>Directorio enfocado a las dataclass del proyecto, clases que se utilizan únicamente como un molde para los objetos creados, pues únicamente queremos sus atributos y carecen de metodos propios.</td>
+    </tr>
+    <tr>
+        <td><strong>Adaptadores</strong></th>
+        <td>En este directorio se encuentran los adaptadores que nos sirven para mostrar los elementos obtenidos de los recycler view.</td>
+    </tr>
+    <tr>
+        <td><strong>Controladores</strong></th>
+        <td>Dentro se encuentran las clases mediadoras encargadas de las operaciones y metodos entre las vistas y las entidades.</td>
+    </tr>
+</table>
 
 
 🐍 A Snake Eating
