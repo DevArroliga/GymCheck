@@ -36,6 +36,9 @@ class HomeClientFragment : Fragment() {
         binding = FragmentHomeClientBinding.inflate(layoutInflater)
         drawerLayout = binding.drawerLayout
 
+        binding.btnInfo.setOnClickListener {
+            findNavController().navigate(R.id.action_homeClientFragment_to_usuarioInfoFragment)
+        }
 
         return binding.root
     }
