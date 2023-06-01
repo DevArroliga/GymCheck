@@ -49,18 +49,29 @@ class ClienteNuevo : Fragment(), UsuarioAdapter.OnEditItemClickListener {
         val controlador = PersonaControlador()
 
         binding.btnAgregar.setOnClickListener {
+            val nombre = binding.etNombre.text.toString()
+            val apellido = binding.etApellido.text.toString()
+            val fechaNac = binding.etFechaNac.text.toString()
+           val  email = binding.etEmail.text.toString()
+            val cedula = binding.etCedula.text.toString().lowercase().trim()
 
-            val nuevaPersona = Persona(
-                null,
-                binding.etNombre.text.toString(),
-                binding.etApellido.text.toString(),
-                binding.etFechaNac.text.toString(),
-                binding.etEmail.text.toString(),
-                binding.etCedula.text.toString().lowercase().trim()
-            )
-            controlador.agregarPersona(nuevaPersona)
+            if (nombre.isNullOrEmpty()||apellido.isNullOrEmpty()||fechaNac.isNullOrEmpty()||email.isNullOrEmpty()||cedula.isNullOrEmpty()){
+                Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
+            }else{
 
-            next()
+                val nuevaPersona = Persona(
+                    null,
+                    nombre,
+                    apellido,
+                    fechaNac,
+                    email,
+                    cedula
+                )
+                controlador.agregarPersona(nuevaPersona)
+
+                next()
+            }
+
         }
 
         binding.btnAtras.setOnClickListener {
