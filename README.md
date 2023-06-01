@@ -27,6 +27,11 @@
         <img src="https://img.shields.io/badge/-Github-000?logo=github&style=for-the-badge&logoColor=white" alt="Bradge Github" />
   
 </p>
+	
+## Lenguajes utilizados
+	
+- Kotlin
+- PHP
 
 🐍 A Snake Eating
 	
