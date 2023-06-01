@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -84,6 +85,27 @@ class HomeClientFragment : Fragment() {
                 else -> false
             }
 
+
+        }
+        binding.bottomNavigation.setOnItemSelectedListener {item ->
+            when(item.itemId) {
+                R.id.item_1 -> {
+                    Toast.makeText(context,"Home", Toast.LENGTH_SHORT).show()
+                    true
+                }
+
+                R.id.item_2 -> {
+                    findNavController().navigate(R.id.action_homeClientFragment_to_productosClienteFragment)
+                    true
+                }
+
+                R.id.item_3 -> {
+                    findNavController().navigate(R.id.action_homeClientFragment_to_anunciosClienteFragment)
+                    true
+                }
+
+                else -> false
+            }
 
         }
     }

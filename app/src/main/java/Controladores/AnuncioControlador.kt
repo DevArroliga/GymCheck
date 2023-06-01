@@ -13,6 +13,7 @@ import org.json.JSONObject
 import java.io.IOException
 
 class AnuncioControlador {
+    val ipMarcelo2 = "192.168.0.7"
 
     val ipAllan= "192.168.1.20"
     // IP Roberto: 192.168.0.15
@@ -20,6 +21,8 @@ class AnuncioControlador {
     // IP Marcelo: 192.168.1.11
 
     fun agregarAnuncio(anuncio: Anuncio, imgBytes: ByteArray?) {
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/anuncio/agregar_anuncio.php"
+
         val urlAPI = "http://$ipAllan/GymCheck-API/anuncio/agregar_anuncio.php"
 
         val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
@@ -62,6 +65,7 @@ class AnuncioControlador {
     }
 
     fun obtenerAnuncio(anuncioId: Int, callback: (Anuncio?) -> Unit) {
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/anuncio/obtener_anuncio.php"
         val urlAPI = "http://$ipAllan/GymCheck-API/anuncio/obtener_anuncio.php"
 
         val formBody = FormBody.Builder()
@@ -110,6 +114,7 @@ class AnuncioControlador {
 
 
     fun editarAnucio(anuncio: Anuncio) {
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/anuncio/editar_anuncio.php"
         val urlAPI = "http://$ipAllan/GymCheck-API/anuncio/editar_anuncio.php"
 
 
@@ -143,6 +148,7 @@ class AnuncioControlador {
     }
 
     fun eliminarAnuncio(anuncio: Anuncio) {
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/anuncio/eliminar_anuncio.php"
         val urlAPI = "http://$ipAllan/GymCheck-API/anuncio/eliminar_anuncio.php"
 
 
@@ -174,6 +180,7 @@ class AnuncioControlador {
 
     fun mostrarAnuncio(): List<Anuncio> = runBlocking {
         val anuncios = mutableListOf<Anuncio>()
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/anuncio/mostrar_anuncio.php"
         val urlAPI = "http://$ipAllan/GymCheck-API/anuncio/mostrar_anuncio.php"
 
         launch(Dispatchers.IO) {

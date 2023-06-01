@@ -2,7 +2,6 @@ package com.example.gymcheck
 
 import Adapters.ProductoAdapter
 import Controladores.ProductoControlador
-import Entidades.Anuncio
 import Entidades.Producto
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +15,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gymcheck.databinding.FragmentProductosAdminBinding
-import com.example.gymcheck.databinding.ProductoLayoutBinding
 
 class ProductosAdminFragment : Fragment(), ProductoAdapter.OnEditItemClickListener {
 
@@ -87,7 +85,7 @@ class ProductosAdminFragment : Fragment(), ProductoAdapter.OnEditItemClickListen
 
 
         val productoAdapte = ProductoAdapter(productos)
-        productoAdapte.setOnEditItemClickListener(this)
+        //productoAdapte.setOnEditItemClickListener(this)
 
         binding.rvProductos.adapter = productoAdapte
         binding.rvProductos.layoutManager = LinearLayoutManager(context)
