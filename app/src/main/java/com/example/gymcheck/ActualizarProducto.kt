@@ -62,7 +62,7 @@ class ActualizarProducto : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentActualizarProductoBinding.inflate(layoutInflater)
         val controlador = ProductoControlador()
-        binding.btnActualizar.setOnClickListener {
+        binding.btnAgregar.setOnClickListener {
             val actualizarProducto = Producto(
                 binding.etIdProducto.text.toString().toInt(),
                 binding.etNombreProducto.text.toString(),
@@ -88,7 +88,7 @@ class ActualizarProducto : Fragment() {
 
 
     private fun init() {
-        binding.prodcutoToolbar.btnBack.setOnClickListener {
+        binding.productoToolbar.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_actualizarProducto_to_productosAdminFragment)
         }
     }

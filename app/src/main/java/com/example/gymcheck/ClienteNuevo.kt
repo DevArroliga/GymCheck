@@ -37,7 +37,7 @@ class ClienteNuevo : Fragment(), UsuarioAdapter.OnEditItemClickListener {
         val fechaHoy = Date()
         val formato = SimpleDateFormat("yyyy/MM/dd")
         val fechaFormateada = formato.format(fechaHoy)
-        Toast.makeText(context, fechaFormateada.toString() , Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onCreateView(

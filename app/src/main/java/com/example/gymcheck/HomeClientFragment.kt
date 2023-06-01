@@ -11,6 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.FragmentHomeClientBinding
 
@@ -18,7 +21,7 @@ import com.example.gymcheck.databinding.FragmentHomeClientBinding
 class HomeClientFragment : Fragment() {
 
     lateinit var binding:FragmentHomeClientBinding
-
+    private lateinit var drawerLayout: DrawerLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,12 +34,17 @@ class HomeClientFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentHomeClientBinding.inflate(layoutInflater)
+        drawerLayout = binding.drawerLayout
 
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        setupToolbar()
+        setUpDrawerNavigation()
+
         val sessionController = context?.let { SesionControlador.getInstance(it) }
         val usuario = sessionController?.getUsername()
         var textToShow = "BIENVENIDO A GYM-CHECK, $usuario"
@@ -60,9 +68,24 @@ class HomeClientFragment : Fragment() {
         val daysR = if ((diast - daysTr) >= 0) diast - daysTr else 0
 
         binding.tvTiempo.text = "Te quedan $daysR dias"
-        binding.btnCerrarSesion.setOnClickListener {
-            sessionController?.clearSession()
-            findNavController().navigate(R.id.action_homeClientFragment_to_loginFragment)
+
+
+    }
+
+    private fun setUpDrawerNavigation() {
+        val sessionController = context?.let { SesionControlador.getInstance(it) }
+
+        binding.navegationView.setNavigationItemSelectedListener {menuItem->
+            when(menuItem.itemId) {
+                R.id.menu_logout ->{
+                   sessionController?.clearSession()
+                    findNavController().navigate(R.id.action_homeClientFragment_to_loginFragment)
+                    true
+                }
+                else -> false
+            }
+
+
         }
         binding.bottomNavigation.setOnItemSelectedListener {item ->
             when(item.itemId) {
@@ -85,7 +108,23 @@ class HomeClientFragment : Fragment() {
             }
 
         }
+    }
 
+    private fun setupToolbar() {
+        (requireActivity() as AppCompatActivity).apply {
+            setSupportActionBar(binding.topAppBar)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu)
+        }
+
+        binding.topAppBar.setNavigationOnClickListener {
+            if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                drawerLayout.closeDrawer(GravityCompat.START)
+            }else{
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+
+        }
     }
 
 
