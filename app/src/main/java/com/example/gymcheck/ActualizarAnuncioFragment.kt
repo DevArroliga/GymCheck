@@ -35,7 +35,7 @@ private lateinit var anuncio: Anuncio
 
 
         val controlador = AnuncioControlador()
-        binding.btnActualizar.setOnClickListener {
+        binding.btnAgregar.setOnClickListener {
             val actualizarAnuncio = Anuncio(
                 binding.etIdAnuncio.text.toString().toInt(),
                 binding.etNombreAnuncio.text.toString(),
@@ -66,7 +66,7 @@ private lateinit var anuncio: Anuncio
     }
 
     private fun init() {
-        binding.actualizarToolbar.btnBack.setOnClickListener {
+        binding.anuncioToolbar.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_actualizarAnuncioFragment_to_anunciosAdminFragment)
         }
     }

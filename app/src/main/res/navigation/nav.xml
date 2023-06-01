@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_buscarFragment"
             app:destination="@id/buscarFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/membresiaAdminFragment"
@@ -53,6 +56,9 @@
         <action
             android:id="@+id/action_membresiaAdminFragment_to_anunciosAdminFragment"
             app:destination="@id/anunciosAdminFragment" />
+        <action
+            android:id="@+id/action_membresiaAdminFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
 
     </fragment>
     <fragment
@@ -88,6 +94,9 @@
         <action
             android:id="@+id/action_productosAdminFragment_to_actualizarProducto"
             app:destination="@id/actualizarProducto" />
+        <action
+            android:id="@+id/action_productosAdminFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/anunciosAdminFragment"
@@ -109,6 +118,9 @@
         <action
             android:id="@+id/action_anunciosAdminFragment_to_actualizarAnuncioFragment"
             app:destination="@id/actualizarAnuncioFragment" />
+        <action
+            android:id="@+id/action_anunciosAdminFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/agregarAnuncio"
@@ -135,6 +147,9 @@
         <action
             android:id="@+id/action_asignarUsuarioMembresiaFragment_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_asignarUsuarioMembresiaFragment_to_buscarFragment"
+            app:destination="@id/buscarFragment" />
     </fragment>
     <fragment
         android:id="@+id/buscarFragment"
@@ -172,15 +187,38 @@
         <action
             android:id="@+id/action_homeClientFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeClientFragment_to_productosClienteFragment"
+            app:destination="@id/productosClienteFragment" />
+        <action
+            android:id="@+id/action_homeClientFragment_to_anunciosClienteFragment"
+            app:destination="@id/anunciosClienteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productosClienteFragment"
+        android:name="com.example.gymcheck.ProductosClienteFragment"
+        android:label="fragment_productos_cliente"
+        tools:layout="@layout/fragment_productos_cliente" >
+        <action
+            android:id="@+id/action_productosClienteFragment_to_anunciosClienteFragment"
+            app:destination="@id/anunciosClienteFragment" />
+        <action
+            android:id="@+id/action_productosClienteFragment_to_homeClientFragment"
+            app:destination="@id/homeClientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/anunciosClienteFragment"
+        android:name="com.example.gymcheck.AnunciosClienteFragment"
+        android:label="fragment_anuncios_cliente"
+        tools:layout="@layout/fragment_anuncios_cliente" >
+        <action
+            android:id="@+id/action_anunciosClienteFragment_to_productosClienteFragment"
+            app:destination="@id/productosClienteFragment" />
+        <action
+            android:id="@+id/action_anunciosClienteFragment_to_homeClientFragment"
+            app:destination="@id/homeClientFragment" />
     </fragment>
 
-    android:id="@+id/productosFragment"
-        android:name="com.example.gymcheck.ProductosFragment"
-        android:label="ProductosFragment" />
 
-    android:id="@+id/productosFragment"
-        android:name="com.example.gymcheck.ProductosFragment"
-        android:label="fragment_productos"
-        tools:layout="@layout/fragment_productos" />
 
 </navigation>

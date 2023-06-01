@@ -19,11 +19,11 @@ class PersonaControlador {
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11
     // IP Marcelo 2: 192.168.0.7
-
+    val ipAllan= "192.168.1.20"
     fun agregarPersona(persona: Persona){
         val controlador = UsuarioControlador()
 
-        val urlAPI = "http://$ipMarcelo2/GymCheck-API/persona/agregar_persona.php"
+        val urlAPI = "http://$ipAllan/GymCheck-API/persona/agregar_persona.php"
 
 
         val requestBody: RequestBody = FormBody.Builder()
@@ -75,7 +75,7 @@ class PersonaControlador {
     }
 
     fun editarPersona(idPersona: Int, correo: String){
-        val urlAPI = "http://192.168.1.11/GymCheck-API/persona/editar_persona.php"
+        val urlAPI = "http://$ipAllan/GymCheck-API/persona/editar_persona.php"
 
 
         val formBody = FormBody.Builder()
@@ -106,7 +106,7 @@ class PersonaControlador {
     }
 
     fun mostrarPersona(): List<Persona>{
-        val urlAPI = "http://192.168.1.11/GymCheck-API/persona/mostrar_persona.php"
+        val urlAPI = "http://$ipAllan/GymCheck-API/persona/mostrar_persona.php"
 
         var listaAux = mutableListOf<Persona>()
         val request = Request.Builder()

@@ -27,6 +27,7 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentAsignarUsuarioMembresiaBinding.inflate(layoutInflater)
         var nMembresia = " "
 
@@ -55,12 +56,21 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
             }
 
 
+
             controlador.editarUsuario(usuario.cedula, putIdMem(nMembresia))
             findNavController().navigate(R.id.action_asignarUsuarioMembresiaFragment_to_homeAdminFragment)
 
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.asignarMembresia.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_asignarUsuarioMembresiaFragment_to_buscarFragment)
+        }
     }
     fun putIdMem(membresia:String):Int{
         var idMem = 0
@@ -74,4 +84,7 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
         return idMem
     }
 
-}
+
+
+    }
+

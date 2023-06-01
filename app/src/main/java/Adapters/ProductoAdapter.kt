@@ -1,17 +1,13 @@
 package Adapters
 
 import Controladores.ProductoControlador
-import Entidades.Anuncio
 import Entidades.Producto
 import Entidades.Usuario
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -20,6 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.gymcheck.ProductosAdminFragment
+import com.example.gymcheck.ProductosClienteFragment
 import com.example.gymcheck.R
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 import java.io.File
@@ -35,9 +32,9 @@ class ProductoAdapter(private var productos: List<Producto>) :
 
     }
 
-    fun setOnEditItemClickListener(Listener: OnEditItemClickListener?){
-        this.editItemClickListener = Listener
-    }
+//    fun setOnEditItemClickListener(Listener: ProductosClienteFragment){
+//        this.editItemClickListener = Listener
+//    }
 
     fun actualizarLista(nuevaLista: List<Producto>) {
         productos = nuevaLista

@@ -1,21 +1,23 @@
 package com.example.gymcheck
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import com.example.gymcheck.databinding.FragmentHomeAdminBinding
 
 
 class HomeAdminFragment : Fragment() {
     lateinit var binding:FragmentHomeAdminBinding
-
+    private lateinit var drawerLayout: DrawerLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+
         }
     }
 
@@ -24,7 +26,7 @@ class HomeAdminFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeAdminBinding.inflate(layoutInflater)
-
+        drawerLayout = binding.drawerLayout
         binding.bottomNavigation.selectedItemId = R.id.item_1
 
         return binding.root
@@ -33,6 +35,9 @@ class HomeAdminFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupToolbar()
+        setUpDrawerNavigation()
 
         binding.agregarPersona.setOnClickListener {
             findNavController().navigate(R.id.action_homeAdminFragment_to_clienteNuevo)
@@ -84,5 +89,40 @@ class HomeAdminFragment : Fragment() {
 
         }
     }
+
+    private fun setUpDrawerNavigation() {
+binding.navegationView.setNavigationItemSelectedListener {menuItem->
+    when(menuItem.itemId) {
+R.id.menu_logout ->{
+    findNavController().navigate(R.id.action_homeAdminFragment_to_loginFragment)
+    true
+}
+        else -> false
+
+    }
+
+
+}
+
+    }
+
+    private fun setupToolbar() {
+        (requireActivity() as AppCompatActivity).apply {
+            setSupportActionBar(binding.topAppBar)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu)
+        }
+
+        binding.topAppBar.setNavigationOnClickListener {
+            if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                drawerLayout.closeDrawer(GravityCompat.START)
+        }else{
+            drawerLayout.openDrawer(GravityCompat.START)
+            }
+
+        }
+
+    }
+
 
 }

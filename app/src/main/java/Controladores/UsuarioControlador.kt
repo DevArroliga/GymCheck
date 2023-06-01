@@ -22,13 +22,14 @@ import kotlinx.coroutines.runBlocking
 
 class UsuarioControlador {
     val ipMarcelo2 = "192.168.0.7"
+    val ipAllan= "192.168.1.20"
     fun agregarUsuario(usuario:Usuario){
 
         // IP Roberto: 192.168.0.15
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://$ipAllan/GymCheck-API/usuario/agregar_usuario.php"
 
 
         val requestBody: RequestBody = FormBody.Builder()
@@ -62,7 +63,7 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://$ipAllan/GymCheck-API/usuario/editar_usuario.php"
 
 
         val formBody = FormBody.Builder()
@@ -93,7 +94,7 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://192.168.0.7/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://$ipAllan/GymCheck-API/usuario/mostrar_usuario.php"
 
 
         launch(Dispatchers.IO) {
@@ -138,7 +139,7 @@ class UsuarioControlador {
     fun eliminarUsuario(usuario:Usuario){
 
 
-        val urlAPI = "http://192.168.1.22/GymCheck-API/usuario/eliminar_usuario.php"
+        val urlAPI = "http://$ipAllan/GymCheck-API/usuario/eliminar_usuario.php"
 
 
         val formBody = FormBody.Builder()
@@ -168,7 +169,7 @@ class UsuarioControlador {
         })
     }
     fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
-        val urlAPI = "http://$ipMarcelo2/GymCheck-API/emailSender/emailSender.php"
+        val urlAPI = "http://$ipAllan/GymCheck-API/emailSender/emailSender.php"
 
 
         val formBody = FormBody.Builder()
