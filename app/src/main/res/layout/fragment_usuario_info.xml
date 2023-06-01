@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UsuarioInfoFragment"
+    android:background="@color/circuloItem">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/baseline_arrow_back_ios_24"/>
+        <TextView
+            android:layout_marginTop="70dp"
+            android:id="@+id/tvNombreUsuario"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="NombreUsuario"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="Tipo de membresia activa"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvTipoMembresia"
+                android:textColor="@color/white"
+                android:background="@color/bgGreen"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="Tipo de membresia activa"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="Cedula"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvCedula"
+                android:textColor="@color/white"
+                android:background="@color/bgGreen"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="Tipo de membresia activa"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="Cambiar contraseña"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:backgroundTint="@color/white"
+                android:textColor="@color/circuloItem"
+                android:id="@+id/btnCambiarContra"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
+                android:text="Cambiar contraseña"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:id="@+id/layoutClave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfContraActual"
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña actual">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etContraActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textColor="@color/bgGreen" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="12dp"
+                android:id="@+id/tfContraNueva"
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña nueva">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etContraNueva"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textColor="@color/bgGreen" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="12dp"
+                android:id="@+id/tfContraNuevaRpt"
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Escribe de nuevo la contraseña">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etContraNuevaRpt"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textColor="@color/bgGreen" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btnCancelarNPss"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="Cancelar"/>
+                <Button
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/circuloItem"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="30dp"
+                    android:id="@+id/btnGuardarNPss"
+                    android:layout_marginTop="-45dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guardar"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

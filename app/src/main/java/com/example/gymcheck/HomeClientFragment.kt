@@ -77,6 +77,10 @@ class HomeClientFragment : Fragment() {
 
         binding.navegationView.setNavigationItemSelectedListener {menuItem->
             when(menuItem.itemId) {
+                R.id.menu_usuario ->{
+                    findNavController().navigate(R.id.action_homeClientFragment_to_usuarioInfoFragment)
+                    true
+                }
                 R.id.menu_logout ->{
                    sessionController?.clearSession()
                     findNavController().navigate(R.id.action_homeClientFragment_to_loginFragment)
