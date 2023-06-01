@@ -74,7 +74,7 @@
                         android:id="@+id/etIdAnuncio"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/bgGreen" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +89,7 @@
                         android:id="@+id/etNombreAnuncio"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/bgGreen" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,7 +104,7 @@
                         android:id="@+id/etDescripcion"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/bgGreen" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,7 +120,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:focusable="false"
-                        android:textColor="@color/white"
+                        android:textColor="@color/bgGreen"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>

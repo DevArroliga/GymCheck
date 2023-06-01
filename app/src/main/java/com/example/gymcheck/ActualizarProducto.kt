@@ -26,6 +26,7 @@ class ActualizarProducto : Fragment() {
     private lateinit var binding: FragmentActualizarProductoBinding
 
     private var rutaimagen: String? = null
+    var id = ""
 
     val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
@@ -46,12 +47,7 @@ class ActualizarProducto : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        arguments?.let {
-
-        }
-
-
+        id = requireArguments().getString("pid").toString()
 
     }
 
@@ -62,6 +58,19 @@ class ActualizarProducto : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentActualizarProductoBinding.inflate(layoutInflater)
         val controlador = ProductoControlador()
+        val lista = controlador.mostrarProducto()
+        var productoAux = Producto(null, "", "", 1f, 1, null)
+        lista.forEach {
+            if (it.idProducto.toString() == id){
+                productoAux = it
+            }
+        }
+        binding.etIdProducto.setText(productoAux.idProducto.toString())
+        binding.etDescripcion.setText(productoAux.descripcion)
+        binding.etNombreProducto.setText(productoAux.nombre)
+        binding.etStock.setText(productoAux.stock.toString())
+        binding.etPrecio.setText(productoAux.precio.toString())
+
         binding.btnAgregar.setOnClickListener {
             val actualizarProducto = Producto(
                 binding.etIdProducto.text.toString().toInt(),

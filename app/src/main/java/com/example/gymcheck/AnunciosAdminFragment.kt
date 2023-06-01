@@ -85,11 +85,12 @@ class AnunciosAdminFragment : Fragment(), AnuncioAdapter.OnEditItemClickListener
 
 
         val anuncios = controlador.mostrarAnuncio()
+        var ex = findNavController()
 
-        val anuncioAdapter = context?.let { AnuncioAdapter(anuncios, it) }
-        if (anuncioAdapter != null) {
-            anuncioAdapter.setOnEditItemClickListener(this)
-        }
+        val anuncioAdapter = context?.let { AnuncioAdapter(anuncios, it, ex) }
+//        if (anuncioAdapter != null) {
+//            anuncioAdapter.setOnEditItemClickListener(this)
+//        }
 
         binding.rvAnuncio.adapter = anuncioAdapter
 
