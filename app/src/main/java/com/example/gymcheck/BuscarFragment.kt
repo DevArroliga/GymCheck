@@ -37,7 +37,8 @@ class BuscarFragment : Fragment(), UsuarioAdapter.OnEditItemClickListener {
         val lista = UsuarioControlador().mostrarUsuario()
         val listaAux = mutableListOf<Usuario>()
 
-        val usuarioAdapter = UsuarioAdapter(lista)
+        var ex = findNavController()
+        val usuarioAdapter = UsuarioAdapter(lista, ex)
         usuarioAdapter.setOnEditClickListener(this)
 
         binding.rvUsuarios.adapter = usuarioAdapter

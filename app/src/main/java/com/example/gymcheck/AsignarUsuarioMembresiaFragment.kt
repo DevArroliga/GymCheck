@@ -17,10 +17,10 @@ import com.example.gymcheck.databinding.FragmentAsignarUsuarioMembresiaBinding
 
 class AsignarUsuarioMembresiaFragment : Fragment() {
     lateinit var binding:FragmentAsignarUsuarioMembresiaBinding
-
+    var id = " "
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        id = requireArguments().getString("uid").toString()
     }
 
     override fun onCreateView(
@@ -70,6 +70,16 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val controlador = UsuarioControlador()
+        val listaPersonas = controlador.mostrarUsuario()
+        var usuario= Usuario(null, "negrachatel", "", 3, "", "", null)
+
+        listaPersonas.forEach {
+            if (it.idUsuario.toString() == id){
+                usuario = it
+            }
+        }
+        binding.etCedula.setText(usuario.cedula)
 
         binding.asignarMembresia.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_asignarUsuarioMembresiaFragment_to_buscarFragment)

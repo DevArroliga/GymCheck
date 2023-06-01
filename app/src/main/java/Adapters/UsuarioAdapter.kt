@@ -4,16 +4,18 @@ import Controladores.AnuncioControlador
 import Controladores.UsuarioControlador
 import Entidades.Usuario
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gymcheck.R
 import com.example.gymcheck.databinding.AnuncioLayoutBinding
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 import com.example.gymcheck.databinding.UsuarioLayoutBinding
 
-class UsuarioAdapter(private var usuarios:List<Usuario>):RecyclerView.Adapter<UsuarioAdapter.UsuarioViewHolder>() {
+class UsuarioAdapter(private var usuarios:List<Usuario>, private var navController: NavController):RecyclerView.Adapter<UsuarioAdapter.UsuarioViewHolder>() {
 
 
     private var editItemClickListener: OnEditItemClickListener? = null
@@ -55,7 +57,9 @@ class UsuarioAdapter(private var usuarios:List<Usuario>):RecyclerView.Adapter<Us
             val dtranscureed = UsuarioControlador().calcularDiasTranscurridos(usuario.fechaMembresia.toString())
             var dTotal= 0
             var mNombre = " "
-
+            var uid = usuario.idUsuario
+            var bundle: Bundle? = Bundle()
+            bundle!!.putString("uid", uid.toString())
             binding.btnMenu.setOnClickListener {
                 val popupMenu = PopupMenu(itemView.context, it)
 
@@ -64,11 +68,11 @@ class UsuarioAdapter(private var usuarios:List<Usuario>):RecyclerView.Adapter<Us
                     when (menuItem.itemId) {
                         R.id.menu_renovar -> {
 
-                            currentUsuario?.let {usuario ->
-                            editItemClickListener?.onEditItemClick(usuario)
-
-                            }
-
+//                            currentUsuario?.let {usuario ->
+//                            editItemClickListener?.onEditItemClick(usuario)
+//
+//                            }
+                            navController.navigate(R.id.action_buscarFragment_to_asignarUsuarioMembresiaFragment, bundle)
                             true
                         }
 
