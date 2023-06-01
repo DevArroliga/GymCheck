@@ -45,7 +45,7 @@ La aplicación cumplirá dos funciones, una para los propietarios del gimnasio y
 
 <table width="100%">
     <tr>
-        <th>Elemento</th>
+        <th>Directorio</th>
         <td>Descripción</td>
     </tr>
     <tr>
