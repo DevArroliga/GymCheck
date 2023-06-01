@@ -62,6 +62,12 @@ Por último, la aplicación se desarrollará en Android Studio 2022, utilizando 
     </tr>
 </table>
 
+## Cosas a tomar en cuenta
+
+- El código fue construido con la API de Android 26
+- Se necesita de la herramienta XAMPP y la base de datos importada en PHPMyAdmin para poder utilizar los datos de la aplicación.
+- Al momento de probar la aplicación es necesario colocar su respectiva IPv4 en los diferentes metodos que se encuentran en los controladores. Esto es debido a que la recolección de la IP es manual y no dinámica.
+- Se está utizando una libreria externa llamada PHPMailer para el envío de correos electrónicos al momento de crear nuevos usuarios. Aquí el enlace de github: https://github.com/PHPMailer/PHPMailer
 
 🐍 A Snake Eating
 	
