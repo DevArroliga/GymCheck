@@ -17,9 +17,7 @@ class UsuarioInfoFragment : Fragment() {
 
     lateinit var binding:FragmentUsuarioInfoBinding
     var clicked = false
-    val session = context?.let { SesionControlador.getInstance(it) }
-    val uController = UsuarioControlador()
-    val lista = uController.mostrarUsuario()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,8 +27,9 @@ class UsuarioInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentUsuarioInfoBinding.inflate(layoutInflater)
 
+        binding = FragmentUsuarioInfoBinding.inflate(layoutInflater)
+        val session = context?.let { SesionControlador.getInstance(it) }
         binding.tvNombreUsuario.text = session?.getUsername()
         binding.tvCedula.text = session?.getCedula()
         verFormNuevoPss()
@@ -62,8 +61,14 @@ class UsuarioInfoFragment : Fragment() {
     }
     fun verFormNuevoPss(){
         binding.layoutClave.isVisible = clicked
+        binding.etContraNueva.setText("")
+        binding.etContraActual.setText("")
+        binding.etContraNuevaRpt.setText("")
     }
     fun validarContra(passAct:String, passN:String, passNRpt:String){
+        val uController = UsuarioControlador()
+        val lista = uController.mostrarUsuario()
+        val session = context?.let { SesionControlador.getInstance(it) }
 
         var usuario = Usuario(null, "", "", 1, null, "", null)
 
@@ -77,6 +82,7 @@ class UsuarioInfoFragment : Fragment() {
                 session?.getCedula()?.let { uController.cambiarClave(it, passN) }
                 clicked = false
                 verFormNuevoPss()
+                Toast.makeText(context, "Contraseña modificada", Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(context, "Contraseña nueva no coinciden", Toast.LENGTH_SHORT).show()
             }
@@ -85,19 +91,20 @@ class UsuarioInfoFragment : Fragment() {
         }
     }
     fun membresia():String{
-        var membresia = ""
-        var usuario = Usuario(null, "", "", 1, null, "", null)
+        val uController = UsuarioControlador()
+        val lista = uController.mostrarUsuario()
+        val sessionController = context?.let { SesionControlador.getInstance(it) }
+        var usuarioAux = Usuario(null, "", "", 1, null, "", null)
         lista.forEach {
-            if (it.cedula == session?.getCedula()){
-                usuario = it
+            if(it.usuario == sessionController?.getUsername()){
+                usuarioAux = it
             }
         }
-        when(usuario.idMembresia){
-            1 -> membresia = "Semanal"
-            2 -> membresia = "Quincenal"
-            3 -> membresia = "Mensual"
-
-            else -> membresia = "Error"
+        var membresia = when(usuarioAux.idMembresia){
+            1 -> "Semanal"
+            2 -> "Quincenal"
+            3 -> "Mensual"
+            else -> "O"
         }
         return membresia
     }
