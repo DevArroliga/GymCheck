@@ -19,7 +19,7 @@ class PersonaControlador {
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11
     // IP Marcelo 2: 192.168.0.7
-    val ipAllan= "192.168.1.20"
+    val ipAllan= "192.168.46.85"
     fun agregarPersona(persona: Persona){
         val controlador = UsuarioControlador()
 

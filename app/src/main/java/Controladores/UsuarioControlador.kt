@@ -22,7 +22,7 @@ import kotlinx.coroutines.runBlocking
 
 class UsuarioControlador {
     val ipMarcelo2 = "192.168.0.4"
-    val ipAllan= "192.168.1.20"
+    val ipAllan= "192.168.46.85"
     fun agregarUsuario(usuario:Usuario){
 
         // IP Roberto: 192.168.0.15

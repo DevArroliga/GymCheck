@@ -57,7 +57,7 @@ class UsuarioAdapter(private var usuarios:List<Usuario>, private var navControll
             val dtranscureed = UsuarioControlador().calcularDiasTranscurridos(usuario.fechaMembresia.toString())
             var dTotal= 0
             var mNombre = " "
-            var uid = usuario.idUsuario
+            var uid = usuario.cedula
             var bundle: Bundle? = Bundle()
             bundle!!.putString("uid", uid.toString())
             binding.btnMenu.setOnClickListener {
