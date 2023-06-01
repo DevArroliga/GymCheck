@@ -20,7 +20,10 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
     var id = " "
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        id = requireArguments().getString("uid").toString()
+        if(requireArguments().getString("uid")!=null){
+            id = requireArguments().getString("uid").toString()
+        }
+
     }
 
     override fun onCreateView(
@@ -79,7 +82,7 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
                 usuario = it
             }
         }
-        binding.etCedula.setText(usuario.cedula)
+        binding.etCedula.setText(id)
 
         binding.asignarMembresia.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_asignarUsuarioMembresiaFragment_to_buscarFragment)

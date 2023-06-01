@@ -15,7 +15,7 @@ import java.io.IOException
 class AnuncioControlador {
     val ipMarcelo2 = "192.168.0.4"
 
-    val ipAllan= "192.168.1.20"
+    val ipAllan= "192.168.46.85"
     // IP Roberto: 192.168.0.15
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11

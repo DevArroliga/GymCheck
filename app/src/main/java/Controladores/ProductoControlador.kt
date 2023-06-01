@@ -17,7 +17,7 @@ class ProductoControlador {
     // IP Roberto: 192.168.0.15
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11
-    val ipAllan= "192.168.1.20"
+    val ipAllan= "192.168.46.85"
     fun agregarProducto(producto: Producto, imgBytes: ByteArray?) {
 
         val urlAPI = "http://$ipAllan/GymCheck-API/producto/agregar_producto.php"

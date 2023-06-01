@@ -98,7 +98,10 @@ class ClienteNuevo : Fragment(), UsuarioAdapter.OnEditItemClickListener {
     }*/
 
     fun next(){
-        findNavController().navigate(R.id.action_clienteNuevo_to_asignarUsuarioMembresiaFragment)
+        var cedula = binding.etCedula.text
+        var bundle:Bundle? = Bundle()
+        bundle!!.putString("uid", cedula.toString())
+        findNavController().navigate(R.id.action_clienteNuevo_to_asignarUsuarioMembresiaFragment, bundle)
     }
     fun back(){
         findNavController().navigate(R.id.action_clienteNuevo_to_homeAdminFragment)
