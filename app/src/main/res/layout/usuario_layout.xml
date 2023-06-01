@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="185dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="@color/btnPrimario"
+    android:backgroundTint="@color/bgGreen"
     android:layout_margin="8dp"
     android:padding="8dp"
     app:cardCornerRadius="20dp">
