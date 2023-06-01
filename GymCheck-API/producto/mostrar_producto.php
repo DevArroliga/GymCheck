@@ -5,7 +5,7 @@ if ($mysql->connect_error) {
     die("Conexion fallida: " . $mysql->connect_error);
 }
 
-$sql = "SELECT idProducto, nombre, descripcion, precio, stock, img FROM producto WHERE estado = 1 OR estado = 2";
+$sql = "SELECT idProducto, nombre, descripcion, precio, stock, img FROM producto";
 $result = $mysql->query($sql);
 
 if ($result->num_rows >= 0) {

@@ -3,7 +3,7 @@
         require_once '../conexion.php';
 
         $idAnuncio = $_POST["idAnuncio"];      
-        $tituloAnuncio = $_POST["tituloAnuncio"];
+        $tituloAnuncio = $_POST["tituloAnuncio "];
         $descripcion = $_POST["descripcion"];
         $fecha = $_POST["fecha"];
         $img = $_POST["img"];
