@@ -193,6 +193,9 @@
         <action
             android:id="@+id/action_homeClientFragment_to_anunciosClienteFragment"
             app:destination="@id/anunciosClienteFragment" />
+        <action
+            android:id="@+id/action_homeClientFragment_to_usuarioInfoFragment"
+            app:destination="@id/usuarioInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/productosClienteFragment"
@@ -224,7 +227,15 @@
             android:id="@+id/action_anunciosClienteFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/usuarioInfoFragment"
+        android:name="com.example.gymcheck.UsuarioInfoFragment"
+        android:label="fragment_usuario_info"
+        tools:layout="@layout/fragment_usuario_info" >
+        <action
+            android:id="@+id/action_usuarioInfoFragment_to_homeClientFragment"
+            app:destination="@id/homeClientFragment" />
+    </fragment>
 
 
 </navigation>

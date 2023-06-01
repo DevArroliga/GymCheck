@@ -21,7 +21,7 @@ import java.util.*
 import kotlinx.coroutines.runBlocking
 
 class UsuarioControlador {
-    val ipMarcelo2 = "192.168.0.7"
+    val ipMarcelo2 = "192.168.0.4"
     val ipAllan= "192.168.1.20"
     fun agregarUsuario(usuario:Usuario){
 
@@ -29,7 +29,7 @@ class UsuarioControlador {
         // IP Allan: 192.168.0.22
         // IP Marcelo: 192.168.1.11
 
-        val urlAPI = "http://$ipAllan/GymCheck-API/usuario/agregar_usuario.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/agregar_usuario.php"
 
 
         val requestBody: RequestBody = FormBody.Builder()
@@ -63,7 +63,7 @@ class UsuarioControlador {
         })
     }
     fun editarUsuario(cedula: String, idMembresia:Int){
-        val urlAPI = "http://$ipAllan/GymCheck-API/usuario/editar_usuario.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/editar_usuario.php"
 
 
         val formBody = FormBody.Builder()
@@ -94,7 +94,7 @@ class UsuarioControlador {
     }
     fun mostrarUsuario(): List<Usuario> = runBlocking {
         val usuarios = mutableListOf<Usuario>()
-        val urlAPI = "http://$ipAllan/GymCheck-API/usuario/mostrar_usuario.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/mostrar_usuario.php"
 
 
         launch(Dispatchers.IO) {
@@ -139,7 +139,7 @@ class UsuarioControlador {
     fun eliminarUsuario(usuario:Usuario){
 
 
-        val urlAPI = "http://$ipAllan/GymCheck-API/usuario/eliminar_usuario.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/eliminar_usuario.php"
 
 
         val formBody = FormBody.Builder()
@@ -169,7 +169,7 @@ class UsuarioControlador {
         })
     }
     fun enviarEmailBienvenida(usuario: String, clave:String, email:String){
-        val urlAPI = "http://$ipAllan/GymCheck-API/emailSender/emailSender.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/emailSender/emailSender.php"
 
 
         val formBody = FormBody.Builder()
@@ -211,6 +211,36 @@ class UsuarioControlador {
             Log.d("Sesion", "sesion fallida")
         }
         return usuarioAux
+    }
+    fun cambiarClave(cedula: String, clave:String){
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/usuario/cambiar_clave.php"
+
+
+        val formBody = FormBody.Builder()
+            .add("cedula", cedula)
+            .add("clave", clave.toString())
+            .build()
+        val request = Request.Builder()
+            .url(urlAPI)
+            .post(formBody)
+            .build()
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object: Callback{
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful){
+                    val respuesta = response.body?.string()
+                    println(respuesta)
+                }
+                else {
+                    println("Error en la respuesta del servidor")
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Error en la petición HTTP: ${e.message}")
+            }
+        })
     }
 
 }
