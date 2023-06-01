@@ -47,17 +47,27 @@ private lateinit var binding: FragmentAgregarAnuncioBinding
         // Inflate the layout for this fragment
         binding = FragmentAgregarAnuncioBinding.inflate(layoutInflater)
 
-        val controlador = AnuncioControlador()
+
         binding.btnAgregar.setOnClickListener {
-            val nuevoAnuncio = Anuncio(
-                null,
-                binding.etNombreAnuncio.text.toString(),
-                binding.etDescripcion.text.toString(),
-                binding.etFechaVence.text.toString(),
-                null
-            )
-            val imgeBytes = getImageBytes()
-            controlador.agregarAnuncio(nuevoAnuncio, imgeBytes)
+            val controlador = AnuncioControlador()
+            val nombreAnuncio = binding.etNombreAnuncio.text.toString()
+            val descripcion = binding.etDescripcion.text.toString()
+            val fechaVence = binding.etFechaVence.text.toString()
+
+            if(nombreAnuncio.isNullOrEmpty()|| descripcion.isNullOrEmpty()||fechaVence.isNullOrEmpty()){
+                Toast.makeText(context, "Los campos son obligatorios", Toast.LENGTH_SHORT).show()
+            }else{
+                val nuevoAnuncio = Anuncio(
+                    null,
+                    nombreAnuncio,
+                    descripcion,
+                    fechaVence,
+                    null
+                )
+                val imgeBytes = getImageBytes()
+                controlador.agregarAnuncio(nuevoAnuncio, imgeBytes)
+            }
+
         }
 
         return binding.root
