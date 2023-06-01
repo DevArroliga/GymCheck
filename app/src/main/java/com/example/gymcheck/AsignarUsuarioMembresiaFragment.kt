@@ -46,6 +46,11 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
             val controlador = UsuarioControlador()
             val cedula = binding.etCedula.text.toString().lowercase().trim()
 
+            if(cedula.isNullOrEmpty()){
+                Toast.makeText(context, "Campo de cedula obligatoria", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val listaPersonas = controlador.mostrarUsuario()
             var usuario= Usuario(null, "negrachatel", "", 3, "", "", null)
 
@@ -54,8 +59,6 @@ class AsignarUsuarioMembresiaFragment : Fragment() {
                     usuario = it
                 }
             }
-
-
 
             controlador.editarUsuario(usuario.cedula, putIdMem(nMembresia))
             findNavController().navigate(R.id.action_asignarUsuarioMembresiaFragment_to_homeAdminFragment)

@@ -86,8 +86,10 @@ class AnunciosAdminFragment : Fragment(), AnuncioAdapter.OnEditItemClickListener
 
         val anuncios = controlador.mostrarAnuncio()
 
-        val anuncioAdapter = AnuncioAdapter(anuncios)
-        anuncioAdapter.setOnEditItemClickListener(this)
+        val anuncioAdapter = context?.let { AnuncioAdapter(anuncios, it) }
+        if (anuncioAdapter != null) {
+            anuncioAdapter.setOnEditItemClickListener(this)
+        }
 
         binding.rvAnuncio.adapter = anuncioAdapter
 

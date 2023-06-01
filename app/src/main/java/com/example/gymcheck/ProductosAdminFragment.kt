@@ -84,8 +84,11 @@ class ProductosAdminFragment : Fragment(), ProductoAdapter.OnEditItemClickListen
         val productos = controlador.mostrarProducto()
 
 
-        val productoAdapte = ProductoAdapter(productos)
-        //productoAdapte.setOnEditItemClickListener(this)
+        val productoAdapte = context?.let { ProductoAdapter(productos, it) }
+
+        if (productoAdapte != null) {
+            productoAdapte.setOnEditItemClickListener(this)
+        }
 
         binding.rvProductos.adapter = productoAdapte
         binding.rvProductos.layoutManager = LinearLayoutManager(context)

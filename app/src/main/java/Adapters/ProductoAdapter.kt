@@ -1,13 +1,16 @@
 package Adapters
 
 import Controladores.ProductoControlador
+import Controladores.SesionControlador
 import Entidades.Producto
 import Entidades.Usuario
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.view.isInvisible
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -21,20 +24,20 @@ import com.example.gymcheck.R
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 import java.io.File
 
-class ProductoAdapter(private var productos: List<Producto>) :
+class ProductoAdapter(private var productos: List<Producto>, private var context: Context) :
     RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
     private val controlerProducto = ProductoControlador()
     private var editItemClickListener: OnEditItemClickListener?= null
+
     interface OnEditItemClickListener {
         fun onEditItemClick(producto: Producto)
 
-
     }
 
-//    fun setOnEditItemClickListener(Listener: ProductosClienteFragment){
-//        this.editItemClickListener = Listener
-//    }
+   fun setOnEditItemClickListener(Listener: ProductosAdminFragment){
+       this.editItemClickListener = Listener
+ }
 
     fun actualizarLista(nuevaLista: List<Producto>) {
         productos = nuevaLista
@@ -79,9 +82,14 @@ class ProductoAdapter(private var productos: List<Producto>) :
             }
 
             val btnMenu = binding.btnMenu
+            val session = SesionControlador.getInstance(context)
+            if(session.isLoggedIn()){
+                btnMenu.isInvisible = true
+            }
             btnMenu.setOnClickListener {
                 val popupMenu = PopupMenu(itemView.context, btnMenu)
                 popupMenu.menuInflater.inflate(R.menu.menu_producto, popupMenu.menu)
+
                 popupMenu.setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.menu_editar -> {
