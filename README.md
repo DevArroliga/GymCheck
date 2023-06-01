@@ -32,14 +32,14 @@
 	
 - Kotlin
 - PHP
-	
-## Requerimientos funcionales del caso
 
-La aplicación tendrá una pantalla de inicio de sesión donde el usuario deberá ingresar sus credenciales, incluyendo nombre de usuario y contraseña. La vista del administrador será diferente a la del usuario. Además, el administrador será responsable de crear una cuenta de usuario para cada cliente, ingresando sus datos personales y privados, y luego proporcionando al usuario un nombre de usuario y contraseña para que pueda acceder a la aplicación.
 	
-La aplicación cumplirá dos funciones, una para los propietarios del gimnasio y otra para los clientes. Para los propietarios del gimnasio, la aplicación permitirá llevar un registro digital y contabilizar las suscripciones de manera más sencilla y organizada, lo que ayudará a evitar errores y fallos a la hora de cobrar las membresías. Por otro lado, la función para los usuarios les mostrará la disponibilidad de suplementos, precios, promociones y detalles sobre su suscripción.
+## Funcionalidades de la aplicación
+Las funcionalidades de la aplicación incluyen un inicio de sesión que requiere credenciales proporcionadas por el administrador. Una vez que se accede a la aplicación, se mostrará una pantalla de inicio que incluye un sidebar con opciones para ver el perfil del usuario, cerrar sesión y ajustar la configuración. La vista de inicio también mostrará la tienda del gimnasio, incluyendo los suplementos disponibles, los precios y la cantidad en stock. Los usuarios pueden navegar a través de los productos, las suscripciones, las promociones del gimnasio y los precios de las suscripciones utilizando un bottom navigation bar.
 	
-	
+En la vista del administrador, se podrán registrar nuevos clientes y especificar el tipo de suscripción que está pagando cada cliente, ya sea mensualidad, mes o semana. También podrán dar de baja a los clientes si es necesario y subir productos a la venta, especificando cuántos hay en stock. Además, se podrán poner promociones disponibles en el gimnasio.
+Por último, la aplicación se desarrollará en Android Studio 2022, utilizando el lenguaje de programación Kotlin y una base de datos PHP MySQL. Los datos se guardarán en la nube para asegurar su disponibilidad y evitar la pérdida de información.
+
 	
 ### Directorios dentro del código
 
