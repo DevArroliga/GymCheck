@@ -13,12 +13,13 @@ import org.json.JSONArray
 import java.io.IOException
 
 class ProductoControlador {
+    val ipMarcelo2 = "192.168.0.7"
     // IP Roberto: 192.168.0.15
     // IP Allan: 192.168.0.22
     // IP Marcelo: 192.168.1.11
 
     fun agregarProducto(producto: Producto, imgBytes: ByteArray?) {
-        val urlAPI = "http://192.168.1.22/GymCheck-API/producto/agregar_producto.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/producto/agregar_producto.php"
 
 
         if (producto.nombre.isNullOrEmpty() || producto.descripcion.isNullOrEmpty() || producto.precio <= 0 || producto.stock <= 0) {
@@ -63,7 +64,7 @@ class ProductoControlador {
 
 
     fun editarProducto(producto: Producto, imgBytes: ByteArray?) {
-        val urlAPI = "http://192.168.1.22/GymCheck-API/producto/editar_producto.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/producto/editar_producto.php"
 
 
         if (producto.nombre.isNullOrEmpty() || producto.descripcion.isNullOrEmpty() || producto.precio <= 0 || producto.stock <= 0) {
@@ -109,7 +110,7 @@ class ProductoControlador {
     }
 
     fun eliminarProducto(producto: Producto){
-        val urlAPI = "http://192.168.1.22/GymCheck-API/producto/eliminar_producto.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/producto/eliminar_producto.php"
 
 
         val formBody = FormBody.Builder()
@@ -140,7 +141,7 @@ class ProductoControlador {
 
     fun mostrarProducto(): List<Producto> = runBlocking {
         val productos = mutableListOf<Producto>()
-        val urlAPI = "http://192.168.1.22/GymCheck-API/producto/mostrar_producto.php"
+        val urlAPI = "http://$ipMarcelo2/GymCheck-API/producto/mostrar_producto.php"
 
 
         launch(Dispatchers.IO) {
