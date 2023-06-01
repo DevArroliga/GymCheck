@@ -72,7 +72,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etIdProducto"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:textColor="@color/bgGreen" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -87,7 +87,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNombreProducto"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:textColor="@color/bgGreen" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -102,7 +102,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etDescripcion"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:textColor="@color/bgGreen" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -117,7 +117,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPrecio"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:inputType="numberDecimal"
                         android:textColor="@color/bgGreen" />
 
@@ -133,7 +133,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etStock"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:inputType="number"
                         android:textColor="@color/bgGreen" />
 
