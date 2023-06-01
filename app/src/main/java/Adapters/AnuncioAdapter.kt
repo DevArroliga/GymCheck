@@ -1,15 +1,18 @@
 package Adapters
 
 import Controladores.AnuncioControlador
+import Controladores.SesionControlador
 import Entidades.Anuncio
 import Entidades.Producto
 import Entidades.Usuario
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -20,7 +23,7 @@ import com.example.gymcheck.R
 import com.example.gymcheck.databinding.AnuncioLayoutBinding
 import com.example.gymcheck.databinding.ProductoLayoutBinding
 
-class AnuncioAdapter(private var anuncio: List<Anuncio>) :
+class AnuncioAdapter(private var anuncio: List<Anuncio>, private var context: Context) :
     RecyclerView.Adapter<AnuncioAdapter.AnuncioViewHolder>() {
 
     private var editItemClickListener: OnEditItemClickListener? = null
@@ -79,6 +82,11 @@ this.editItemClickListener = Listener
             }
 
             val btnMenu = binding.btnMenu
+
+            val session = SesionControlador.getInstance(context)
+            if (session.isLoggedIn()){
+                btnMenu.isInvisible = true  
+            }
 
             btnMenu.setOnClickListener {
                 val popupMenu = PopupMenu(itemView.context, btnMenu)

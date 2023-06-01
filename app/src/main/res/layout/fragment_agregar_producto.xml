@@ -50,7 +50,7 @@
                     android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:layout_margin="16dp"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@color/black"
                     app:cardCornerRadius="12dp">
                     <ImageView
                         android:id="@+id/imgProducto"
@@ -73,7 +73,7 @@
                         android:id="@+id/etNombreProducto"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +88,7 @@
                         android:id="@+id/etDescripcion"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,7 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="numberDecimal"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,7 +120,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="number"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
