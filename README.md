@@ -2,7 +2,7 @@
 
 
 <h2 align="center">
-    Proyecto final de Desarrollo de Aplicaciones Moviles 2👋🤓☝🏻
+    Proyecto final de Desarrollo de Aplicaciones Moviles 2
 </h2>
 
 <p align="center">
